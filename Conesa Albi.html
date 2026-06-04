@@ -1,0 +1,909 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Conesa Albi</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="36fe7a34-6865-80f8-b216-cff8ca697f9c" class="page sans"><header><h1 class="page-title" dir="auto">Conesa Albi</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Storytelling </summary><div class="indented"><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="36fe7a34-6865-80e5-87bf-f9c6ce4df138" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all"># Storytelling Global du Site Conesa
+
+## L&#x27;idée directrice
+
+Le site ne doit pas raconter l&#x27;histoire de Conesa.
+
+Le site doit raconter l&#x27;histoire du client.
+
+Conesa intervient comme le guide qui accompagne le propriétaire dans l&#x27;amélioration, la protection et la valorisation de son habitat.
+
+Le visiteur arrive avec un problème :
+
+* Une maison qui consomme trop d&#x27;énergie
+* Une façade vieillissante
+* Une toiture qui se dégrade
+* Des travaux à réaliser
+* Un bien à valoriser
+
+Le site doit lui montrer qu&#x27;il existe une solution simple : s&#x27;appuyer sur une entreprise locale, expérimentée et reconnue.
+
+---
+
+# Chapitre 1 : Votre maison mérite mieux
+
+Tout commence par une prise de conscience.
+
+Au fil des années, une habitation évolue :
+
+* Les performances énergétiques diminuent
+* Les façades s&#x27;usent
+* Les peintures se dégradent
+* Les toitures subissent les intempéries
+
+Ces signes sont souvent perçus comme des contraintes.
+
+Le site doit transformer cette contrainte en opportunité.
+
+&gt; Rénover aujourd&#x27;hui, c&#x27;est améliorer son confort, réduire ses dépenses et valoriser durablement son patrimoine.
+
+---
+
+# Chapitre 2 : Trouver le bon partenaire
+
+Face à un projet de rénovation, une question revient systématiquement :
+
+&gt; À qui faire confiance ?
+
+Le visiteur découvre alors Conesa.
+
+Une entreprise familiale implantée dans le Tarn depuis plus de 55 ans.
+
+Une équipe qui connaît parfaitement les spécificités du territoire, des habitations et des besoins des propriétaires locaux.
+
+Une entreprise certifiée RGE et Qualibat capable d&#x27;accompagner ses clients de la réflexion jusqu&#x27;à la réalisation.
+
+À ce stade, le visiteur ne découvre pas simplement un artisan.
+
+Il découvre un partenaire de confiance.
+
+---
+
+# Chapitre 3 : Améliorer son habitat durablement
+
+Le cœur du site repose sur l&#x27;isolation thermique extérieure.
+
+Aujourd&#x27;hui, les propriétaires recherchent :
+
+* Plus de confort
+* Moins de dépenses énergétiques
+* Une maison plus performante
+* Une façade rénovée
+
+L&#x27;isolation extérieure répond à l&#x27;ensemble de ces enjeux.
+
+Le site doit présenter cette solution comme le point de départ d&#x27;une rénovation intelligente.
+
+Une intervention qui améliore à la fois l&#x27;esthétique, la performance énergétique et la valeur du bien.
+
+---
+
+# Chapitre 4 : Une expertise globale
+
+Parce qu&#x27;une rénovation ne se limite pas à l&#x27;isolation.
+
+Le visiteur découvre ensuite l&#x27;ensemble des savoir-faire de Conesa :
+
+* Ravalement de façade
+* Peinture intérieure et extérieure
+* Entretien et nettoyage de toiture
+* Revêtements de sols
+* Travaux après sinistre
+
+L&#x27;idée n&#x27;est pas de présenter une liste de prestations.
+
+L&#x27;idée est de démontrer qu&#x27;un seul interlocuteur peut prendre en charge l&#x27;ensemble des travaux liés à l&#x27;amélioration de l&#x27;habitat.
+
+---
+
+# Chapitre 5 : Les preuves
+
+Les réalisations prennent ensuite le relais.
+
+Elles racontent des histoires réelles.
+
+Des maisons rénovées.
+
+Des façades transformées.
+
+Des logements mieux isolés.
+
+Des propriétaires satisfaits.
+
+Chaque projet devient une preuve concrète du savoir-faire de l&#x27;entreprise.
+
+Le visiteur peut alors se projeter dans son propre projet.
+
+---
+
+# Chapitre 6 : La confiance locale
+
+Le site affirme ensuite sa proximité.
+
+Conesa intervient quotidiennement dans le Tarn :
+
+* Albi
+* Gaillac
+* Castres
+* Graulhet
+* Lavaur
+* Carmaux
+* Mazamet
+* Réalmont
+
+Cette présence locale rassure.
+
+Le visiteur comprend qu&#x27;il fait appel à une entreprise proche de chez lui, réactive et parfaitement implantée sur son secteur.
+
+---
+
+# Chapitre 7 : Passer à l&#x27;action
+
+Après avoir découvert :
+
+* Les solutions
+* L&#x27;expertise
+* Les réalisations
+* Les avis clients
+* Les réponses à ses questions
+
+Le visiteur est prêt.
+
+Le devis n&#x27;est plus perçu comme une démarche commerciale.
+
+Il devient simplement la prochaine étape logique de son projet.
+
+---
+
+# Le message final du site
+
+Conesa accompagne depuis plus de 55 ans les propriétaires du Tarn dans l&#x27;amélioration, la rénovation et la valorisation de leur habitat.
+
+Grâce à son expertise en isolation thermique extérieure, rénovation de façade, peinture et entretien du bâti, l&#x27;entreprise apporte des solutions durables qui améliorent le confort, réduisent les consommations énergétiques et préservent la valeur du patrimoine.
+
+Plus qu&#x27;un prestataire, Conesa se positionne comme un partenaire de confiance pour tous les projets de rénovation de l&#x27;habitat dans le Tarn.
+</code></pre></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Charte graphique  </summary><div class="indented"><div style="display:contents" dir="auto"><h1 id="36fe7a34-6865-80c6-af8d-ffbbf8f366bc" class="">🎨 Résumé Charte Graphique – Conesa</h1></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-80ab-b252-fc5e8674c1eb" class="">🏆 Positionnement Visuel</h2></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-803a-b28d-d69937b788c5" class="">Une entreprise familiale historique, experte en isolation thermique extérieure et rénovation de l&#x27;habitat dans le Tarn.</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-807a-83fa-cae404f882f2" class="">L&#x27;image doit inspirer :</p></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80db-b468-c9a5d3ee0d98" class="bulleted-list"><li style="list-style-type:disc">Confiance</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80d8-ac6e-e093c16125e6" class="bulleted-list"><li style="list-style-type:disc">Expertise</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-800f-b712-f22341ff9efd" class="bulleted-list"><li style="list-style-type:disc">Proximité</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80b1-be89-fe0c23475ac8" class="bulleted-list"><li style="list-style-type:disc">Qualité</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80f8-99b9-edbf77fa143f" class="bulleted-list"><li style="list-style-type:disc">Performance énergétique</li></ul></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-806c-a6ee-d06ec231bfff"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-80c0-944f-d1ab0e69c4a3" class="">🎨 Palette de couleurs</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80f1-af04-edcb080ca660" class="">Couleur principale</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-806c-b54f-d4de2a6bd4b4" class="">🔵 Bleu Confiance</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8045-ae67-d4c5badf7a6c" class="">Utilisation :</p></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8002-b529-fe26ee56b584" class="bulleted-list"><li style="list-style-type:disc">Titres</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80f5-a26c-f1aa07e791a4" class="bulleted-list"><li style="list-style-type:disc">Boutons principaux</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-808e-8b0d-fe33aab8b477" class="bulleted-list"><li style="list-style-type:disc">Éléments de réassurance</li></ul></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8004-9b83-fc56627b160c" class="">Couleur secondaire</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80e0-a663-f6a11a19c241" class="">🟠 Orange Énergie</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8018-9591-c08addf36c07" class="">Utilisation :</p></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8077-a5d2-ee02a55ec27f" class="bulleted-list"><li style="list-style-type:disc">CTA</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8041-874e-d9966ab5482d" class="bulleted-list"><li style="list-style-type:disc">Chiffres clés</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8067-942a-d71a104a0300" class="bulleted-list"><li style="list-style-type:disc">Mises en avant</li></ul></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8099-8954-e96d5512449b" class="">Couleurs neutres</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-807c-a737-c8f08eed7657" class="">⚪ Blanc</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-801a-91e2-dcb250e2025b" class="">⚫ Gris foncé</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80f1-9dbb-f166935df309" class="">🔘 Gris clair</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-809e-acc1-d3ad2d48fdf8" class="">Pour apporter de la lisibilité et un aspect premium.</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-8047-af00-f2fbbe1ce6f9"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-802b-a668-e9101558681d" class="">✍️ Typographie</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80b0-b8d2-e04074ebd83b" class="">Titres</h3></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8080-8652-f8335dd96b58" class="bulleted-list"><li style="list-style-type:disc">Montserrat</li></ul></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8032-8401-d07771cfd337" class="">Style :</p></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-802a-9092-ec60471cb041" class="bulleted-list"><li style="list-style-type:disc">Moderne</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8084-8819-ebba0b42c980" class="bulleted-list"><li style="list-style-type:disc">Impactant</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-804d-9f17-c249c1df78b0" class="bulleted-list"><li style="list-style-type:disc">Professionnel</li></ul></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-801a-9b08-e860b0167030" class="">Texte</h3></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8052-bfe5-e45905656c26" class="bulleted-list"><li style="list-style-type:disc">Open Sans</li></ul></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80d9-9b54-de797e731292" class="">Style :</p></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-804e-90f5-f703869d47aa" class="bulleted-list"><li style="list-style-type:disc">Clair</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-808a-afde-f42803106cd4" class="bulleted-list"><li style="list-style-type:disc">Lisible</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-800e-80d9-e7467f994fa8" class="bulleted-list"><li style="list-style-type:disc">Accessible</li></ul></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-8035-ae85-dc7af4d46178"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-8025-aa29-e46ecffa85b3" class="">📸 Univers Photographique</h2></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80a4-ad29-d18fa75f6459" class="">Privilégier :</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80ac-9f6a-ca9883c77c75" class="">✅ Réalisations réelles</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8059-9176-d095af749c9f" class="">✅ Photos de chantiers</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8016-b863-e1ac4bb54f88" class="">✅ Équipe sur le terrain</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80c1-9cc0-f978af3ca11a" class="">✅ Avant / Après</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80de-8b96-d4fb582953ec" class="">✅ Façades rénovées</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80d7-86d3-e9f40e063d28" class="">✅ Isolation thermique extérieure</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8059-aac6-ebd3fd7ce455" class="">Éviter :</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80cd-88d2-ea7f2a137b71" class="">❌ Photos génériques de banques d&#x27;images</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80e8-9cf1-cf647736e294" class="">❌ Visuels artificiels ou trop commerciaux</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-8044-b6a0-f9740cb05680"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-8029-9fe6-ce38ee1955dc" class="">🎨 Style UI / UX</h2></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80cc-9790-d37f47b01dea" class="bulleted-list"><li style="list-style-type:disc">Design moderne et épuré</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-803c-a805-e72572073098" class="bulleted-list"><li style="list-style-type:disc">Mise en page aérée</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8073-9263-e982338ea5bf" class="bulleted-list"><li style="list-style-type:disc">Sections bien espacées</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80b7-b79d-db9510cdabf9" class="bulleted-list"><li style="list-style-type:disc">Navigation simple</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80e5-8a4f-e048fe75bbd4" class="bulleted-list"><li style="list-style-type:disc">Mobile First</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80e9-8d46-fbb47f6864d5" class="bulleted-list"><li style="list-style-type:disc">Boutons visibles et accessibles</li></ul></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80f1-b736-f9a5ad4ec1d2" class="">Alternance :</p></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-800b-8de2-cc55a120572f" class="bulleted-list"><li style="list-style-type:disc">Fond blanc</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-805f-942d-e9e565d8e943" class="bulleted-list"><li style="list-style-type:disc">Fond gris très clair</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-809b-b467-ff9eef254010" class="bulleted-list"><li style="list-style-type:disc">Card bleu </li></ul></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8026-962e-f01d33c498b4" class="">pour rythmer la lecture.</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-80f3-9ffe-fa5db272bad5"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-80a1-865e-ebc3c788b11a" class="">🧱 Composants principaux</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8095-8ce0-f3fc5a84db55" class="">Cards métiers</h3></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80ae-98b6-f82d98dc6154" class="bulleted-list"><li style="list-style-type:disc">Icône</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8075-84dd-f6ab47a2475e" class="bulleted-list"><li style="list-style-type:disc">Titre</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80ec-8108-de6eb1584abf" class="bulleted-list"><li style="list-style-type:disc">Courte description</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8025-a40c-f70fd4ef3b00" class="bulleted-list"><li style="list-style-type:disc">Bouton Découvrir</li></ul></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80ba-a1a9-cf1c25edfc07" class="">FAQ</h3></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80d6-87dc-fd8a19a6b3c7" class="bulleted-list"><li style="list-style-type:disc">Accordéons simples</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80d7-ba08-fb5ad362cbac" class="bulleted-list"><li style="list-style-type:disc">Lecture rapide</li></ul></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-80ba-8c14-e4504adc89c5"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-80ce-a099-fa508713c365" class="">🎯 Ton éditorial</h2></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8049-bf4c-d60d2bbd8c12" class="">Le ton doit être :</p></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8055-8f31-c805559d5403" class="bulleted-list"><li style="list-style-type:disc">Professionnel</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80d8-b9d6-f3b85f5315be" class="bulleted-list"><li style="list-style-type:disc">Accessible</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8052-8b90-e307e74c62db" class="bulleted-list"><li style="list-style-type:disc">Pédagogique</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-801c-a4a4-eef7263354d9" class="bulleted-list"><li style="list-style-type:disc">Humain</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80ba-8c6a-f6b85ee5060a" class="bulleted-list"><li style="list-style-type:disc">Local</li></ul></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80ef-8114-e18bcd043f1c" class="">L&#x27;entreprise parle de solutions et de bénéfices clients avant de parler d&#x27;elle-même.</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-806e-8710-c775a3f5b06a"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-8068-8e5f-d28ee3d11dec" class="">💡 Ambiance recherchée</h2></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80fd-9dbf-ea7a6d848130" class=""><strong>60% Confiance</strong></p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80d8-a1af-c3dc4fc59ac9" class=""><strong>20% Expertise</strong></p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-800e-8206-f6ba156482ee" class=""><strong>10% Proximité</strong></p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8077-82f7-fcc9cced5a91" class=""><strong>10% Modernité</strong></p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-807f-ba26-e29c80e69e37"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-80bf-b6b2-c95fd982a8fa" class="">Signature visuelle</h2></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8048-b4ac-fb2b53b95926" class=""><strong>Une entreprise familiale du Tarn, experte en isolation thermique extérieure et rénovation de l&#x27;habitat, qui inspire confiance grâce à son expérience, ses réalisations et sa proximité avec ses clients.</strong></p></div></div></details></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8081-a66a-c67fc5b45e03" class="">Url de site d’inspiration : <br/><a href="https://www.point-finances.fr/">https://www.point-finances.fr/</a></p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80f4-ac84-dcfb82d202d9" class=""><a href="https://www.abcdair-montgolfiere.fr/">https://www.abcdair-montgolfiere.fr/</a></p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80a2-84ca-fec717de9d8e" class=""><a href="https://www.ancelia.fr/">https://www.ancelia.fr/</a></p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8079-ae92-e01905a1a751" class="">
+</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80e7-9cb2-d6c7f08ad629" class="">Arborescence </p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-807a-8e29-fbea5012be22" class="">ACCUEIL<br/>│<br/>├── Isolation Thermique Extérieure ⭐<br/>├── Prestations<br/>├── Réalisations<br/>├── Avis clients<br/>├── FAQ Générale<br/>└── Devis<br/>│<br/>├── L&#x27;ENTREPRISE<br/>│   ├── Histoire<br/>│   ├── Certifications<br/>│   ├── Réalisations<br/>│   └── FAQ Entreprise<br/>│<br/>├── ISOLATION THERMIQUE EXTÉRIEURE ⭐<br/>│   ├── Avantages<br/>│   ├── Aides<br/>│   └── FAQ Isolation<br/>│<br/>├── RÉNOVATION DE L&#x27;HABITAT<br/>│   ├── Façade<br/>│   ├── Peinture<br/>│   ├── Toiture<br/>│   ├── Sols<br/>│   ├── Après sinistre<br/>│   └── FAQ Travaux<br/>│<br/>└── ZONES D&#x27;INTERVENTION (MENU BURGER)<br/>├── Albi<br/>├── Gaillac<br/>├── Castres<br/>├── Graulhet<br/>├── Carmaux<br/>├── Lavaur<br/>├── Réalmont<br/>├── Mazamet<br/>├── Saint-Sulpice<br/>└── Tarn<br/>│<br/>├── Isolation Thermique Extérieure<br/>├── Prestations complémentaires<br/>├── FAQ Locale<br/>└── Devis</p></div><div style="display:contents" dir="ltr"><table id="36fe7a34-6865-80c9-b1b3-c8d246a7b850" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="36fe7a34-6865-80df-8998-fd720246a51b"><td id="jfH^" class="" style="width:239.66666666666666px">🏠 Accueil<br/><br/>- Hero<br/>- Isolation Thermique Extérieure ⭐<br/>- Prestations complémentaires<br/>- Réalisations<br/>- Avis clients<br/>- Certifications<br/>- Zones d&#x27;intervention<br/>- FAQ Générale<br/>- CTA Devis</td><td id="[F;[" class="" style="width:239.66666666666666px">👨‍🔧 L&#x27;Entreprise<br/><br/>- Histoire<br/>- Équipe<br/>- Certifications<br/>- Engagements<br/>- Réalisations<br/>- FAQ Entreprise<br/>- CTA</td><td id="PrgI" class="" style="width:239.66666666666666px">🔥 Isolation Thermique Extérieure<br/><br/>- Présentation<br/>- Avantages<br/>- Aides financières<br/>- Process chantier<br/>- Réalisations<br/>- FAQ Isolation<br/>- CTA</td></tr></div><div style="display:contents" dir="ltr"><tr id="36fe7a34-6865-8021-8a02-c0a7312aa7f3"><td id="jfH^" class="" style="width:239.66666666666666px">🏡 Rénovation de l&#x27;Habitat<br/><br/>Sections :<br/>- Façade<br/>- Peinture<br/>- Toiture<br/>- Sols<br/>- Après sinistre<br/><br/>Puis :<br/>- FAQ Travaux &amp; Rénovation<br/>- CTA</td><td id="[F;[" class="" style="width:239.66666666666666px">📍 Pages Villes (<br/><br/>Exemple : Isolation Extérieure Gaillac<br/><br/>Isolation Thermique Extérieure (70%)<br/>- Présentation<br/>- Avantages<br/>- Aides<br/>- Réalisations locales<br/><br/>Prestations complémentaires (30%)<br/>- Façade<br/>- Peinture<br/>- Toiture<br/>- Sols<br/>- Après sinistre<br/><br/>Puis<br/>- FAQ Locale (Gaillac)<br/>- CTA</td><td id="PrgI" class="" style="width:239.66666666666666px"></td></tr></div><div style="display:contents" dir="ltr"><tr id="36fe7a34-6865-80be-b6b8-d478a5b1da13"><td id="jfH^" class="" style="width:239.66666666666666px"></td><td id="[F;[" class="" style="width:239.66666666666666px"></td><td id="PrgI" class="" style="width:239.66666666666666px"></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.125em;line-height:1.3;margin:0">Acceuil </summary><div class="indented"><div style="display:contents" dir="auto"><h1 id="36fe7a34-6865-802f-8e5c-cd0dd1f807d6" class="">🏠 Structure de la page d&#x27;accueil - Conesa Peinture</h1></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-8007-a3f9-f967c27f06aa" class="">SECTION 1 - HERO</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-805a-a5bc-ccb544b7850d" class="">H1</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8058-852a-f2a62fd11115" class=""><strong>Isolation Thermique Extérieure, Ravalement de Façade et Travaux de Rénovation dans le Tarn</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8069-8de3-eff79ea08168" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8092-bfc4-fce6641077fb" class="">Depuis plus de 55 ans, Conesa accompagne les particuliers et professionnels dans leurs projets d&#x27;isolation thermique extérieure, rénovation de façade, peinture et entretien de l&#x27;habitat dans tout le Tarn.</p></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80ed-9cdc-e10875e8c9b9" class=""><strong>CTA :</strong></p></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8040-9a96-e4790906237e" class="bulleted-list"><li style="list-style-type:disc">Demander un devis gratuit</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80a0-80ab-ee417e2a0799" class="bulleted-list"><li style="list-style-type:disc">Être rappelé</li></ul></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-80eb-85a6-fad47dbc49f1"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-80b2-b6f5-cd7f380a41b6" class="">SECTION 2 - Pourquoi choisir Conesa ?</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-803c-be28-f5eb11908cca" class="">H2</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8069-a941-f2fc8eaec1b6" class=""><strong>Une entreprise familiale reconnue depuis plus de 55 ans</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8060-8532-dd9126d60aae" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8032-a35c-ceb0c0d541a1" class="">Implantée dans le Tarn depuis plusieurs générations, l&#x27;entreprise Conesa met son savoir-faire au service de vos projets de rénovation énergétique et d&#x27;embellissement de l&#x27;habitat. Grâce à ses certifications RGE et Qualibat, elle vous accompagne avec des solutions durables et adaptées à vos besoins.</p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8091-b392-d2886fb58e1b" class="">Points clés</h3></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80c4-9443-e985602fe738" class="bulleted-list"><li style="list-style-type:disc">Plus de 55 ans d&#x27;expérience</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8080-8b7b-f063fca210cb" class="bulleted-list"><li style="list-style-type:disc">Entreprise familiale</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80e9-9331-db3a569a9423" class="bulleted-list"><li style="list-style-type:disc">Certifications RGE &amp; Qualibat</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80af-a73f-ec6174e66a06" class="bulleted-list"><li style="list-style-type:disc">Accompagnement personnalisé</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80da-bc3f-c7b491a2becd" class="bulleted-list"><li style="list-style-type:disc">Intervention dans tout le Tarn</li></ul></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-805a-b3c4-c673c009bba1"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-80e5-8f68-f1effd469111" class="">SECTION 3 - Isolation Thermique Extérieure ⭐</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8080-8827-ec28639cc624" class="">H2</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8098-893d-f96214b6122d" class=""><strong>Isolation Thermique Extérieure : améliorez le confort de votre habitation tout en réduisant vos factures d&#x27;énergie</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8061-b6e7-c96880e343d4" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-805b-be0c-ecb9bea7c564" class="">L&#x27;isolation thermique extérieure permet d&#x27;améliorer considérablement les performances énergétiques de votre logement tout en rénovant son apparence. Grâce à notre expertise et à nos certifications RGE, nous vous accompagnons dans votre projet et vous aidons à bénéficier des aides à la rénovation énergétique.</p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80c5-a2b3-f130280fe01f" class="">CTA</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8042-b9ba-c0da498fd9dd" class="">➡️ Découvrir notre expertise en Isolation Thermique Extérieure</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-80bc-92e3-cf62649fb18e"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-80cd-80d5-f224d92e059f" class="">SECTION 4 - Nos métiers de la rénovation</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8029-9965-ea1c5bfa3fcb" class="">H2</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8036-925d-f417f684a3a3" class=""><strong>Tous vos travaux de rénovation avec un seul interlocuteur</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-802f-839c-f5392ad520ad" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8086-83ee-e7e070abc45d" class="">Au-delà de l&#x27;isolation thermique extérieure, Conesa vous accompagne dans l&#x27;ensemble de vos travaux de rénovation, de protection et d&#x27;embellissement de votre habitat.</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-80d0-b004-dd839f8cc9e3"/></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80a1-bd27-faa24492275d" class="">🧱 Card 1 - Ravalement de façade</h3></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8005-bedf-ec05b3fbfb45" class="">Titre</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80ce-b3df-e9ce29b61631" class=""><strong>Ravalement et rénovation de façade</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8039-966e-ee08f1d83e9a" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80b9-81a5-fe0f3affeef1" class="">Redonnez une seconde jeunesse à votre façade grâce à nos solutions de nettoyage, traitement des fissures, enduits et rénovation complète.</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-8085-ae3d-ecea2dda6081"/></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80db-b90a-f3b6a9d14f57" class="">🎨 Card 2 - Peinture</h3></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80ce-88b6-dde73d49ce90" class="">Titre</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8017-9c91-e67ec15c05ec" class=""><strong>Peinture intérieure et extérieure</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80ab-80a8-c8432f972e5c" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80a0-a62b-ce407b134393" class="">Des finitions soignées pour embellir et protéger durablement votre habitation, en neuf comme en rénovation.</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-80b0-b68c-f59d79f6a7bc"/></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80cb-b4f3-c6beae6a6885" class="">🏠 Card 3 - Toiture</h3></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-809d-9f58-e11d8f8af69c" class="">Titre</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80c3-8652-f8b172103f31" class=""><strong>Nettoyage et entretien de toiture</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8094-a9e2-c119f5450263" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-801e-b5c1-fa3546cea795" class="">Préservez votre toiture grâce à nos prestations de nettoyage, démoussage et traitement hydrofuge.</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-8038-bde3-f725504fe523"/></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8023-a114-fd9a5334c89c" class="">🪵 Card 4 - Revêtements de sols</h3></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-800e-8d0c-ec3c6159a1a0" class="">Titre</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80f5-ab34-c26ce0d95c53" class=""><strong>Revêtements de sols et finitions</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8025-bcd1-e06429c39579" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8005-9f8e-c0656ddbf511" class="">Nous réalisons la pose de revêtements adaptés à vos besoins esthétiques et techniques.</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-8093-88c3-c87ad4ab98c2"/></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8080-9ee3-e21b3b913b64" class="">🔧 Card 5 - Après sinistre</h3></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-804b-982b-e2f188f23f0d" class="">Titre</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-806e-a840-d0eff39c3dc9" class=""><strong>Travaux après sinistre</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8049-a821-d8f18b6a13ed" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80cd-9278-c102b234f05e" class="">Nous intervenons rapidement pour remettre votre habitation en état après un dégât des eaux ou tout autre sinistre.</p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80bd-82bb-e8850c474515" class="">CTA</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-802a-ae61-ceefebe92f51" class="">➡️ Découvrir toutes nos prestations de rénovation</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-8078-a1e2-d23cf5c82139"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-8095-8c2b-e02fb6a2a0e3" class="">SECTION 5 - Nos réalisations</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80e6-b57f-dad354bebf45" class="">H2</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8003-8399-deebcaa7b4eb" class=""><strong>Des réalisations qui témoignent de notre savoir-faire</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80b9-9450-d36de5afa2b1" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80ce-a19f-fe857367d55a" class="">Découvrez quelques exemples de chantiers réalisés par nos équipes dans le Tarn, en isolation extérieure, rénovation de façade, peinture et entretien de l&#x27;habitat.</p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80ae-a84a-dc0495b6f646" class="">Contenu</h3></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8023-84b6-fab6824baeba" class="bulleted-list"><li style="list-style-type:disc">Avant / Après</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-802f-a218-d071e51de922" class="bulleted-list"><li style="list-style-type:disc">Photos de chantiers</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-803b-bb9f-d3e87bc0c6a8" class="bulleted-list"><li style="list-style-type:disc">Ville du projet</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-808f-9925-c7a116fa5d7e" class="bulleted-list"><li style="list-style-type:disc">Type de prestation</li></ul></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-80b4-8ef7-fcecb9d7bd47"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-8026-8ee7-eed2096d65f5" class="">SECTION 6 - Avis clients</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-809f-8927-dfc9224df694" class="">H2</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-805b-b053-f93ff5ac7eea" class=""><strong>La satisfaction de nos clients au cœur de nos engagements</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8082-92f4-eef7a11d0969" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80f8-b7e3-e5c72f98614b" class="">Depuis plusieurs décennies, particuliers et professionnels nous font confiance pour leurs travaux de rénovation. Consultez leurs avis et retours d&#x27;expérience.</p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8022-a3ae-f787519290ba" class="">Intégration</h3></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-802f-9283-d41e01ca5d82" class="bulleted-list"><li style="list-style-type:disc">Google Reviews</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80bf-81a5-ea5fa00dd0e3" class="bulleted-list"><li style="list-style-type:disc">Note moyenne</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8020-b157-fed4aac5800f" class="bulleted-list"><li style="list-style-type:disc">Témoignages</li></ul></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-8088-ae56-f14ddc2cbb79"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-80ef-a721-f795e8b9967f" class="">SECTION 7 - Zones d&#x27;intervention</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-80b0-83fa-e1a8134dbe33" class="">H2</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-802f-ac9d-e4e367a44959" class=""><strong>Nous intervenons dans tout le Tarn</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8050-947f-ebc433074b61" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8079-9593-f727291919f4" class="">Nos équipes se déplacent dans l&#x27;ensemble du département pour réaliser vos travaux d&#x27;isolation extérieure, de rénovation de façade et d&#x27;entretien de l&#x27;habitat.</p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-808b-a67f-cf4c13df2578" class="">Villes principales</h3></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80f6-93b4-d5176de3ab1b" class="bulleted-list"><li style="list-style-type:disc">Albi</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80a4-8fe4-d006da56b7d6" class="bulleted-list"><li style="list-style-type:disc">Gaillac</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8080-aec0-d296daef99b5" class="bulleted-list"><li style="list-style-type:disc">Castres</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80b6-bd1e-c4d19d8e9ced" class="bulleted-list"><li style="list-style-type:disc">Graulhet</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-805d-9b72-ffc946a4a2f4" class="bulleted-list"><li style="list-style-type:disc">Carmaux</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80f1-a1ce-cfea2827a3fd" class="bulleted-list"><li style="list-style-type:disc">Lavaur</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80c4-8d7e-f38781cb4b58" class="bulleted-list"><li style="list-style-type:disc">Réalmont</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8016-a069-fc26bde6128c" class="bulleted-list"><li style="list-style-type:disc">Mazamet</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80ce-b776-c59065ba44dc" class="bulleted-list"><li style="list-style-type:disc">Saint-Sulpice</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8091-8ec2-c090cacc588c" class="bulleted-list"><li style="list-style-type:disc">Tarn</li></ul></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8046-af76-ed84bcdfec16" class="">CTA</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80a0-891c-e4cd3e4e0ce0" class="">➡️ Voir toutes nos zones d&#x27;intervention</p></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-80c8-aad5-d8707e4dd9d3"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-8071-b8bd-c88e59f2d995" class="">SECTION 8 - FAQ</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8053-a6bf-fb35b247f7df" class="">H2</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-80ec-91a6-e77bf97068b5" class=""><strong>Questions fréquentes</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8051-9fac-ddb2b14648f3" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-805c-8a5d-ea35184d0e09" class="">Retrouvez les réponses aux questions les plus fréquemment posées concernant nos prestations, les aides financières et nos délais d&#x27;intervention.</p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8019-89b1-c76500f66cc1" class="">Questions suggérées</h3></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-805d-a140-f67e2ae1a8da" class="bulleted-list"><li style="list-style-type:disc">Quel est le prix d&#x27;une isolation thermique extérieure ?</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-805b-accb-ddd2fe80ba85" class="bulleted-list"><li style="list-style-type:disc">Quelles aides sont disponibles pour financer mon projet ?</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8016-b01c-d71be4a42364" class="bulleted-list"><li style="list-style-type:disc">Intervenez-vous dans tout le Tarn ?</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80a5-9ed3-ed61455f3c78" class="bulleted-list"><li style="list-style-type:disc">Combien coûte un ravalement de façade ?</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80db-b1ef-c8bd71aa34d1" class="bulleted-list"><li style="list-style-type:disc">Sous quels délais pouvez-vous intervenir ?</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8003-9b64-e2db7fa9c7e2" class="bulleted-list"><li style="list-style-type:disc">Comment obtenir un devis gratuit ?</li></ul></div><div style="display:contents" dir="auto"><hr id="36fe7a34-6865-8054-a7a4-df60a7978509"/></div><div style="display:contents" dir="auto"><h2 id="36fe7a34-6865-8084-ba39-f8c7152c8fcb" class="">SECTION 9 - CTA FINAL</h2></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-8092-b44c-e6b45cca9f33" class="">H2</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8008-959a-c65cd9ac4dee" class=""><strong>Vous avez un projet de rénovation dans le Tarn ?</strong></p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-801f-9226-db3575412555" class="">Description</h3></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8047-be2d-cfa4ad2ed20b" class="">Isolation thermique extérieure, ravalement de façade, peinture ou entretien de toiture : nos équipes vous accompagnent à chaque étape de votre projet avec un devis gratuit et personnalisé.</p></div><div style="display:contents" dir="auto"><h3 id="36fe7a34-6865-805e-b68a-eb95a80da901" class="">CTA</h3></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-80ab-8c0b-d89cac47eb36" class="bulleted-list"><li style="list-style-type:disc">Demander un devis gratuit</li></ul></div><div style="display:contents" dir="auto"><ul id="36fe7a34-6865-8062-9a37-dbbacb7e1755" class="bulleted-list"><li style="list-style-type:disc">Nous contacter</li></ul></div></div></details></div><div style="display:contents" dir="auto"><p id="36fe7a34-6865-8099-bda6-c7954609accd" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

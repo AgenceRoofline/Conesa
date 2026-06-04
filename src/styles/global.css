@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bleu: #1E4B8C;
+  --color-bleu-fonce: #153566;
+  --color-bleu-clair: #E8F0FB;
+  --color-orange: #E8650A;
+  --color-orange-clair: #FEF0E6;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-opensans: 'Open Sans', sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-opensans);
+    color: #2D2D2D;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-montserrat);
+  }
+}
+
+/* Marquee avis clients — mobile uniquement */
+@keyframes avis-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-avis {
+  animation: avis-scroll 18s linear infinite;
+}
+
+.marquee-avis:hover {
+  animation-play-state: paused;
+}

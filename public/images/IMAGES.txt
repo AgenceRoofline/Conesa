@@ -1,0 +1,57 @@
+╔══════════════════════════════════════════════════════════════╗
+║         IMAGES À PLACER DANS CE DOSSIER — Conesa             ║
+╚══════════════════════════════════════════════════════════════╝
+
+Format recommandé : JPG ou WebP
+Largeur recommandée : minimum 1200px pour les heros, 800px pour le reste
+
+── HEROS (fond de page) ────────────────────────────────────────
+
+  hero-isolation.jpg
+    → Page Isolation : façade en cours d'isolation, ouvrier sur échafaudage,
+      ou maison avec finition d'enduit
+
+  hero-renovation.jpg
+    → Page Rénovation : chantier de ravalement ou peinture extérieure
+
+  hero-entreprise.jpg
+    → Page Entreprise : vue d'Albi, maison rénovée, ou équipe en tenue
+
+── ÉQUIPE & CHANTIER ───────────────────────────────────────────
+
+  equipe-conesa.jpg
+    → Photo de l'équipe Conesa (idéalement en tenue de travail,
+      devant un chantier ou en extérieur)
+
+  chantier-conesa.jpg
+    → Ouvrier appliquant un enduit, posant l'isolant, ou en train
+      de travailler sur une façade
+
+── RÉALISATIONS (galerie page Entreprise) ──────────────────────
+
+  realisation-facade-avant-apres.jpg
+    → Photo avant/après d'une façade rénovée (grande image)
+
+  realisation-facade-1.jpg
+    → Belle façade rénovée
+
+  realisation-ite-1.jpg
+    → Isolation thermique extérieure en cours ou terminée
+
+  realisation-peinture-1.jpg
+    → Travaux de peinture intérieure ou extérieure
+
+  realisation-toiture-1.jpg
+    → Toiture après nettoyage/traitement
+
+  realisation-facade-2.jpg
+    → Deuxième exemple de façade rénovée
+
+── CONSEILS ────────────────────────────────────────────────────
+
+  - Nommer les fichiers exactement comme indiqué ci-dessus
+  - Si une photo est absente, la section reste affichée avec un
+    fond bleu clair discret (aucune erreur visible)
+  - Compresser les images avant de les déposer (TinyPNG.com)
+  - Ce fichier IMAGES.txt peut être supprimé une fois les photos
+    en place
