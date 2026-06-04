@@ -563,6 +563,14 @@ const faqs = [
     goTo(0);
     resetAuto();
 
+    // Swipe tactile
+    let acTouchX = 0;
+    track?.addEventListener('touchstart', (e) => { acTouchX = e.touches[0].clientX; }, { passive: true });
+    track?.addEventListener('touchend', (e) => {
+      const delta = acTouchX - e.changedTouches[0].clientX;
+      if (Math.abs(delta) > 50) { delta > 0 ? goTo(current + 1) : goTo(current - 1); resetAuto(); }
+    }, { passive: true });
+
     // Lire plus / Lire moins — ouverture fluide via max-height
     document.querySelectorAll<HTMLButtonElement>('.ac-read-more').forEach(btn => {
       const textEl = btn.previousElementSibling as HTMLElement | null;

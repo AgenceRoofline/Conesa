@@ -226,9 +226,39 @@ const faqs = [
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Mobile / Tablette : carousel -->
+      <style>#av-root{--per-page:1}@media(min-width:640px){#av-root{--per-page:2}}</style>
+      <div id="av-root" class="relative lg:hidden">
+        <button id="av-prev" aria-label="Précédent"
+          class="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white transition-colors duration-200">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="av-next" aria-label="Suivant"
+          class="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white transition-colors duration-200">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <div class="overflow-hidden">
+          <div id="av-track" class="flex" style="transition: transform 0.45s ease; will-change: transform;">
+            {avantages.map(item => (
+              <div style="width: calc(100% / var(--per-page)); flex-shrink: 0; padding: 0 8px; box-sizing: border-box;">
+                <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 group hover:border-[#1E4B8C]/20 hover:shadow-md transition-all duration-300 h-full">
+                  <div class="w-14 h-14 bg-[#E8F0FB] group-hover:bg-[#1E4B8C] rounded-xl flex items-center justify-center text-[#1E4B8C] group-hover:text-white transition-colors duration-300 mb-5">
+                    <Fragment set:html={item.icon} />
+                  </div>
+                  <h3 class="font-bold text-[#1E4B8C] text-base mb-3" style="font-family:'Montserrat',sans-serif;">{item.titre}</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div id="av-dots" class="flex justify-center gap-2 mt-6"></div>
+      </div>
+
+      <!-- Desktop : grille 3 colonnes -->
+      <div class="hidden lg:grid lg:grid-cols-3 gap-6">
         {avantages.map((item, i) => (
-          <div class={`bg-white rounded-2xl p-7 shadow-sm border border-gray-100 group hover:border-[#1E4B8C]/20 hover:shadow-md transition-all duration-300 ${i === 4 ? 'sm:col-span-2 lg:col-span-1 lg:col-start-2' : ''}`}>
+          <div class={`bg-white rounded-2xl p-7 shadow-sm border border-gray-100 group hover:border-[#1E4B8C]/20 hover:shadow-md transition-all duration-300 ${i === 4 ? 'lg:col-start-2' : ''}`}>
             <div class="w-14 h-14 bg-[#E8F0FB] group-hover:bg-[#1E4B8C] rounded-xl flex items-center justify-center text-[#1E4B8C] group-hover:text-white transition-colors duration-300 mb-5">
               <Fragment set:html={item.icon} />
             </div>
@@ -265,7 +295,7 @@ const faqs = [
         </div>
 
         <!-- Engagements -->
-        <div class="bg-[#1E4B8C] rounded-3xl text-white m-20" style="padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+        <div class="bg-[#1E4B8C] rounded-3xl text-white p-8 lg:p-10">
           <h3 class="font-bold text-xl mb-8" style="font-family:'Montserrat',sans-serif;">Nos engagements</h3>
           <ul class="space-y-4">
             {engagements.map(e => (
@@ -298,27 +328,36 @@ const faqs = [
         </p>
       </div>
 
-      <!-- Mobile / tablette : carousel + dots -->
-      <div class="etapes-mobile">
-        <div class="etapes-carousel flex gap-3 overflow-x-auto snap-x snap-mandatory pb-4" style="scrollbar-width:none; -ms-overflow-style:none;">
-          {etapes.map((etape) => (
-            <div class="snap-start shrink-0 w-[75vw] max-w-[260px] bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col gap-3">
-              <div class="flex items-center gap-2">
-                <div class="w-9 h-9 bg-[#1E4B8C] rounded-lg flex items-center justify-center shrink-0">
-                  <span class="text-white font-extrabold text-xs" style="font-family:'Montserrat',sans-serif;">{etape.num}</span>
+      <!-- Mobile / tablette : carousel JS -->
+      <style>#et-root{--per-page:1}@media(min-width:640px){#et-root{--per-page:2}}</style>
+      <div id="et-root" class="relative lg:hidden">
+        <button id="et-prev" aria-label="Précédent"
+          class="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white transition-colors duration-200">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="et-next" aria-label="Suivant"
+          class="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white transition-colors duration-200">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <div class="overflow-hidden">
+          <div id="et-track" class="flex" style="transition: transform 0.45s ease; will-change: transform;">
+            {etapes.map((etape) => (
+              <div style="width: calc(100% / var(--per-page)); flex-shrink: 0; padding: 0 8px; box-sizing: border-box;">
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col gap-3 h-full">
+                  <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 bg-[#1E4B8C] rounded-lg flex items-center justify-center shrink-0">
+                      <span class="text-white font-extrabold text-xs" style="font-family:'Montserrat',sans-serif;">{etape.num}</span>
+                    </div>
+                    <div class="flex-1 h-px bg-[#E8650A]/20"></div>
+                  </div>
+                  <h3 class="font-bold text-[#1E4B8C] text-sm leading-snug" style="font-family:'Montserrat',sans-serif;">{etape.titre}</h3>
+                  <p class="text-gray-500 text-xs leading-relaxed">{etape.desc}</p>
                 </div>
-                <div class="flex-1 h-px bg-[#E8650A]/20"></div>
               </div>
-              <h3 class="font-bold text-[#1E4B8C] text-sm leading-snug" style="font-family:'Montserrat',sans-serif;">{etape.titre}</h3>
-              <p class="text-gray-500 text-xs leading-relaxed">{etape.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        <div class="flex justify-center gap-1.5 mt-5">
-          {etapes.map((_, i) => (
-            <div class={`etape-dot w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-[#E8650A] w-5' : 'bg-gray-300'}`}></div>
-          ))}
-        </div>
+        <div id="et-dots" class="flex justify-center gap-2 mt-5"></div>
       </div>
 
       <!-- Desktop : grille 5 colonnes -->
@@ -340,28 +379,84 @@ const faqs = [
   </section>
 
   <style is:global>
-    .etapes-carousel::-webkit-scrollbar { display: none; }
-    .etapes-mobile  { display: block; }
     .etapes-desktop { display: none; }
     @media (min-width: 1024px) {
-      .etapes-mobile  { display: none; }
       .etapes-desktop { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
     }
   </style>
 
   <script>
-    const carousel = document.querySelector('.etapes-carousel') as HTMLElement | null;
-    const dots = document.querySelectorAll<HTMLElement>('.etape-dot');
+    // ── Carousel étapes (mobile / tablette) ──────────────────────────────────
+    {
+      const TOTAL_ET  = 5;
+      const etRoot    = document.getElementById('et-root') as HTMLElement | null;
+      const etTrack   = document.getElementById('et-track') as HTMLElement | null;
+      const etDotsEl  = document.getElementById('et-dots') as HTMLElement | null;
+      const etPrevBtn = document.getElementById('et-prev') as HTMLButtonElement | null;
+      const etNextBtn = document.getElementById('et-next') as HTMLButtonElement | null;
 
-    if (carousel && dots.length) {
-      carousel.addEventListener('scroll', () => {
-        const cardWidth = (carousel.querySelector('.snap-start') as HTMLElement)?.offsetWidth + 12 || 252;
-        const index = Math.round(carousel.scrollLeft / cardWidth);
-        dots.forEach((d, i) => {
-          d.style.width = i === index ? '20px' : '8px';
-          d.style.background = i === index ? '#E8650A' : '#D1D5DB';
+      if (etRoot && etTrack) {
+        let etCurrent = 0;
+
+        function etPerPage(): number {
+          return parseInt(getComputedStyle(etRoot!).getPropertyValue('--per-page').trim()) || 1;
+        }
+        function etMaxIdx(): number {
+          return Math.max(0, TOTAL_ET - etPerPage());
+        }
+        function etGoTo(idx: number): void {
+          etCurrent = Math.max(0, Math.min(idx, etMaxIdx()));
+          etTrack!.style.transform = `translateX(-${etCurrent * (100 / etPerPage())}%)`;
+          etSyncDots();
+          etSyncArrows();
+        }
+        function etSyncDots(): void {
+          if (!etDotsEl) return;
+          Array.from(etDotsEl.querySelectorAll<HTMLButtonElement>('.et-dot')).forEach((d, i) => {
+            d.className = i === etCurrent
+              ? 'et-dot w-6 h-2.5 rounded-full transition-all duration-300 bg-[#E8650A]'
+              : 'et-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-gray-300 hover:bg-gray-400';
+          });
+        }
+        function etSyncArrows(): void {
+          if (etPrevBtn) etPrevBtn.style.opacity = etCurrent === 0 ? '0.35' : '1';
+          if (etNextBtn) etNextBtn.style.opacity = etCurrent >= etMaxIdx() ? '0.35' : '1';
+        }
+        function etBuildDots(): void {
+          if (!etDotsEl) return;
+          etDotsEl.innerHTML = '';
+          const total = etMaxIdx() + 1;
+          for (let i = 0; i < total; i++) {
+            const btn = document.createElement('button');
+            btn.className = i === etCurrent
+              ? 'et-dot w-6 h-2.5 rounded-full transition-all duration-300 bg-[#E8650A]'
+              : 'et-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-gray-300 hover:bg-gray-400';
+            btn.setAttribute('aria-label', `Étape ${i + 1}`);
+            btn.addEventListener('click', () => etGoTo(i));
+            etDotsEl.appendChild(btn);
+          }
+        }
+
+        etPrevBtn?.addEventListener('click', () => etGoTo(etCurrent - 1));
+        etNextBtn?.addEventListener('click', () => etGoTo(etCurrent + 1));
+
+        window.addEventListener('resize', () => {
+          if (etCurrent > etMaxIdx()) etCurrent = etMaxIdx();
+          etBuildDots();
+          etGoTo(etCurrent);
         });
-      }, { passive: true });
+
+        etBuildDots();
+        etGoTo(0);
+
+        // Swipe tactile
+        let etTouchX = 0;
+        etTrack.addEventListener('touchstart', (e) => { etTouchX = e.touches[0].clientX; }, { passive: true });
+        etTrack.addEventListener('touchend', (e) => {
+          const delta = etTouchX - e.changedTouches[0].clientX;
+          if (Math.abs(delta) > 50) delta > 0 ? etGoTo(etCurrent + 1) : etGoTo(etCurrent - 1);
+        }, { passive: true });
+      }
     }
   </script>
 
@@ -480,6 +575,80 @@ const faqs = [
 </BaseLayout>
 
 <script>
+  // ── Carousel avantages (mobile / tablette) ──────────────────────────────────
+  {
+    const TOTAL_AV = 5;
+    const avRoot    = document.getElementById('av-root') as HTMLElement | null;
+    const avTrack   = document.getElementById('av-track') as HTMLElement | null;
+    const avDotsEl  = document.getElementById('av-dots') as HTMLElement | null;
+    const avPrevBtn = document.getElementById('av-prev') as HTMLButtonElement | null;
+    const avNextBtn = document.getElementById('av-next') as HTMLButtonElement | null;
+
+    if (avRoot && avTrack) {
+      let avCurrent = 0;
+
+      function avPerPage(): number {
+        return parseInt(getComputedStyle(avRoot!).getPropertyValue('--per-page').trim()) || 1;
+      }
+      function avMaxIdx(): number {
+        return Math.max(0, TOTAL_AV - avPerPage());
+      }
+      function avGoTo(idx: number): void {
+        avCurrent = Math.max(0, Math.min(idx, avMaxIdx()));
+        avTrack!.style.transform = `translateX(-${avCurrent * (100 / avPerPage())}%)`;
+        avSyncDots();
+        avSyncArrows();
+      }
+      function avSyncDots(): void {
+        if (!avDotsEl) return;
+        Array.from(avDotsEl.querySelectorAll<HTMLButtonElement>('.av-dot')).forEach((d, i) => {
+          d.className = i === avCurrent
+            ? 'av-dot w-6 h-2.5 rounded-full transition-all duration-300 bg-[#1E4B8C]'
+            : 'av-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-gray-300 hover:bg-gray-400';
+        });
+      }
+      function avSyncArrows(): void {
+        if (avPrevBtn) avPrevBtn.style.opacity = avCurrent === 0 ? '0.35' : '1';
+        if (avNextBtn) avNextBtn.style.opacity = avCurrent >= avMaxIdx() ? '0.35' : '1';
+      }
+      function avBuildDots(): void {
+        if (!avDotsEl) return;
+        avDotsEl.innerHTML = '';
+        const total = avMaxIdx() + 1;
+        for (let i = 0; i < total; i++) {
+          const btn = document.createElement('button');
+          btn.className = i === avCurrent
+            ? 'av-dot w-6 h-2.5 rounded-full transition-all duration-300 bg-[#1E4B8C]'
+            : 'av-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-gray-300 hover:bg-gray-400';
+          btn.setAttribute('aria-label', `Avantage ${i + 1}`);
+          btn.addEventListener('click', () => avGoTo(i));
+          avDotsEl.appendChild(btn);
+        }
+      }
+
+      avPrevBtn?.addEventListener('click', () => avGoTo(avCurrent - 1));
+      avNextBtn?.addEventListener('click', () => avGoTo(avCurrent + 1));
+
+      window.addEventListener('resize', () => {
+        if (avCurrent > avMaxIdx()) avCurrent = avMaxIdx();
+        avBuildDots();
+        avGoTo(avCurrent);
+      });
+
+      avBuildDots();
+      avGoTo(0);
+
+      // Swipe tactile
+      let avTouchX = 0;
+      avTrack.addEventListener('touchstart', (e) => { avTouchX = e.touches[0].clientX; }, { passive: true });
+      avTrack.addEventListener('touchend', (e) => {
+        const delta = avTouchX - e.changedTouches[0].clientX;
+        if (Math.abs(delta) > 50) delta > 0 ? avGoTo(avCurrent + 1) : avGoTo(avCurrent - 1);
+      }, { passive: true });
+    }
+  }
+
+  // ── FAQ accordion ────────────────────────────────────────────────────────────
   document.querySelectorAll<HTMLElement>('.faq-item').forEach(item => {
     const trigger = item.querySelector<HTMLButtonElement>('.faq-trigger')!;
     const body    = item.querySelector<HTMLElement>('.faq-body')!;
