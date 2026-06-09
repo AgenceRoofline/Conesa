@@ -110,72 +110,77 @@ Tout ce qui est coché est déjà implémenté dans le code.
 
 ## Staging (préprod)
 
+- **URL** : `https://conesa.roofline.fr`
+- **Dossier OVH** : `/conesa/`
+- **Structure** : tout dans `/conesa/` (vendor/, .env, storage/ cohabitent avec les fichiers publics)
+
 ### Workflow de déploiement préprod
 
 ```bash
 # 1. Créer .env.staging à partir du modèle
 cp .env.staging.example .env.staging
-# → Remplir SMTP_PASS et adapter SITE_URL avec le vrai sous-domaine OVH
+# → Remplir SMTP_PASS (le SITE_URL est déjà correct : https://conesa.roofline.fr)
 
 # 2. Builder + dépendances PHP
 npm run build:staging
 composer install --no-dev
 
-# 3. Uploader sur OVH
-#    dist/*              → www/
-#    vendor/             → www/vendor/  (ou ../vendor/ si structure idéale)
-#    .env.staging        → renommer en .env, placer dans www/ ou ../
-#    storage/            → www/storage/ (ou ../storage/ si structure idéale)
+# 3. Uploader via FTP sur OVH
+#    dist/*          → /conesa/
+#    vendor/         → /conesa/vendor/
+#    .env.staging    → /conesa/.env   (renommer au dépôt)
+#    storage/        → /conesa/storage/
 
 # 4. Déposer les .htaccess
-#    deploy/staging/www.htaccess   → www/.htaccess
-#    deploy/prod/storage.htaccess  → www/storage/.htaccess
+#    deploy/staging/www.htaccess   → /conesa/.htaccess
+#    deploy/prod/storage.htaccess  → /conesa/storage/.htaccess
 
-# 5. Créer le .htpasswd HORS du dossier public (adapter le chemin dans www/.htaccess)
-#    htpasswd -c /chemin/absolu/vers/.htpasswd conesa
+# 5. Créer le .htpasswd hors du dossier /conesa/ et mettre à jour AuthUserFile
+#    dans /conesa/.htaccess avec le chemin absolu OVH (/home/proXXXXXX/.htpasswd)
+#    htpasswd -c /home/proXXXXXX/.htpasswd conesa
 ```
+
+> **Note contact.php** : avec tout dans `/conesa/`, `dirname(__DIR__)` remonte au parent de `/conesa/` (qui n'a pas de `vendor/`), donc le code bascule automatiquement sur `__DIR__` (auto-détection déjà en place).
 
 ### .htaccess à déployer
 
 | Fichier local | Destination OVH | Rôle |
 |---|---|---|
-| `deploy/staging/www.htaccess` | `www/.htaccess` | Basic Auth + .env + storage/ + headers sécu |
-| `deploy/prod/www.htaccess` | `www/.htaccess` (prod uniquement) | .env + storage/ + headers sécu (sans Basic Auth) |
-| `deploy/prod/storage.htaccess` | `www/storage/.htaccess` | Bloque tout accès HTTP à leads.sqlite |
-
-Un seul fichier par destination : staging et prod ne s'écrasent pas.
+| `deploy/staging/www.htaccess` | `/conesa/.htaccess` | Basic Auth + .env + storage/ + headers sécu |
+| `deploy/prod/www.htaccess` | `/conesa/.htaccess` (prod uniquement) | .env + storage/ + headers sécu (sans Basic Auth) |
+| `deploy/prod/storage.htaccess` | `/conesa/storage/.htaccess` | Bloque tout accès HTTP à leads.sqlite |
 
 ### Comportement en mode staging (`PUBLIC_STAGING=true`)
 - `<meta name="robots" content="noindex, nofollow">` injecté sur toutes les pages
 - `robots.txt` généré avec `Disallow: /` (bloque tous les bots)
-- `site:` dans astro.config.mjs utilise `SITE_URL` du `.env.staging`
+- `site:` dans astro.config.mjs utilise `SITE_URL=https://conesa.roofline.fr`
 
 ### Vérifications après déploiement préprod
 
 ```bash
 # Robots bloqués
-curl -s https://preprod.conesa-renovation.fr/robots.txt
+curl -s -u conesa:motdepasse https://conesa.roofline.fr/robots.txt
 # → doit contenir "Disallow: /"
 
-# .env inaccessible (avec --user conesa:motdepasse pour passer la Basic Auth)
-curl -s -u conesa:motdepasse https://preprod.conesa-renovation.fr/.env
+# .env inaccessible
+curl -s -u conesa:motdepasse https://conesa.roofline.fr/.env
 # → doit retourner 403
 
 # SQLite inaccessible
-curl -s -u conesa:motdepasse https://preprod.conesa-renovation.fr/storage/leads.sqlite
+curl -s -u conesa:motdepasse https://conesa.roofline.fr/storage/leads.sqlite
 # → doit retourner 403
 ```
 
 Checklist manuelle :
-- [ ] Pages s'affichent avec `<meta name="robots" content="noindex, nofollow">`
-- [ ] Formulaire de contact → lead enregistré (status `pending` → `sent`) + mail reçu
-- [ ] Leads SQLite visibles (vérifier `storage/leads.sqlite` via FTP ou SSH)
 - [ ] Basic Auth demandée à l'ouverture du site
+- [ ] Pages affichent `<meta name="robots" content="noindex, nofollow">`
+- [ ] Formulaire → lead enregistré (`pending` → `sent`) + mail reçu
+- [ ] Leads SQLite visibles via FTP dans `/conesa/storage/leads.sqlite`
 
 ### Pour revenir en prod
 ```bash
 npm run build   # sans --mode staging → robots.txt normal, pas de noindex
-# Déployer deploy/prod/www.htaccess → www/.htaccess (sans Basic Auth)
+# Uploader sur le domaine final, déployer deploy/prod/www.htaccess → .htaccess (sans Basic Auth)
 ```
 
 ## Déploiement OVH

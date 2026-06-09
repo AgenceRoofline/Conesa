@@ -7,8 +7,10 @@
 #   - Protection du dossier storage/
 #   - En-têtes de sécurité HTTP
 #
-# Générer le .htpasswd HORS du dossier public, puis renseigner le chemin absolu ci-dessous :
-#   htpasswd -c /chemin/absolu/vers/.htpasswd conesa
+# Générer le .htpasswd et renseigner son chemin absolu OVH ci-dessous.
+# Sur OVH mutualisé, le chemin ressemble à : /home/proXXXXXX/.htpasswd
+# Pour trouver le chemin exact : créer un fichier PHP avec <?php echo __DIR__; ?> à la racine.
+#   htpasswd -c /home/proXXXXXX/.htpasswd conesa
 
 # ── Authentification Basic (accès restreint préprod) ──────────────────────────
 AuthType Basic
