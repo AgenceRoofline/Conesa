@@ -1,0 +1,7 @@
+# .htaccess storage — www/storage/ (si storage est dans le dossier public)
+# Placer ce fichier dans www/storage/.htaccess
+#
+# Bloque tout accès HTTP au dossier storage (leads.sqlite ne doit jamais
+# être téléchargeable depuis un navigateur).
+
+Require all denied

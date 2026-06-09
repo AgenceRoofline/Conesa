@@ -1,0 +1,27 @@
+# .htaccess production — www/ (dossier public)
+# Placer ce fichier à la racine du dossier public (www/) sur le serveur OVH
+#
+# Protège :
+#   - .env (ne doit jamais être accessible depuis le navigateur)
+#   - storage/ (si le dossier est dans www/ faute de mieux)
+#   - Ajoute des en-têtes de sécurité HTTP
+
+# ── Protection du fichier .env ────────────────────────────────────────────────
+<Files ".env">
+    Require all denied
+</Files>
+
+# ── Protection du dossier storage (si dans www/) ──────────────────────────────
+# Redondant si storage/.htaccess existe, mais double protection utile
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^storage(/|$) - [F,L]
+</IfModule>
+
+# ── En-têtes de sécurité HTTP ─────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>

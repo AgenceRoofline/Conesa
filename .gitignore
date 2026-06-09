@@ -17,6 +17,7 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.env.staging
 
 # SQLite database (données sensibles, hors dépôt)
 storage/leads.sqlite

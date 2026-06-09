@@ -1,0 +1,38 @@
+# .htaccess staging — www/ (dossier public)
+# Placer ce fichier dans www/.htaccess sur le serveur de préprod OVH
+#
+# Contient :
+#   - Authentification Basic Auth (accès restreint préprod)
+#   - Protection du fichier .env
+#   - Protection du dossier storage/
+#   - En-têtes de sécurité HTTP
+#
+# Générer le .htpasswd HORS du dossier public, puis renseigner le chemin absolu ci-dessous :
+#   htpasswd -c /chemin/absolu/vers/.htpasswd conesa
+
+# ── Authentification Basic (accès restreint préprod) ──────────────────────────
+AuthType Basic
+AuthName "Préprod Conesa — Accès restreint"
+AuthUserFile /chemin/absolu/vers/.htpasswd
+Require valid-user
+
+# ── Protection du fichier .env ────────────────────────────────────────────────
+# Bloque l'accès HTTP même pour les utilisateurs authentifiés
+<Files ".env">
+    Require all denied
+</Files>
+
+# ── Protection du dossier storage/ (si dans www/) ─────────────────────────────
+# Redondant avec storage/.htaccess, mais double protection utile
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^storage(/|$) - [F,L]
+</IfModule>
+
+# ── En-têtes de sécurité HTTP ─────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>

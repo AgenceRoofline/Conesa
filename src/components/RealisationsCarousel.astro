@@ -22,6 +22,8 @@ const slides = [
                 src={slide.src}
                 alt={slide.prestation}
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
                 onerror="this.closest('.relative').classList.add('bg-[#1E4B8C]/10'); this.style.display='none';"
               />
               <!-- Badge prestation -->

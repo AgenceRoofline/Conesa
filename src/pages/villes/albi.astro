@@ -78,9 +78,18 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="Entreprise de rénovation à Albi — Conesa, isolation, façade, peinture, toiture"
-  description="Conesa intervient à Albi pour tous vos travaux de rénovation : isolation thermique extérieure, ravalement de façade, peinture, entretien de toiture et revêtements de sols. Entreprise familiale certifiée RGE depuis 1969. Devis gratuit."
+  title="Rénovation & Isolation à Albi"
+  description="Isolation extérieure, façade et rénovation à Albi. Conesa — entreprise familiale certifiée RGE depuis 1969 dans le Tarn. Devis gratuit."
 >
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+    }))
+  })} />
 
   <!-- ══════════════════════════════════════
        HERO
@@ -88,9 +97,10 @@ const faqs = [
   <section class="relative overflow-hidden bg-[#0A1E3D]" style="padding-top: 160px; padding-bottom: 96px;">
     <img
       src="/images/Villes/Albi/Hero-Albi.png"
-      alt=""
+      alt="Vue d'Albi — Rénovation et isolation thermique extérieure par Conesa dans le bassin albigeois"
       aria-hidden="true"
       class="absolute inset-0 w-full h-full object-cover object-center"
+      fetchpriority="high"
       onerror="this.style.display='none'"
     />
     <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(10,30,61,0.93) 0%, rgba(30,75,140,0.78) 55%, rgba(10,30,61,0.70) 100%);"></div>
@@ -130,7 +140,7 @@ const faqs = [
 
         <div class="flex flex-wrap items-center gap-6 pt-8 border-t border-white/10">
           <div class="flex items-center gap-2.5">
-            <img src="/images/labels/Logo-RGE.png" alt="RGE Qualibat" class="h-11 w-auto bg-white rounded-lg p-1 shadow" onerror="this.style.display='none'"/>
+            <img src="/images/labels/Logo-RGE.png" alt="RGE Qualibat" class="h-11 w-auto bg-white rounded-lg p-1 shadow" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
             <span class="text-blue-100 text-sm">Certifié RGE & Qualibat</span>
           </div>
           <div class="flex items-center gap-2 text-blue-200 text-sm">
@@ -146,7 +156,7 @@ const faqs = [
   <!-- ══════════════════════════════════════
        VOS PROJETS DE RÉNOVATION À ALBI
   ══════════════════════════════════════ -->
-  <section class="py-24 bg-white">
+  <section class="py-8 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -182,6 +192,8 @@ const faqs = [
               src="/images/Villes/Albi/Projet rénovation Albi.png"
               alt="Projet de rénovation à Albi — Conesa"
               class="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
               onerror="this.style.display='none'"
             />
           </div>
@@ -194,7 +206,7 @@ const faqs = [
   <!-- ══════════════════════════════════════
        NOS PRESTATIONS À ALBI
   ══════════════════════════════════════ -->
-  <section class="py-24 bg-[#F0F5FC]">
+  <section class="py-8 lg:py-24 bg-[#F0F5FC]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Nos savoir-faire</span>
@@ -247,7 +259,7 @@ const faqs = [
   <!-- ══════════════════════════════════════
        POURQUOI FAIRE APPEL À CONESA ?
   ══════════════════════════════════════ -->
-  <section class="py-24 bg-white">
+  <section class="py-8 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -319,7 +331,7 @@ const faqs = [
   <!-- ══════════════════════════════════════
        SECTEURS D'INTERVENTION
   ══════════════════════════════════════ -->
-  <section class="py-24 bg-[#1E4B8C]">
+  <section class="py-8 lg:py-24 bg-[#1E4B8C]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -355,7 +367,7 @@ const faqs = [
   <!-- ══════════════════════════════════════
        FAQ
   ══════════════════════════════════════ -->
-  <section class="py-24 bg-white">
+  <section class="py-8 lg:py-24 bg-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Questions fréquentes</span>
@@ -367,14 +379,16 @@ const faqs = [
       <div class="border-t border-gray-200">
         {faqs.map(faq => (
           <div class="faq-item border-b border-gray-200">
-            <button class="faq-trigger w-full flex items-center justify-between gap-6 py-5 px-1 text-left rounded-sm">
-              <span class="faq-question font-semibold text-[#1E4B8C] text-base leading-snug" style="font-family:'Montserrat',sans-serif;">
-                {faq.q}
-              </span>
-              <svg class="faq-icon shrink-0 w-5 h-5 text-gray-400" style="transition: transform 0.45s ease, color 0.3s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </button>
+            <h3 class="m-0 font-normal">
+              <button class="faq-trigger w-full flex items-center justify-between gap-6 py-5 px-1 text-left rounded-sm">
+                <span class="faq-question font-semibold text-[#1E4B8C] text-base leading-snug" style="font-family:'Montserrat',sans-serif;">
+                  {faq.q}
+                </span>
+                <svg class="faq-icon shrink-0 w-5 h-5 text-gray-400" style="transition: transform 0.45s ease, color 0.3s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+            </h3>
             <div class="faq-body overflow-hidden" style="max-height:0; transition: max-height 0.45s ease;">
               <p class="pb-6 pt-1 px-1 text-gray-600 leading-relaxed" set:html={faq.a} />
             </div>
@@ -387,7 +401,7 @@ const faqs = [
   <!-- ══════════════════════════════════════
        CTA FINAL
   ══════════════════════════════════════ -->
-  <section class="py-24 bg-[#F0F5FC]">
+  <section class="py-8 lg:py-24 bg-[#F0F5FC]">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="bg-[#1E4B8C] rounded-3xl p-12 lg:p-16 relative overflow-hidden">
         <div class="absolute inset-0 opacity-[0.05]" style="background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:30px 30px;"></div>

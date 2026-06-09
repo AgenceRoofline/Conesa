@@ -7,9 +7,13 @@ header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: DENY');
 
 // ── Autoloader Composer + variables d'environnement ──────────────────────────
-// En dev  : dirname(__DIR__) = racine du projet (où se trouve .env et storage/)
-// En prod : dirname(__DIR__) = dossier parent du web root (hors accès public)
-$root = dirname(__DIR__);
+// Structure idéale : vendor/, .env et storage/ sont au-dessus du web root (www/)
+//   → dirname(__DIR__) pointe sur le parent de www/
+// Structure fallback : tout est dans www/ (contrainte hébergeur)
+//   → __DIR__ pointe directement sur www/
+$root = file_exists(dirname(__DIR__) . '/vendor/autoload.php')
+    ? dirname(__DIR__)
+    : __DIR__;
 require "$root/vendor/autoload.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -133,9 +137,16 @@ $ipHash = hash('sha256', $_SERVER['REMOTE_ADDR'] ?? '');
 $pageSource = mb_substr(strip_tags($_POST['page_source'] ?? ''), 0, 255);
 
 try {
+    if (!extension_loaded('pdo_sqlite')) {
+        throw new \RuntimeException('Extension pdo_sqlite non disponible sur ce serveur.');
+    }
+
     $storageDir = "$root/storage";
-    if (!is_dir($storageDir)) {
-        mkdir($storageDir, 0750, true);
+    if (!is_dir($storageDir) && !mkdir($storageDir, 0750, true)) {
+        throw new \RuntimeException("Impossible de créer le dossier storage ({$storageDir}).");
+    }
+    if (!is_writable($storageDir)) {
+        throw new \RuntimeException("Dossier storage non accessible en écriture ({$storageDir}).");
     }
 
     $pdo = new PDO("sqlite:$storageDir/leads.sqlite");

@@ -6,9 +6,20 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
 }
 
-const { title, description = "Conesa - Isolation thermique extérieure, ravalement de façade et rénovation dans le Tarn depuis 55 ans." } = Astro.props;
+const {
+  title,
+  description = "Conesa - Isolation thermique extérieure, ravalement de façade et rénovation dans le Tarn depuis 55 ans.",
+  ogImage = "/images/Logo/Open graph.png",
+} = Astro.props;
+
+const isStaging  = import.meta.env.PUBLIC_STAGING === 'true';
+const siteURL    = Astro.site ?? new URL('https://conesa-renovation.fr');
+const canonical  = new URL(Astro.url.pathname, siteURL).href;
+const ogImageURL = new URL(ogImage, siteURL).href;
+const pageTitle  = `${title} | Conesa`;
 ---
 
 <!DOCTYPE html>
@@ -17,11 +28,36 @@ const { title, description = "Conesa - Isolation thermique extérieure, ravaleme
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title} | Conesa - Isolation & Rénovation Tarn</title>
+    <title>{pageTitle}</title>
+
+    <!-- Empêche l'indexation en mode staging -->
+    {isStaging && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:locale"      content="fr_FR" />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:title"       content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={ogImageURL} />
+    <meta property="og:site_name"   content="Conesa - Isolation & Rénovation Tarn" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={ogImageURL} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Slot pour JSON-LD et autres balises head spécifiques à la page -->
+    <slot name="head" />
   </head>
   <body class="antialiased" style="overflow-x: hidden;">
     <Header />
