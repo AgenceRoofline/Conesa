@@ -274,7 +274,8 @@ const prestations = [
     crypto.getRandomValues(new Uint8Array(24)),
     (b: number) => b.toString(16).padStart(2, '0')
   ).join('');
-  document.cookie = `cf_token=${csrfToken}; SameSite=Strict; path=/`;
+  const isSecure = location.protocol === 'https:';
+  document.cookie = `cf_token=${csrfToken}; SameSite=Strict; path=/${isSecure ? '; Secure' : ''}`;
   const csrfField = document.getElementById('cf-csrf') as HTMLInputElement | null;
   if (csrfField) csrfField.value = csrfToken;
 

@@ -179,6 +179,9 @@ try {
         }
     }
 
+    // Purge RGPD : leads de plus de 24 mois supprimés automatiquement à chaque soumission
+    $pdo->exec("DELETE FROM leads WHERE created_at < datetime('now', 'localtime', '-24 months')");
+
     $stmt = $pdo->prepare(
         "INSERT INTO leads
             (created_at, name, email, phone, city, service, message, page_source, status, ip_hash)

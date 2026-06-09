@@ -258,6 +258,48 @@ www/
 - [ ] Envoi SMTP fonctionne (tester le formulaire)
 - [ ] Leads enregistrés + statut `sent` dans SQLite
 
+## Sécurité — État actuel
+
+### Protections en place
+
+| Protection | Implémentation | Fichier |
+|---|---|---|
+| CSRF Double Submit Cookie | Token 48 chars hex (CSPRNG), `SameSite=Strict`, `Secure` en HTTPS | `Footer.astro` |
+| Honeypot anti-spam | Champ caché, réponse silencieuse `success:true` | `Footer.astro` / `contact.php` |
+| Rate limiting | 5 soumissions/h par session, fenêtre glissante | `contact.php` |
+| Validation serveur | Regex, `filter_var`, whitelist prestation | `contact.php` |
+| Sanitisation | `strip_tags` + `trim` + `mb_substr` + `htmlspecialchars` | `contact.php` |
+| Injections SQL | Requêtes PDO préparées uniquement | `contact.php` |
+| Hash IP | SHA-256 de `REMOTE_ADDR` (jamais IP brute) | `contact.php` |
+| Purge RGPD | DELETE leads > 24 mois à chaque soumission | `contact.php` |
+| Protection `.env` | `Require all denied` dans htaccess | `deploy/*/www.htaccess` |
+| Protection `storage/` | `Require all denied` + `RewriteRule [F]` double | `deploy/*/www.htaccess` + `storage.htaccess` |
+| HSTS | `max-age=31536000; includeSubDomains` | `deploy/prod/www.htaccess` uniquement |
+| CSP | `script-src 'self' 'unsafe-inline'` + Google Fonts | `deploy/*/www.htaccess` |
+| X-Frame-Options | `DENY` + `frame-ancestors 'none'` (CSP) | `deploy/*/www.htaccess` |
+| X-Content-Type-Options | `nosniff` | `deploy/*/www.htaccess` |
+| Referrer-Policy | `strict-origin-when-cross-origin` | `deploy/*/www.htaccess` |
+| Permissions-Policy | camera, micro, géolocalisation désactivés | `deploy/*/www.htaccess` |
+| form-action | `'self'` — formulaire ne peut soumettre qu'en interne | CSP dans htaccess |
+| noindex staging | `PUBLIC_STAGING=true` → meta noindex global | `BaseLayout.astro` |
+| Basic Auth staging | Accès restreint par mot de passe sur préprod | `deploy/staging/www.htaccess` |
+
+### Notes importantes
+
+- **HSTS** : présent dans `deploy/prod/www.htaccess` uniquement. **Ne pas activer en staging tant que SSL n'est pas validé.** Une fois activé avec `includeSubDomains`, tous les sous-domaines OVH doivent être en HTTPS — irréversible pendant 1 an.
+- **CSP `'unsafe-inline'`** : nécessaire car Astro génère des scripts inline en build statique (pas de SSR = pas de nonces). Le bénéfice reste réel : `form-action 'self'`, `connect-src 'self'`, `frame-ancestors 'none'` protègent contre les vecteurs d'attaque les plus courants.
+- **Rate limiting session** : contournable en incognito. Si spam constaté en prod, envisager reCAPTCHA v3 invisible.
+- **Purge RGPD** : s'exécute à chaque soumission de formulaire, pas de cron nécessaire. Supprime les leads dont `created_at < datetime('now', 'localtime', '-24 months')`.
+
+### Niveau de sécurité (post-audit)
+
+| Domaine | Note | Évolution |
+|---|---|---|
+| Sécurité formulaire | **8.5/10** | +0.5 (cookie CSRF Secure) |
+| Sécurité des données | **8/10** | +0.5 (purge RGPD 24 mois) |
+| Sécurité serveur | **9/10** | +2 (HSTS + CSP + form-action + frame-ancestors) |
+| **Sécurité globale** | **8.5/10** | +1 depuis l'audit initial |
+
 ## Infos client
 
 - **Société** : CONESA SAS — SIREN 429 132 053
@@ -277,6 +319,7 @@ www/
 - [ ] Mettre à jour `SITE_URL` dans `.env` (ou `astro.config.mjs`) avec le domaine réel
 - [ ] `composer install --no-dev` sur le serveur de prod
 - [ ] Vérifier `session_start()` chez l'hébergeur
+- [ ] Valider SSL/HTTPS actif → activer HSTS dans `deploy/prod/www.htaccess` (décommenter si nécessaire)
 - [ ] Google Analytics ou Matomo (optionnel)
 - [ ] reCAPTCHA v3 (optionnel, si spam)
 

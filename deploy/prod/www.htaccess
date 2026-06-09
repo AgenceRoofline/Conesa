@@ -4,14 +4,16 @@
 # Protège :
 #   - .env (ne doit jamais être accessible depuis le navigateur)
 #   - storage/ (si le dossier est dans www/ faute de mieux)
-#   - Ajoute des en-têtes de sécurité HTTP
+#   - En-têtes de sécurité HTTP
+#   - HSTS (HTTPS uniquement — activer seulement après validation SSL)
+#   - CSP (Content Security Policy)
 
 # ── Protection du fichier .env ────────────────────────────────────────────────
 <Files ".env">
     Require all denied
 </Files>
 
-# ── Protection du dossier storage (si dans www/) ──────────────────────────────
+# ── Protection du dossier storage/ (si dans www/) ─────────────────────────────
 # Redondant si storage/.htaccess existe, mais double protection utile
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -20,8 +22,32 @@
 
 # ── En-têtes de sécurité HTTP ─────────────────────────────────────────────────
 <IfModule mod_headers.c>
+    # Empêche le MIME sniffing
     Header always set X-Content-Type-Options "nosniff"
+
+    # Protège contre le clickjacking (complété par frame-ancestors dans la CSP)
     Header always set X-Frame-Options "DENY"
+
+    # Limite la fuite d'URL dans les referrers
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Désactive l'accès aux capteurs matériels
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+    # HSTS — force HTTPS pendant 1 an (activer uniquement après validation SSL)
+    # Si le SSL n'est pas encore validé, commenter cette ligne
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+    # CSP — Content Security Policy
+    # default-src 'self'             : tout depuis le même domaine par défaut
+    # script-src 'self' 'unsafe-inline' : scripts locaux (bundles Astro /_astro/) + inline
+    #   Note : 'unsafe-inline' requis pour les scripts inline générés par Astro (build statique)
+    #   Sans SSR, les nonces/hashes ne sont pas applicables — acceptable pour un site vitrine
+    # style-src 'self' 'unsafe-inline' https://fonts.googleapis.com : CSS local + style=""  + Google Fonts CSS
+    # font-src 'self' https://fonts.gstatic.com : fichiers de police Google
+    # img-src 'self' data: : images locales + éventuels data URI (SVG inline)
+    # connect-src 'self' : fetch/AJAX uniquement vers le même domaine (contact.php)
+    # frame-ancestors 'none' : interdit l'intégration dans une iframe (plus fort que X-Frame-Options)
+    # form-action 'self' : les formulaires ne peuvent soumettre que vers le même domaine
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self';"
 </IfModule>

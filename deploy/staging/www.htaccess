@@ -1,11 +1,14 @@
 # .htaccess staging — www/ (dossier public)
-# Placer ce fichier dans www/.htaccess sur le serveur de préprod OVH
+# Placer ce fichier dans /conesa/.htaccess sur le serveur de préprod OVH
 #
 # Contient :
 #   - Authentification Basic Auth (accès restreint préprod)
 #   - Protection du fichier .env
 #   - Protection du dossier storage/
 #   - En-têtes de sécurité HTTP
+#   - CSP (Content Security Policy)
+#
+# NOTE : HSTS absent intentionnellement — activer uniquement après validation SSL en prod
 #
 # Générer le .htpasswd et renseigner son chemin absolu OVH ci-dessous.
 # Sur OVH mutualisé, le chemin ressemble à : /home/proXXXXXX/.htpasswd
@@ -37,4 +40,10 @@ Require valid-user
     Header always set X-Frame-Options "DENY"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+    # HSTS intentionnellement absent en staging (SSL non encore validé)
+    # L'ajouter uniquement dans deploy/prod/www.htaccess après validation SSL
+
+    # CSP — identique à la production
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self';"
 </IfModule>
