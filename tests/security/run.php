@@ -347,12 +347,14 @@ foreach ($validationCases as [$field, $value, $errKey, $label]) {
     }
 }
 
-// Message trop long — téléphone invalide pour éviter l'envoi mail
+// Message trop long — téléphone invalide pour bloquer avant envoi mail
 $r = postWithCsrf($CONTACT, ['message' => str_repeat('A', 3000), 'telephone' => 'invalide'], $AUTH);
 if ($r['code'] === 500 || $r['code'] === 0) {
     fail('Message 3000 chars → pas de crash', "HTTP {$r['code']} — crash serveur");
+} elseif (($r['json']['success'] ?? false) === true) {
+    fail('Message 3000 chars → aucun mail envoyé', 'success:true reçu — mail envoyé pendant le test');
 } else {
-    pass("Message 3000 chars → pas de crash (HTTP {$r['code']})");
+    pass("Message 3000 chars → pas de crash, aucun mail (HTTP {$r['code']})");
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -368,32 +370,40 @@ if ($r['code'] === 200 && isset($r['json']['errors']['nom'])) {
     pass('XSS nom <script> → tag non réfléchi dans la réponse');
 } elseif ($r['code'] === 403) {
     pass('XSS nom <script> → bloqué en amont (403)');
+} elseif (($r['json']['success'] ?? false) === true) {
+    fail('XSS nom <script> → bloqué', 'success:true reçu — mail envoyé pendant le test');
 } else {
     fail('XSS nom <script> → tag dans la réponse !', substr($r['body'], 0, 150));
 }
 
-// XSS attribut dans le message (img onerror) — téléphone invalide pour éviter l'envoi mail
+// XSS attribut dans le message — téléphone invalide pour bloquer avant envoi mail
 $r = postWithCsrf($CONTACT, ['message' => '<img src=x onerror=alert(1)>test XSS', 'telephone' => 'invalide'], $AUTH);
 if ($r['code'] === 500) {
     fail('XSS message <img onerror> → pas de crash', "HTTP 500");
+} elseif (($r['json']['success'] ?? false) === true) {
+    fail('XSS message <img onerror> → aucun mail envoyé', 'success:true reçu — mail envoyé pendant le test');
 } elseif (str_contains($r['body'], '<img') || str_contains($r['body'], 'onerror')) {
     fail('XSS message <img onerror> → tag HTML dans la réponse !', substr($r['body'], 0, 150));
 } else {
-    pass('XSS message <img onerror> → tag HTML non réfléchi');
+    pass('XSS message <img onerror> → tag HTML non réfléchi, aucun mail');
 }
 
-// Injection SQL dans le message — téléphone invalide pour éviter l'envoi mail
+// Injection SQL dans le message — téléphone invalide pour bloquer avant envoi mail
 $sqlPayload = "'; DROP TABLE leads; -- \" OR '1'='1";
 $r = postWithCsrf($CONTACT, ['message' => $sqlPayload, 'telephone' => 'invalide'], $AUTH);
 if ($r['code'] === 500) {
     fail('Injection SQL message → pas de crash (500)', 'HTTP 500 — vérifier les requêtes PDO');
+} elseif (($r['json']['success'] ?? false) === true) {
+    fail('Injection SQL message → aucun mail envoyé', 'success:true reçu — mail envoyé pendant le test');
 } else {
-    pass("Injection SQL message → pas de crash (HTTP {$r['code']})");
+    pass("Injection SQL message → pas de crash, aucun mail (HTTP {$r['code']})");
 }
 
 // Injection SQL dans le nom — doit échouer la validation (regex stricte ^[\p{L}...])
 $r = postWithCsrf($CONTACT, ['nom' => "'; DROP TABLE leads; --"], $AUTH);
-if ($r['code'] === 200 && isset($r['json']['errors']['nom'])) {
+if (($r['json']['success'] ?? false) === true) {
+    fail('Injection SQL nom → bloqué', 'success:true reçu — mail envoyé pendant le test');
+} elseif ($r['code'] === 200 && isset($r['json']['errors']['nom'])) {
     pass('Injection SQL nom → bloqué par validation (regex)');
 } elseif ($r['code'] !== 500) {
     pass("Injection SQL nom → pas de crash (HTTP {$r['code']})");
