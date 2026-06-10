@@ -372,8 +372,8 @@ if ($r['code'] === 200 && isset($r['json']['errors']['nom'])) {
     fail('XSS nom <script> → tag dans la réponse !', substr($r['body'], 0, 150));
 }
 
-// XSS attribut dans le message (img onerror) — doit être sanitisé
-$r = postWithCsrf($CONTACT, ['message' => '<img src=x onerror=alert(1)>test XSS'], $AUTH);
+// XSS attribut dans le message (img onerror) — téléphone invalide pour éviter l'envoi mail
+$r = postWithCsrf($CONTACT, ['message' => '<img src=x onerror=alert(1)>test XSS', 'telephone' => 'invalide'], $AUTH);
 if ($r['code'] === 500) {
     fail('XSS message <img onerror> → pas de crash', "HTTP 500");
 } elseif (str_contains($r['body'], '<img') || str_contains($r['body'], 'onerror')) {
@@ -382,9 +382,9 @@ if ($r['code'] === 500) {
     pass('XSS message <img onerror> → tag HTML non réfléchi');
 }
 
-// Injection SQL dans le message — PDO préparé, ne doit pas crasher
+// Injection SQL dans le message — téléphone invalide pour éviter l'envoi mail
 $sqlPayload = "'; DROP TABLE leads; -- \" OR '1'='1";
-$r = postWithCsrf($CONTACT, ['message' => $sqlPayload], $AUTH);
+$r = postWithCsrf($CONTACT, ['message' => $sqlPayload, 'telephone' => 'invalide'], $AUTH);
 if ($r['code'] === 500) {
     fail('Injection SQL message → pas de crash (500)', 'HTTP 500 — vérifier les requêtes PDO');
 } else {
