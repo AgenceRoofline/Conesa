@@ -347,8 +347,8 @@ foreach ($validationCases as [$field, $value, $errKey, $label]) {
     }
 }
 
-// Message trop long — doit être tronqué à 2000 chars sans crash
-$r = postWithCsrf($CONTACT, ['message' => str_repeat('A', 3000)], $AUTH);
+// Message trop long — téléphone invalide pour éviter l'envoi mail
+$r = postWithCsrf($CONTACT, ['message' => str_repeat('A', 3000), 'telephone' => 'invalide'], $AUTH);
 if ($r['code'] === 500 || $r['code'] === 0) {
     fail('Message 3000 chars → pas de crash', "HTTP {$r['code']} — crash serveur");
 } else {
