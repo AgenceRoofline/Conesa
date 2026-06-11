@@ -1,0 +1,471 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: "Pourquoi faut-il démousser une toiture ?",
+    a: "Les mousses retiennent l'humidité sur la couverture, ce qui favorise la dégradation des matériaux et peut provoquer des infiltrations. Un démoussage régulier permet de préserver l'étanchéité et de prolonger la durée de vie de la toiture.",
+  },
+  {
+    q: "À quelle fréquence faut-il nettoyer une toiture ?",
+    a: "La fréquence dépend de l'environnement, du type de matériaux et de l'exposition de la toiture. En règle générale, une inspection et un nettoyage tous les 2 à 5 ans permettent de maintenir la toiture en bon état.",
+  },
+  {
+    q: "Les mousses peuvent-elles provoquer des infiltrations ?",
+    a: "Oui. En retenant l'eau, les mousses favorisent la pénétration de l'humidité dans les matériaux. En période de gel, cette eau peut provoquer des fissures et altérer l'étanchéité de la couverture.",
+  },
+  {
+    q: "Le traitement hydrofuge est-il obligatoire après un démoussage ?",
+    a: "Il n'est pas obligatoire, mais fortement recommandé. Le traitement hydrofuge limite la pénétration de l'eau dans les matériaux et ralentit le retour des mousses, prolongeant ainsi l'effet du nettoyage.",
+  },
+  {
+    q: "Quel est le prix d'un démoussage de toiture ?",
+    a: "Le coût varie selon la surface, le type de toiture et l'état de la couverture. Contactez-nous pour un devis gratuit et personnalisé adapté à votre habitation.",
+  },
+  {
+    q: "Comment obtenir un devis pour l'entretien de ma toiture ?",
+    a: "Remplissez notre formulaire de contact ou appelez-nous directement. Nous vous recontactons sous 24h pour organiser une visite et établir un devis gratuit sur mesure.",
+  },
+];
+
+const currentHref = "/blog/demoussage-toiture-pourquoi-ne-pas-attendre";
+const articles = [
+  {
+    href: "/blog/isolation-interieure-ou-exterieure",
+    categorie: "Isolation",
+    titre: "Isolation intérieure ou extérieure : quelle solution choisir ?",
+    description: "Comparez l'isolation thermique par l'intérieur et par l'extérieur : avantages, performances, coûts et aides disponibles pour bien choisir.",
+    image: "/images/blog/Isolation-intérieure-ou-extérieure/hero isolation-interieure-exterieure.png",
+    badge: "bg-[#E8F0FB] text-[#1E4B8C]",
+  },
+  {
+    href: "/blog/demoussage-toiture-pourquoi-ne-pas-attendre",
+    categorie: "Toiture",
+    titre: "Démoussage de toiture : pourquoi ne faut-il pas attendre ?",
+    description: "Mousses, lichens, infiltrations… Découvrez pourquoi un entretien régulier de votre toiture évite des réparations bien plus coûteuses.",
+    image: "/images/blog/Démoussage-de-toiture/Hero Démoussage de toiture.png",
+    badge: "bg-orange-50 text-[#E8650A]",
+  },
+  {
+    href: "/blog/renovation-energetique-plus-value-maison",
+    categorie: "Rénovation",
+    titre: "Comment la rénovation énergétique valorise votre maison ?",
+    description: "Isolation, façade, DPE : comment les travaux de rénovation améliorent votre confort quotidien et augmentent la valeur immobilière de votre bien.",
+    image: "/images/blog/valoriser-votre-maison/Hero valoriser votre maison.png",
+    badge: "bg-[#E8F0FB] text-[#1E4B8C]",
+  },
+  {
+    href: "/blog/comment-savoir-si-votre-facade-a-besoin-dun-ravalement",
+    categorie: "Façade",
+    titre: "Comment savoir si votre façade a besoin d'un ravalement ?",
+    description: "Fissures, mousses, enduit dégradé, humidité : apprenez à reconnaître les signes qui indiquent qu'un ravalement de façade s'impose.",
+    image: "/images/blog/façade-a-besoin-d-un-ravalement/Hero façade a besoin d'un ravalement.png",
+    badge: "bg-orange-50 text-[#E8650A]",
+  },
+];
+const autresArticles = articles.filter(a => a.href !== currentHref).slice(0, 3);
+
+const signes = [
+  { label: "Présence visible de mousses ou lichens sur les tuiles" },
+  { label: "Coloration inhabituelle ou verdâtre de la couverture" },
+  { label: "Traces noires ou dépôts importants sur les gouttières" },
+  { label: "Accumulation de feuilles et débris dans les noues" },
+  { label: "Tuiles qui semblent poreuses ou absorbantes au toucher" },
+];
+
+const etapes = [
+  {
+    num: "01",
+    titre: "Inspection de la toiture",
+    desc: "Avant toute intervention, nos équipes réalisent un diagnostic complet de l'état de la couverture : identification des zones touchées, état des matériaux, présence de tuiles abîmées ou de joints défectueux.",
+  },
+  {
+    num: "02",
+    titre: "Nettoyage et élimination des mousses",
+    desc: "Élimination mécanique et/ou chimique des mousses, lichens et algues présents sur la couverture, avec des produits adaptés aux matériaux. L'opération préserve l'intégrité des tuiles ou ardoises.",
+  },
+  {
+    num: "03",
+    titre: "Traitement hydrofuge préventif",
+    desc: "Application d'un traitement imperméabilisant qui limite la pénétration de l'eau, ralentit le développement des mousses et protège durablement la couverture contre les agressions climatiques.",
+  },
+];
+---
+
+<BaseLayout
+  title="Démoussage de toiture : pourquoi ne faut-il pas attendre ? | Conesa"
+  description="Découvrez pourquoi le démoussage de toiture est indispensable pour préserver l'étanchéité de votre habitation et éviter des réparations coûteuses dans le Tarn."
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Démoussage de toiture : pourquoi ne faut-il pas attendre ?",
+    "description": "Découvrez pourquoi le démoussage de toiture est indispensable pour préserver l'étanchéité de votre habitation et éviter des réparations coûteuses.",
+    "author": { "@type": "Organization", "name": "Conesa" },
+    "publisher": { "@type": "Organization", "name": "Conesa", "url": "https://conesa-renovation.fr" },
+    "url": "https://conesa-renovation.fr/blog/demoussage-toiture-pourquoi-ne-pas-attendre",
+    "mainEntityOfPage": "https://conesa-renovation.fr/blog/demoussage-toiture-pourquoi-ne-pas-attendre"
+  })} />
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+    }))
+  })} />
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section class="relative bg-[#0A1E3D] pt-36 pb-16 lg:pt-44 lg:pb-20">
+    <img
+      src={encodeURI("/images/blog/Démoussage-de-toiture/Hero Démoussage de toiture.png")}
+      alt="Démoussage de toiture — Conesa"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(10,30,61,0.88) 0%, rgba(30,75,140,0.72) 55%, rgba(10,30,61,0.60) 100%);"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-3 mb-6">
+          <a href="/blog" class="text-blue-300 hover:text-white transition-colors text-sm">Blog</a>
+          <span class="text-blue-400">/</span>
+          <span class="text-blue-200 text-sm">Toiture</span>
+        </div>
+        <span class="inline-block bg-orange-50 text-[#E8650A] text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-5">Toiture</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-6" style="font-family:'Montserrat',sans-serif;">
+          Démoussage de toiture : pourquoi ne faut-il pas attendre ?
+        </h1>
+        <p class="text-blue-100 text-lg leading-relaxed max-w-2xl">
+          La toiture protège votre maison des intempéries toute l'année. Pourtant, mousses et lichens s'y installent progressivement et peuvent provoquer des dégâts coûteux si l'on attend trop longtemps.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       IMAGE + INTRO
+  ══════════════════════════════════════ -->
+  <section class="py-8 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <div class="rounded-2xl overflow-hidden shadow-xl bg-gray-100" style="aspect-ratio:4/3;">
+          <img
+            src={encodeURI("/images/blog/Démoussage-de-toiture/Démoussage toiture.png")}
+            alt="Démoussage de toiture dans le Tarn — Conesa"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+            onerror="this.parentElement.style.background='#E8F0FB'"
+          />
+        </div>
+
+        <div>
+          <!-- Causes -->
+          <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Comprendre le problème</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1E4B8C] mt-3 mb-5 leading-tight" style="font-family:'Montserrat',sans-serif;">
+            Pourquoi les mousses s'installent-elles sur votre toiture ?
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Les mousses et lichens se développent naturellement sur les surfaces exposées à l'humidité. Certaines toitures sont plus vulnérables : celles peu ensoleillées, proches de végétation, ou dont les matériaux sont vieillissants.
+          </p>
+          <div class="space-y-3">
+            {["Zones peu exposées au soleil (orientation nord)", "Présence d'arbres ou de végétation à proximité", "Matériaux de couverture anciens ou poreux", "Climat humide et variations de température"].map(point => (
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-[#E8650A] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <span class="text-gray-700 text-sm">{point}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       RISQUES — 3 CARDS
+  ══════════════════════════════════════ -->
+  <section class="py-8 lg:py-24 bg-[#F0F5FC]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Les conséquences</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
+          Quels risques si vous n'agissez pas ?
+        </h2>
+        <p class="text-gray-600 mt-4 leading-relaxed">
+          Ce qui semble inoffensif au départ peut évoluer vers des dégâts importants. Voici les trois principales conséquences d'une toiture mal entretenue.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {[
+          {
+            icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>`,
+            titre: "Dégradation accélérée des matériaux",
+            desc: "Les mousses retiennent l'humidité en permanence sur la couverture. Cette eau stagnante use progressivement les tuiles, augmente leur porosité et accélère leur vieillissement.",
+          },
+          {
+            icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>`,
+            titre: "Risque accru d'infiltrations",
+            desc: "En période de gel, l'eau infiltrée dans les micro-fissures se dilate et provoque des fissures plus importantes. L'eau peut alors pénétrer à l'intérieur du bâtiment.",
+          },
+          {
+            icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+            titre: "Des réparations bien plus coûteuses",
+            desc: "Un entretien préventif coûte beaucoup moins cher qu'une rénovation complète de toiture. Attendre l'apparition d'une fuite, c'est souvent faire face à des travaux lourds et urgents.",
+          },
+        ].map(card => (
+          <div class="bg-white rounded-2xl p-7">
+            <div class="w-14 h-14 bg-[#E8F0FB] rounded-xl flex items-center justify-center mb-5 text-[#1E4B8C]">
+              <Fragment set:html={card.icon} />
+            </div>
+            <h3 class="font-bold text-[#1E4B8C] text-base mb-3" style="font-family:'Montserrat',sans-serif;">{card.titre}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{card.desc}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SIGNES D'ALERTE + INTERVENTION EN 3 ÉTAPES
+  ══════════════════════════════════════ -->
+  <section class="py-8 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Signes d'alerte -->
+        <div>
+          <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Savoir quand agir</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1E4B8C] mt-3 mb-6 leading-tight" style="font-family:'Montserrat',sans-serif;">
+            Les signes qui indiquent qu'un entretien est nécessaire
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            Plusieurs indicateurs permettent d'identifier rapidement qu'une toiture a besoin d'un nettoyage ou d'un traitement préventif.
+          </p>
+          <div class="space-y-3">
+            {signes.map(s => (
+              <div class="flex items-start gap-3 p-4 rounded-xl border border-gray-100 bg-[#F0F5FC]">
+                <svg class="w-5 h-5 text-[#E8650A] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                <span class="text-gray-700 text-sm">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- 3 étapes -->
+        <div>
+          <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Notre intervention</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1E4B8C] mt-3 mb-6 leading-tight" style="font-family:'Montserrat',sans-serif;">
+            Le démoussage en 3 étapes
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            Chaque intervention est adaptée à l'état réel de votre toiture et aux matériaux de couverture.
+          </p>
+          <div class="space-y-5">
+            {etapes.map(e => (
+              <div class="flex gap-5">
+                <span class="text-3xl font-extrabold text-[#1E4B8C]/15 leading-none shrink-0 w-10" style="font-family:'Montserrat',sans-serif;">{e.num}</span>
+                <div>
+                  <h3 class="font-bold text-[#1E4B8C] mb-1" style="font-family:'Montserrat',sans-serif;">{e.titre}</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed">{e.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       ANCRAGE LOCAL + CTA INLINE
+  ══════════════════════════════════════ -->
+  <section class="py-8 lg:py-24 bg-[#F0F5FC]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <div>
+          <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Intervention locale</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1E4B8C] mt-3 mb-5 leading-tight" style="font-family:'Montserrat',sans-serif;">
+            Entretien de toiture dans le Tarn : une priorité face au climat local
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Les variations climatiques, l'humidité saisonnière et la présence de végétation autour de nombreuses habitations du Tarn favorisent le développement des mousses sur les toitures.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            Nos équipes interviennent à <strong class="text-[#1E4B8C]">Albi, Gaillac, Castres, Graulhet</strong> et dans l'ensemble du département pour réaliser diagnostics, démoussages et traitements préventifs adaptés à chaque type de couverture.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {["Albi", "Gaillac", "Castres", "Graulhet", "Tarn (81)"].map(v => (
+              <span class="bg-white text-[#1E4B8C] border border-[#1E4B8C]/20 text-sm font-medium px-3 py-1.5 rounded-lg">{v}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="bg-[#1E4B8C] rounded-3xl p-10 relative overflow-hidden">
+          <div class="absolute inset-0 opacity-[0.05]" style="background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:30px 30px;"></div>
+          <div class="relative">
+            <p class="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-3">Devis gratuit</p>
+            <h3 class="text-2xl font-extrabold text-white mb-4 leading-tight" style="font-family:'Montserrat',sans-serif;">
+              Votre toiture a besoin d'un entretien ?
+            </h3>
+            <p class="text-blue-100 text-sm leading-relaxed mb-8">
+              Nos experts évaluent gratuitement l'état de votre couverture et vous proposent la solution adaptée à votre habitation.
+            </p>
+            <div class="flex flex-col gap-3">
+              <a href="/#contact" class="inline-flex items-center justify-center gap-2 bg-[#E8650A] hover:bg-orange-700 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-200 hover:scale-105">
+                Demander un devis gratuit
+              </a>
+              <a href="tel:0563541697" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white hover:bg-white/10 font-medium px-6 py-3.5 rounded-xl transition-colors text-sm">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                05 63 54 16 97
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════ -->
+  <section class="py-8 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Questions fréquentes</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
+          Tout savoir sur le démoussage de toiture
+        </h2>
+      </div>
+
+      <div class="border-t border-gray-200">
+        {faqs.map(faq => (
+          <div class="faq-item border-b border-gray-200">
+            <h3 class="m-0 font-normal">
+              <button class="faq-trigger w-full flex items-center justify-between gap-6 py-5 px-1 text-left">
+                <span class="faq-question font-semibold text-[#1E4B8C] text-base leading-snug" style="font-family:'Montserrat',sans-serif;">
+                  {faq.q}
+                </span>
+                <svg class="faq-icon shrink-0 w-5 h-5 text-gray-400" style="transition: transform 0.45s ease, color 0.3s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+            </h3>
+            <div class="faq-body overflow-hidden" style="max-height:0; transition: max-height 0.45s ease;">
+              <p class="pb-6 pt-1 px-1 text-gray-600 leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll<HTMLElement>('.faq-item').forEach(item => {
+      const trigger = item.querySelector<HTMLButtonElement>('.faq-trigger')!;
+      const body    = item.querySelector<HTMLElement>('.faq-body')!;
+      const icon    = item.querySelector<SVGElement>('.faq-icon')!;
+      trigger.addEventListener('click', () => {
+        const isOpen = item.dataset.open === 'true';
+        document.querySelectorAll<HTMLElement>('.faq-item').forEach(other => {
+          other.dataset.open = 'false';
+          (other.querySelector<HTMLElement>('.faq-body')!).style.maxHeight = '0';
+          const ic = other.querySelector<SVGElement>('.faq-icon')!;
+          ic.style.transform = '';
+          ic.style.color = '';
+        });
+        if (!isOpen) {
+          item.dataset.open = 'true';
+          body.style.maxHeight = body.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+          icon.style.color = '#E8650A';
+        }
+      });
+    });
+  </script>
+
+  <!-- ══════════════════════════════════════
+       AUTRES ARTICLES
+  ══════════════════════════════════════ -->
+  <section class="py-8 lg:py-16 bg-[#F0F5FC]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-10">
+        <div>
+          <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">À lire aussi</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1E4B8C] mt-2 leading-tight" style="font-family:'Montserrat',sans-serif;">
+            Nos autres articles
+          </h2>
+        </div>
+        <a href="/blog" class="hidden sm:inline-flex items-center gap-2 text-[#1E4B8C] font-semibold hover:text-[#E8650A] transition-colors text-sm shrink-0">
+          Tous les articles
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {autresArticles.map((article) => (
+          <a href={article.href} class="group bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
+            <div class="h-48 bg-gray-100 overflow-hidden">
+              <img
+                src={encodeURI(article.image)}
+                alt={article.titre}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
+                onerror="this.parentElement.style.background='#E8F0FB'"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <span class={`inline-block self-start text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full mb-4 ${article.badge}`}>
+                {article.categorie}
+              </span>
+              <h3 class="font-bold text-[#1E4B8C] text-base leading-snug mb-3 group-hover:text-[#E8650A] transition-colors" style="font-family:'Montserrat',sans-serif;">
+                {article.titre}
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed flex-1">{article.description}</p>
+              <div class="flex items-center gap-2 text-[#E8650A] font-semibold text-sm mt-5 group-hover:gap-3 transition-all duration-150">
+                Lire l'article
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       MAILLAGE INTERNE
+  ══════════════════════════════════════ -->
+  <section class="py-8 lg:py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-6">À découvrir également</p>
+      <div class="flex flex-wrap gap-3">
+        {[
+          { label: "Nos prestations de rénovation", href: "/renovation" },
+          { label: "Rénovation de façade", href: "/renovation#facade" },
+          { label: "Isolation thermique extérieure", href: "/isolation" },
+          { label: "Qui sommes-nous ?", href: "/entreprise" },
+          { label: "Retour au blog", href: "/blog" },
+        ].map(link => (
+          <a href={link.href} class="flex items-center gap-2 bg-white border border-gray-200 hover:border-[#1E4B8C] hover:text-[#1E4B8C] text-gray-600 text-sm font-medium px-4 py-2.5 rounded-xl transition-all duration-150">
+            {link.label}
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

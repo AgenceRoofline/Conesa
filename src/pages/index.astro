@@ -72,6 +72,41 @@ const services = [
 ];
 
 
+const articles = [
+  {
+    href: "/blog/isolation-interieure-ou-exterieure",
+    categorie: "Isolation",
+    titre: "Isolation intérieure ou extérieure : quelle solution choisir ?",
+    description: "Comparez l'isolation thermique par l'intérieur et par l'extérieur : avantages, performances, coûts et aides disponibles pour bien choisir.",
+    image: "/images/blog/Isolation-intérieure-ou-extérieure/hero isolation-interieure-exterieure.png",
+    badge: "bg-[#E8F0FB] text-[#1E4B8C]",
+  },
+  {
+    href: "/blog/demoussage-toiture-pourquoi-ne-pas-attendre",
+    categorie: "Toiture",
+    titre: "Démoussage de toiture : pourquoi ne faut-il pas attendre ?",
+    description: "Mousses, lichens, infiltrations… Découvrez pourquoi un entretien régulier de votre toiture évite des réparations bien plus coûteuses.",
+    image: "/images/blog/Démoussage-de-toiture/Hero Démoussage de toiture.png",
+    badge: "bg-orange-50 text-[#E8650A]",
+  },
+  {
+    href: "/blog/renovation-energetique-plus-value-maison",
+    categorie: "Rénovation",
+    titre: "Comment la rénovation énergétique valorise votre maison ?",
+    description: "Isolation, façade, DPE : comment les travaux de rénovation améliorent votre confort quotidien et augmentent la valeur immobilière de votre bien.",
+    image: "/images/blog/valoriser-votre-maison/Hero valoriser votre maison.png",
+    badge: "bg-[#E8F0FB] text-[#1E4B8C]",
+  },
+  {
+    href: "/blog/comment-savoir-si-votre-facade-a-besoin-dun-ravalement",
+    categorie: "Façade",
+    titre: "Comment savoir si votre façade a besoin d'un ravalement ?",
+    description: "Fissures, mousses, enduit dégradé, humidité : apprenez à reconnaître les signes qui indiquent qu'un ravalement de façade s'impose.",
+    image: "/images/blog/façade-a-besoin-d-un-ravalement/Hero façade a besoin d'un ravalement.png",
+    badge: "bg-orange-50 text-[#E8650A]",
+  },
+];
+
 const avis = [
   {
     nom: "Vanessa D.",
@@ -414,6 +449,58 @@ const faqs = [
   <!-- ══════════════════════════════════════
        AVIS CLIENTS — CAROUSEL
   ══════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════
+       BLOG — CONSEILS & GUIDES
+  ══════════════════════════════════════ -->
+  <section class="py-8 lg:py-24 bg-[#F0F5FC]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="flex items-end justify-between mb-12">
+        <div>
+          <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Conseils & Guides</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
+            Nos conseils pour<br>votre habitat
+          </h2>
+        </div>
+        <a href="/blog" class="hidden sm:inline-flex items-center gap-2 text-[#1E4B8C] font-semibold hover:text-[#E8650A] transition-colors text-sm shrink-0">
+          Tous les articles
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {articles.map((article) => (
+          <a href={article.href} class="group bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
+            <div class="h-48 bg-gray-100 overflow-hidden">
+              <img
+                src={encodeURI(article.image)}
+                alt={article.titre}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
+                onerror="this.parentElement.style.background='#E8F0FB'"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <span class={`inline-block self-start text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full mb-4 ${article.badge}`}>
+                {article.categorie}
+              </span>
+              <h3 class="font-bold text-[#1E4B8C] text-base leading-snug mb-3 group-hover:text-[#E8650A] transition-colors" style="font-family:'Montserrat',sans-serif;">
+                {article.titre}
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed flex-1">{article.description}</p>
+              <div class="flex items-center gap-2 text-[#E8650A] font-semibold text-sm mt-5 group-hover:gap-3 transition-all duration-150">
+                Lire l'article
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
   <section id="avis" class="py-8 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
