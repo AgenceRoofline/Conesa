@@ -10,6 +10,33 @@ const stats = [
   { value: "4,6/5", label: "avis clients Google" },
 ];
 
+const reassurances = [
+  {
+    label: "55 ans d'expérience",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
+  },
+  {
+    label: "Entreprise familiale tarnaise",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>`,
+  },
+  {
+    label: "Certification RGE & Qualibat",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>`,
+  },
+  {
+    label: "Devis gratuit sous 24 h",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>`,
+  },
+  {
+    label: "Intervention dans tout le Tarn",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>`,
+  },
+  {
+    label: "Accompagnement personnalisé",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>`,
+  },
+];
+
 const reasons = [
   {
     num: "01",
@@ -40,47 +67,54 @@ const reasons = [
 
 const services = [
   {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>`,
+    titre: "Isolation thermique extérieure",
+    desc: "Améliorez vos performances énergétiques tout en rénovant votre façade. Travaux réalisés par des experts certifiés RGE, avec accompagnement des aides financières.",
+    detail: ["Jusqu'à 30% d'économies sur vos factures de chauffage", "Aides MaPrimeRénov', Éco-PTZ et CEE disponibles"],
+    href: "/isolation",
+    image: "/images/Page accueil/Isolation Thermique Extérieure.png",
+  },
+  {
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
     titre: "Ravalement de façade",
     desc: "Redonnez une seconde jeunesse à votre façade : nettoyage, traitement des fissures, enduits et rénovation complète.",
     detail: ["Nettoyage haute pression, rebouchage des fissures et reprise des joints", "Enduits, peintures et finitions durables adaptés à chaque support"],
-    href: "/renovation#facade",
-    image: "/images/Page rénovation/Ravalement de façade.png",
+    href: "/ravalement-facade",
+    image: "/images/Page ravalement de façade/Rénovation façade.png",
   },
   {
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>`,
     titre: "Peinture intérieure & extérieure",
-    desc: "Des finitions soignées pour embellir et protéger durablement votre habitation, en neuf comme en rénovation.",
-    detail: ["Préparation soignée des supports : enduit, ponçage, impressions", "Peintures haut de gamme, résistantes aux UV et intempéries"],
-    href: "/renovation#peinture",
-    image: "/images/Page rénovation/Peinture intérieur et extérieure.png",
+    desc: "Des finitions soignées pour embellir et protéger durablement votre habitation, avec conseil couleurs et accompagnement personnalisé.",
+    detail: ["Préparation soignée des supports : enduit, ponçage, impressions", "Peintures haut de gamme, conseils couleurs et finitions sur mesure"],
+    href: "/peinture-interieure-exterieure",
+    image: "/images/Page peinture interieure exterieure/Peinture intérieur et extérieure.png",
   },
   {
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>`,
     titre: "Nettoyage & entretien de toiture",
     desc: "Préservez votre toiture grâce à nos prestations de nettoyage, démoussage et traitement hydrofuge.",
     detail: ["Démoussage, nettoyage basse pression et traitement hydrofuge", "Prolonge la durée de vie de votre couverture de 10 à 15 ans"],
-    href: "/renovation#toiture",
-    image: "/images/Page rénovation/Entretien toiture.png",
+    href: "/nettoyage-toiture",
+    image: "/images/Page nettoyage toiture/Entretien toiture.png",
   },
   {
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>`,
     titre: "Revêtements de sols",
     desc: "Pose de revêtements adaptés à vos besoins esthétiques et techniques, pour des finitions impeccables.",
     detail: ["Carrelage, parquet, stratifié, vinyl et résine époxy", "Dépose de l'ancien revêtement et préparation du support incluses"],
-    href: "/renovation#sols",
-    image: "/images/Page rénovation/Revêtement de sol.png",
+    href: "/revetements-sols",
+    image: "/images/Page revetements sols/Revêtement de sol.png",
   },
   {
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
     titre: "Travaux après sinistre",
     desc: "Intervention rapide pour remettre votre habitation en état après un dégât des eaux ou tout autre sinistre.",
     detail: ["Intervention sous 48 h, coordination avec votre assurance", "Remise en état complète : peinture, sols, placo et menuiseries"],
-    href: "/renovation#sinistre",
-    image: "/images/Page rénovation/Travaux après sinistre.png",
+    href: "/travaux-apres-sinistre",
+    image: "/images/Page travaux apres sinistre/Travaux après sinistre.png",
   },
 ];
-
 
 const articles = [
   {
@@ -238,8 +272,6 @@ const faqs = [
        HERO
   ══════════════════════════════════════ -->
   <section class="relative overflow-hidden bg-[#0A1E3D]" style="min-height:100vh;display:flex;align-items:center;">
-
-    <!-- Image de fond -->
     <img
       src="/images/Page accueil/hero-accueil.png"
       alt="Chantier de rénovation et isolation thermique extérieure dans le Tarn — Conesa"
@@ -247,9 +279,7 @@ const faqs = [
       class="absolute inset-0 w-full h-full object-cover object-center"
       fetchpriority="high"
     />
-    <!-- Overlay pour lisibilité du texte -->
     <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(10,30,61,0.88) 0%, rgba(30,75,140,0.72) 55%, rgba(10,30,61,0.60) 100%);"></div>
-    <!-- Grille de points -->
     <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>
 
     <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 lg:pt-44 lg:pb-28">
@@ -281,7 +311,6 @@ const faqs = [
               Être rappelé
             </a>
           </div>
-
         </div>
 
         <div class="hidden lg:block"></div>
@@ -305,35 +334,42 @@ const faqs = [
   </section>
 
   <!-- ══════════════════════════════════════
-       POURQUOI CONESA
+       PRÉSENTATION DE L'ENTREPRISE
   ══════════════════════════════════════ -->
   <section class="py-8 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mb-16">
-        <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Les étapes</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
-          Comment se déroule<br>votre projet avec Conesa ?
-        </h2>
-        <p class="text-gray-600 mt-4 text-lg leading-relaxed">
-          De la première prise de contact jusqu'à la réception des travaux, nous vous accompagnons à chaque étape pour un projet serein et sans surprise.
-        </p>
-      </div>
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-      <!-- Mobile : scroll horizontal snap — sm+ : grille -->
-      <div class="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory -mx-4 px-4
-                  sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 sm:overflow-visible sm:mx-0 sm:px-0 sm:pb-0">
-        {reasons.map((r, i) => (
-          <div class={`group relative shrink-0 w-[80vw] snap-start
-                       sm:w-auto sm:shrink
-                       p-6 sm:p-8 rounded-2xl border border-gray-100
-                       hover:border-[#1E4B8C]/20 hover:shadow-lg transition-all duration-300 overflow-hidden
-                       ${i === 4 ? 'lg:col-start-2' : ''}`}>
-            <span class="text-5xl font-extrabold text-[#1E4B8C]/10 leading-none block mb-4" style="font-family:'Montserrat',sans-serif;">{r.num}</span>
-            <h3 class="font-bold text-[#1E4B8C] text-lg mb-3" style="font-family:'Montserrat',sans-serif;">{r.titre}</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">{r.desc}</p>
-            <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8650A] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-          </div>
-        ))}
+        <div>
+          <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Entreprise familiale depuis 1969</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 mb-6 leading-tight" style="font-family:'Montserrat',sans-serif;">
+            Une entreprise familiale au service de votre habitat depuis plus de 55 ans
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Depuis plus de 55 ans, Conesa accompagne les particuliers, professionnels et collectivités dans leurs projets de rénovation et d'amélioration de l'habitat dans tout le Tarn. Entreprise familiale implantée à Albi, nous intervenons sur des travaux de façade, d'isolation thermique extérieure, de peinture, de revêtements de sols, d'entretien de toiture et de remise en état après sinistre.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            Notre approche repose sur trois valeurs essentielles : la qualité des réalisations, le respect des engagements et la proximité avec nos clients. Grâce à nos certifications et notre parfaite connaissance du bâti local, nous proposons des solutions adaptées à chaque projet, du simple rafraîchissement à la rénovation complète.
+          </p>
+          <a href="/entreprise" class="inline-flex items-center gap-2 text-[#1E4B8C] border-2 border-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200">
+            Découvrir notre entreprise
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+          {reassurances.map(r => (
+            <div class="bg-[#F0F5FC] rounded-2xl p-5 flex flex-col gap-3">
+              <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#1E4B8C] shadow-sm">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <Fragment set:html={r.icon} />
+                </svg>
+              </div>
+              <p class="text-[#1E4B8C] font-semibold text-sm leading-snug">{r.label}</p>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   </section>
@@ -341,7 +377,7 @@ const faqs = [
   <!-- ══════════════════════════════════════
        PARTICULIERS & PROFESSIONNELS
   ══════════════════════════════════════ -->
-  <section class="py-8 lg:py-24 bg-white">
+  <section class="py-8 lg:py-24 bg-[#F0F5FC]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <div class="text-center max-w-2xl mx-auto mb-14">
@@ -354,86 +390,59 @@ const faqs = [
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <!-- Cartes interactives : zoom/flou au clic -->
+      <div class="grid md:grid-cols-2 gap-16 items-stretch py-6">
 
-        <!-- PARTICULIERS -->
-        <div class="group bg-white rounded-3xl p-8 lg:p-10 border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col">
-          <div class="w-14 h-14 rounded-2xl bg-[#E8F0FB] flex items-center justify-center mb-6 group-hover:bg-[#1E4B8C] transition-colors duration-300">
-            <svg class="w-7 h-7 text-[#1E4B8C] group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <!-- Particuliers (active par défaut) -->
+        <div id="pp-part" class="pp-zoom bg-white border border-gray-100 shadow-sm flex flex-col p-8 lg:p-10">
+          <div class="w-14 h-14 rounded-2xl bg-[#E8F0FB] flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-[#1E4B8C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
             </svg>
           </div>
-          <div class="inline-flex items-center gap-1.5 bg-[#E8F0FB] text-[#1E4B8C] rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider mb-4 self-start">
-            Particuliers
-          </div>
-          <h3 class="text-2xl font-extrabold text-[#0A1E3D] mb-3" style="font-family:'Montserrat',sans-serif;">
-            Propriétaires &amp; locataires
-          </h3>
-          <p class="text-gray-500 text-base leading-relaxed mb-6">
-            Que ce soit pour améliorer votre confort thermique, rénover votre façade ou entretenir votre toiture, nous gérons votre projet de A à Z avec le montage des aides financières inclus.
-          </p>
+          <div class="inline-flex items-center gap-1.5 bg-[#E8F0FB] text-[#1E4B8C] rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider mb-4 self-start">Particuliers</div>
+          <h3 class="text-2xl font-extrabold text-[#0A1E3D] mb-3" style="font-family:'Montserrat',sans-serif;">Propriétaires &amp; locataires</h3>
+          <p class="text-gray-500 text-base leading-relaxed mb-6">Que ce soit pour améliorer votre confort thermique, rénover votre façade ou entretenir votre toiture, nous gérons votre projet de A à Z avec le montage des aides financières inclus.</p>
           <ul class="space-y-3 mb-8 flex-1">
-            {[
-              "Isolation thermique extérieure (ITE)",
-              "Ravalement et peinture de façade",
-              "Entretien et démoussage de toiture",
-              "Rénovation intérieure complète",
-              "Aide MaPrimeRénov', Éco-PTZ, CEE prise en charge",
-            ].map((item) => (
+            {["Isolation thermique extérieure (ITE)", "Ravalement et peinture de façade", "Entretien et démoussage de toiture", "Rénovation intérieure complète", "Aide MaPrimeRénov', Éco-PTZ, CEE prise en charge"].map(item => (
               <li class="flex items-start gap-3 text-gray-700 text-sm">
                 <span class="w-5 h-5 rounded-full bg-[#E8F0FB] flex items-center justify-center shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-[#1E4B8C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-                  </svg>
+                  <svg class="w-3 h-3 text-[#1E4B8C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 </span>
                 {item}
               </li>
             ))}
           </ul>
-          <a href="#contact" class="inline-flex items-center gap-2 bg-[#1E4B8C] hover:bg-[#153566] text-white font-bold px-7 py-3.5 rounded-xl transition-all duration-200 hover:scale-105 self-start mt-auto">
+          <a href="#contact" class="inline-flex items-center gap-2 bg-[#1E4B8C] hover:bg-[#153566] text-white font-bold px-7 py-3.5 rounded-xl transition-all duration-200 self-start mt-auto">
             Demander un devis gratuit
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
         </div>
 
-        <!-- PROFESSIONNELS -->
-        <div class="group bg-[#0A1E3D] rounded-3xl p-8 lg:p-10 flex flex-col relative overflow-hidden">
+        <!-- Professionnels (inactive par défaut) -->
+        <div id="pp-pro" class="pp-zoom bg-[#0A1E3D] relative overflow-hidden flex flex-col p-8 lg:p-10">
           <div class="absolute top-0 right-0 w-56 h-56 bg-[#1E4B8C] opacity-30 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
           <div class="absolute bottom-0 left-0 w-32 h-32 bg-[#E8650A] opacity-10 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
-          <div class="relative">
-            <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-[#E8650A] transition-colors duration-300">
+          <div class="relative flex flex-col h-full">
+            <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
               <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
               </svg>
             </div>
-            <div class="inline-flex items-center gap-1.5 bg-white/10 text-white/80 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider mb-4 self-start">
-              Professionnels
-            </div>
-            <h3 class="text-2xl font-extrabold text-white mb-3" style="font-family:'Montserrat',sans-serif;">
-              Syndics, bailleurs &amp; entreprises
-            </h3>
-            <p class="text-blue-200 text-base leading-relaxed mb-6">
-              Copropriétés, immeubles de rapport, locaux commerciaux ou patrimoine immobilier : nos équipes gèrent des chantiers multi-logements avec rigueur et respect des délais.
-            </p>
+            <div class="inline-flex items-center gap-1.5 bg-white/10 text-white/80 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider mb-4 self-start">Professionnels</div>
+            <h3 class="text-2xl font-extrabold text-white mb-3" style="font-family:'Montserrat',sans-serif;">Syndics, bailleurs &amp; entreprises</h3>
+            <p class="text-blue-200 text-base leading-relaxed mb-6">Copropriétés, immeubles de rapport, locaux commerciaux ou patrimoine immobilier : nos équipes gèrent des chantiers multi-logements avec rigueur et respect des délais.</p>
             <ul class="space-y-3 mb-8 flex-1">
-              {[
-                "Ravalement et ITE de copropriétés",
-                "Entretien de toiture pour bailleurs",
-                "Remise en état après sinistre",
-                "Peinture et revêtements en lots",
-                "Interlocuteur unique, devis détaillé",
-              ].map((item) => (
+              {["Ravalement et ITE de copropriétés", "Entretien de toiture pour bailleurs", "Remise en état après sinistre", "Peinture et revêtements en lots", "Interlocuteur unique, devis détaillé"].map(item => (
                 <li class="flex items-start gap-3 text-blue-100 text-sm">
                   <span class="w-5 h-5 rounded-full bg-[#E8650A]/20 flex items-center justify-center shrink-0 mt-0.5">
-                    <svg class="w-3 h-3 text-[#E8650A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-                    </svg>
+                    <svg class="w-3 h-3 text-[#E8650A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                   </span>
                   {item}
                 </li>
               ))}
             </ul>
-            <a href="#contact" class="inline-flex items-center gap-2 bg-[#E8650A] hover:bg-orange-700 text-white font-bold px-7 py-3.5 rounded-xl transition-all duration-200 hover:scale-105 self-start mt-auto">
+            <a href="#contact" class="inline-flex items-center gap-2 bg-[#E8650A] hover:bg-orange-700 text-white font-bold px-7 py-3.5 rounded-xl transition-all duration-200 self-start mt-auto">
               Nous contacter
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
@@ -441,95 +450,79 @@ const faqs = [
         </div>
 
       </div>
+
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       ITE — SERVICE PHARE
-  ══════════════════════════════════════ -->
-  <section class="py-8 lg:py-24 bg-[#F0F5FC]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
+  <style>
+    .pp-zoom {
+      transition: all 0.4s ease;
+      cursor: pointer;
+      border-radius: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .pp-zoom.pp-active {
+      transform: scale(1.05);
+      z-index: 10;
+      cursor: default;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+    }
+    .pp-zoom.pp-inactive {
+      filter: blur(3px);
+      opacity: 0.5;
+      z-index: 0;
+    }
+  </style>
 
-        <div class="relative order-2 lg:order-1">
-          <div class="rounded-2xl overflow-hidden shadow-xl" style="aspect-ratio:4/3;">
-            <img
-              src="/images/Page accueil/Isolation Thermique Extérieure.png"
-              alt="Isolation thermique extérieure Conesa — chantier dans le Tarn"
-              class="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-              onerror="this.style.display='none'"
-            />
-          </div>
-          <div class="absolute -bottom-5 -right-5 bg-white rounded-2xl p-3 shadow-xl">
-            <img src="/images/labels/Logo-RGE.png" alt="RGE Qualibat" class="h-14 w-auto" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
-          </div>
-        </div>
+  <script>
+  (function () {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.pp-zoom'));
+    const defaultActive = document.getElementById('pp-part');
+    if (!defaultActive) return;
 
-        <div class="order-1 lg:order-2">
-          <div class="inline-flex items-center gap-2 bg-[#E8650A]/10 text-[#E8650A] rounded-full px-4 py-1.5 text-sm font-semibold mb-6">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
-            Notre expertise principale
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mb-6 leading-tight" style="font-family:'Montserrat',sans-serif;">
-            Isolation Thermique Extérieure : améliorez votre confort et réduisez vos factures
-          </h2>
-          <p class="text-gray-600 text-lg leading-relaxed mb-8">
-            L'isolation thermique extérieure est la solution la plus efficace pour améliorer les performances énergétiques de votre logement tout en rénovant son apparence. Conesa vous accompagne de A à Z.
-          </p>
-          <ul class="space-y-4 mb-10">
-            {[
-              "Jusqu'à 30% d'économies sur vos factures de chauffage",
-              "Façade rénovée et embellie simultanément",
-              "Aides financières disponibles (MaPrimeRénov', Éco-PTZ...)",
-              "Certification RGE garantissant la qualité des travaux",
-              "Aucune nuisance à l'intérieur du logement",
-            ].map(point => (
-              <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-[#E8650A] flex items-center justify-center shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                </div>
-                <span class="text-gray-700">{point}</span>
-              </li>
-            ))}
-          </ul>
-          <a href="/isolation" class="inline-flex items-center gap-2 bg-[#1E4B8C] hover:bg-[#153566] text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 hover:scale-105">
-            Découvrir notre expertise ITE
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-        </div>
+    cards.forEach(c => c.classList.remove('pp-active', 'pp-inactive'));
+    defaultActive.classList.add('pp-active');
+    cards.filter(c => c !== defaultActive).forEach(c => c.classList.add('pp-inactive'));
 
-      </div>
-    </div>
-  </section>
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => c.classList.remove('pp-active', 'pp-inactive'));
+        card.classList.add('pp-active');
+        cards.filter(c => c !== card).forEach(c => c.classList.add('pp-inactive'));
+      });
+    });
+  })();
+  </script>
 
   <!-- ══════════════════════════════════════
        NOS MÉTIERS — STACKING CARDS
   ══════════════════════════════════════ -->
   <section id="prestations" class="bg-[#0A1E3D] pt-8 lg:pt-24">
 
-    <!-- En-tête -->
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
       <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Nos prestations</span>
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mt-3">
+      <div class="mt-3">
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight" style="font-family:'Montserrat',sans-serif;">
           Tous vos travaux de rénovation<br>avec un seul interlocuteur
         </h2>
-        <a href="/renovation" class="shrink-0 inline-flex items-center gap-2 border border-white/25 text-white/70 hover:text-white hover:border-white/50 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-200">
-          Tout voir
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
+        <h3 class="text-[#E8650A] font-semibold text-lg mt-6 mb-3">Une expertise complète pour votre habitat</h3>
+        <div class="grid sm:grid-cols-2 gap-4 max-w-3xl">
+          <p class="text-blue-200 text-base leading-relaxed">
+            La rénovation d'une habitation est un projet important qui demande l'intervention de professionnels qualifiés capables de prendre en charge différents corps de métier. Qu'il s'agisse d'améliorer une façade, de rénover des peintures ou d'entretenir une toiture, chaque intervention contribue à préserver la qualité, le confort et la valeur de votre patrimoine.
+          </p>
+          <p class="text-blue-200 text-base leading-relaxed">
+            Faire appel à un interlocuteur unique permet de simplifier le suivi des travaux, de garantir une meilleure coordination des interventions et d'assurer un résultat durable. Notre équipe vous accompagne à chaque étape, depuis l'étude de vos besoins jusqu'à la réception du chantier.
+          </p>
+        </div>
       </div>
     </div>
 
-    <!-- Stack -->
     <div id="svc-stack" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-32">
       {services.map((s, i) => (
         <div class="svc-wrap" style={`--svc-i:${i};`}>
           <a href={s.href} class="svc-card group relative flex overflow-hidden bg-white rounded-3xl">
 
-            <!-- Image gauche 1/3 -->
             <div class="hidden sm:block sm:w-80 lg:w-96 shrink-0 overflow-hidden">
               <img
                 src={encodeURI(s.image)}
@@ -541,10 +534,7 @@ const faqs = [
               />
             </div>
 
-            <!-- Contenu droite 2/3 -->
             <div class="flex-1 flex flex-col justify-center p-7 lg:p-10 min-w-0">
-
-              <!-- Icône + titre sur la même ligne -->
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-10 h-10 rounded-xl bg-[#E8F0FB] group-hover:bg-[#1E4B8C] flex items-center justify-center text-[#1E4B8C] group-hover:text-white transition-colors duration-300 shrink-0">
                   <Fragment set:html={s.icon} />
@@ -553,11 +543,7 @@ const faqs = [
                   {s.titre}
                 </h3>
               </div>
-
-              <!-- Description -->
               <p class="text-gray-500 text-base leading-relaxed mb-4">{s.desc}</p>
-
-              <!-- Bullets -->
               <ul class="space-y-2 mb-6">
                 {s.detail.map((d: string) => (
                   <li class="flex items-start gap-2.5 text-gray-600 text-sm leading-snug">
@@ -568,8 +554,6 @@ const faqs = [
                   </li>
                 ))}
               </ul>
-
-              <!-- CTA -->
               <span class="inline-flex items-center gap-2 text-[#E8650A] font-bold text-sm group-hover:gap-3 transition-all duration-150">
                 Découvrir
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -578,7 +562,6 @@ const faqs = [
               </span>
             </div>
 
-            <!-- Barre accent hover bas -->
             <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#1E4B8C] to-[#E8650A] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </a>
         </div>
@@ -615,6 +598,38 @@ const faqs = [
     }
   </style>
 
+  <!-- ══════════════════════════════════════
+       LES ÉTAPES
+  ══════════════════════════════════════ -->
+  <section class="py-8 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-16">
+        <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Les étapes</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
+          Comment se déroule<br>votre projet avec Conesa ?
+        </h2>
+        <p class="text-gray-600 mt-4 text-lg leading-relaxed">
+          De la première prise de contact jusqu'à la réception des travaux, nous vous accompagnons à chaque étape pour un projet serein et sans surprise.
+        </p>
+      </div>
+
+      <div class="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory -mx-4 px-4
+                  sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 sm:overflow-visible sm:mx-0 sm:px-0 sm:pb-0">
+        {reasons.map((r, i) => (
+          <div class={`group relative shrink-0 w-[80vw] snap-start
+                       sm:w-auto sm:shrink
+                       p-6 sm:p-8 rounded-2xl border border-gray-100
+                       hover:border-[#1E4B8C]/20 hover:shadow-lg transition-all duration-300 overflow-hidden
+                       ${i === 4 ? 'lg:col-start-2' : ''}`}>
+            <span class="text-5xl font-extrabold text-[#1E4B8C]/10 leading-none block mb-4" style="font-family:'Montserrat',sans-serif;">{r.num}</span>
+            <h3 class="font-bold text-[#1E4B8C] text-lg mb-3" style="font-family:'Montserrat',sans-serif;">{r.titre}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{r.desc}</p>
+            <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8650A] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- ══════════════════════════════════════
        RÉALISATIONS — CARROUSEL
@@ -624,9 +639,14 @@ const faqs = [
 
       <div class="mb-14">
         <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Portfolio</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
-          Des réalisations qui témoignent<br>de notre savoir-faire
-        </h2>
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mt-3">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] leading-tight" style="font-family:'Montserrat',sans-serif;">
+            Des réalisations qui témoignent<br>de notre savoir-faire
+          </h2>
+        </div>
+        <p class="text-gray-600 mt-4 text-lg leading-relaxed max-w-2xl">
+          Depuis plusieurs décennies, nous intervenons sur des projets de rénovation variés dans tout le Tarn. Isolation thermique extérieure, ravalement de façade, peinture ou rénovation après sinistre : découvrez quelques exemples de réalisations effectuées par nos équipes.
+        </p>
       </div>
 
       <RealisationsCarousel />
@@ -635,15 +655,12 @@ const faqs = [
   </section>
 
   <!-- ══════════════════════════════════════
-       AVIS CLIENTS — CAROUSEL
-  ══════════════════════════════════════ -->
-  <!-- ══════════════════════════════════════
        BLOG — CONSEILS & GUIDES
   ══════════════════════════════════════ -->
   <section class="py-8 lg:py-24 bg-[#F0F5FC]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div class="flex items-end justify-between mb-12">
+      <div class="flex items-end justify-between mb-6">
         <div>
           <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Conseils & Guides</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
@@ -655,6 +672,10 @@ const faqs = [
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
       </div>
+
+      <p class="text-gray-600 text-lg leading-relaxed mb-10 max-w-2xl">
+        Retrouvez nos conseils d'experts pour mieux comprendre les travaux de rénovation, l'isolation thermique extérieure, l'entretien des façades ou encore la valorisation de votre habitation. Des contenus conçus pour vous aider à préparer sereinement votre projet.
+      </p>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {articles.map((article) => (
@@ -689,11 +710,13 @@ const faqs = [
     </div>
   </section>
 
+  <!-- ══════════════════════════════════════
+       AVIS CLIENTS
+  ══════════════════════════════════════ -->
   <section id="avis" class="py-8 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <!-- En-tête -->
-      <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="text-center max-w-2xl mx-auto mb-6">
         <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Témoignages</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
           La satisfaction de nos clients<br>au cœur de nos engagements
@@ -709,7 +732,10 @@ const faqs = [
         </div>
       </div>
 
-      <!-- Carousel -->
+      <p class="text-center text-gray-600 text-base leading-relaxed mb-12 max-w-xl mx-auto">
+        La confiance de nos clients est notre plus belle récompense. Découvrez les retours d'expérience de propriétaires ayant confié leurs travaux d'isolation, de façade, de peinture ou de rénovation à nos équipes.
+      </p>
+
       <style>
         #ac-root { --per-page: 1; }
         @media (min-width: 640px)  { #ac-root { --per-page: 2; } }
@@ -717,8 +743,6 @@ const faqs = [
       </style>
 
       <div class="relative px-8 sm:px-10" id="ac-root">
-
-        <!-- Track -->
         <div class="overflow-hidden">
           <div class="flex items-start transition-transform duration-500 ease-out" id="ac-track">
             {avis.map((a) => (
@@ -756,34 +780,16 @@ const faqs = [
           </div>
         </div>
 
-        <!-- Flèche précédente -->
-        <button
-          id="ac-prev"
-          aria-label="Avis précédent"
-          class="absolute top-1/2 -translate-y-1/2 left-0 w-10 h-10 bg-white border-2 border-gray-200 rounded-full shadow flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white hover:border-[#1E4B8C] transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
-          </svg>
+        <button id="ac-prev" aria-label="Avis précédent" class="absolute top-1/2 -translate-y-1/2 left-0 w-10 h-10 bg-white border-2 border-gray-200 rounded-full shadow flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white hover:border-[#1E4B8C] transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="ac-next" aria-label="Avis suivant" class="absolute top-1/2 -translate-y-1/2 right-0 w-10 h-10 bg-white border-2 border-gray-200 rounded-full shadow flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white hover:border-[#1E4B8C] transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </button>
 
-        <!-- Flèche suivante -->
-        <button
-          id="ac-next"
-          aria-label="Avis suivant"
-          class="absolute top-1/2 -translate-y-1/2 right-0 w-10 h-10 bg-white border-2 border-gray-200 rounded-full shadow flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white hover:border-[#1E4B8C] transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
-
-        <!-- Points de navigation -->
         <div class="flex justify-center gap-2 mt-10" id="ac-dots"></div>
-
       </div>
 
-      <!-- CTA laisser un avis -->
       <div class="flex justify-center mt-10">
         <a
           href="https://www.google.com/maps/place/Conesa+SARL/@43.9325239,2.1252347,12523m/data=!3m1!1e3!4m12!1m2!2m1!1sconesa+albi!3m8!1s0x12addd59965d7957:0xc75c2ab3d822a74d!8m2!3d43.952706!4d2.1512801!9m1!1b1!15sCgtjb25lc2EgYWxiaZIBB3BhaW50ZXLgAQA!16s%2Fg%2F1vf_2r_d?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D"
@@ -878,7 +884,6 @@ const faqs = [
     goTo(0);
     resetAuto();
 
-    // Swipe tactile
     let acTouchX = 0;
     track?.addEventListener('touchstart', (e) => { acTouchX = e.touches[0].clientX; }, { passive: true });
     track?.addEventListener('touchend', (e) => {
@@ -886,7 +891,6 @@ const faqs = [
       if (Math.abs(delta) > 50) { delta > 0 ? goTo(current + 1) : goTo(current - 1); resetAuto(); }
     }, { passive: true });
 
-    // Lire plus / Lire moins — accordéon : un seul avis ouvert à la fois
     const readMoreBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('.ac-read-more'));
 
     readMoreBtns.forEach(btn => {
@@ -899,7 +903,6 @@ const faqs = [
       btn.addEventListener('click', () => {
         const isExpanded = btn.dataset.expanded === 'true';
 
-        // Ferme tous les autres
         readMoreBtns.forEach(other => {
           if (other === btn) return;
           const otherText = other.previousElementSibling as HTMLElement | null;
@@ -909,7 +912,6 @@ const faqs = [
           other.textContent = 'Lire plus';
         });
 
-        // Toggle l'avis cliqué
         btn.dataset.expanded = isExpanded ? 'false' : 'true';
         textEl.style.maxHeight = isExpanded ? '5.2rem' : textEl.scrollHeight + 'px';
         btn.textContent = isExpanded ? 'Lire plus' : 'Lire moins';
@@ -973,7 +975,6 @@ const faqs = [
       trigger.addEventListener('click', () => {
         const isOpen = item.dataset.open === 'true';
 
-        // Ferme tous les autres
         document.querySelectorAll<HTMLElement>('.faq-item').forEach(other => {
           other.dataset.open = 'false';
           const b = other.querySelector<HTMLElement>('.faq-body')!;
@@ -1005,7 +1006,7 @@ const faqs = [
           <span class="inline-block bg-[#E8650A]/20 text-[#E8650A] border border-[#E8650A]/30 rounded-full px-4 py-1.5 text-sm font-semibold mb-6">
             Devis gratuit & sans engagement
           </span>
-          <h2 class="text-3xl sm:text-4xl lg:text-4xl font-extrabold text-white mb-6 leading-tight" style="font-family:'Montserrat',sans-serif;">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6 leading-tight" style="font-family:'Montserrat',sans-serif;">
             Vous avez un projet<br>de rénovation dans le Tarn ?
           </h2>
           <p class="text-blue-200 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
