@@ -2,6 +2,39 @@
 
 Site vitrine Astro v6 + Tailwind CSS v4 pour Conesa, entreprise familiale de rénovation dans le Tarn (81) depuis +55 ans.
 
+## État d'avancement — Prochaines étapes (màj 2026-06-12)
+
+### Pages services
+| URL | Fichier | État |
+|---|---|---|
+| `/isolation` | `src/pages/isolation.astro` | ✅ |
+| `/ravalement-facade` | `src/pages/ravalement-facade.astro` | ✅ |
+| `/peinture-interieure-exterieure` | `src/pages/peinture-interieure-exterieure.astro` | ✅ |
+| `/nettoyage-toiture` | à créer | ❌ 404 |
+| `/revetements-sols` | à créer | ❌ 404 |
+| `/travaux-apres-sinistre` | à créer | ❌ 404 |
+
+Contenu source des pages manquantes : `contenu/Domaine métier/[slug].md`
+
+### Liens Header/Footer à corriger (après création des pages)
+- `Header.astro` : Toiture → `/renovation#toiture`, Sols → `/renovation#sols`, Après sinistre → `/renovation#sinistre` — **à remplacer par les vraies URLs**
+- `Footer.astro` : idem, le tableau `services` pointe encore vers `/renovation#*`
+
+### Pages villes manquantes
+Albi, Gaillac, Castres, Graulhet ✅ — À créer : **Carmaux, Lavaur, Réalmont, Mazamet, Saint-Sulpice**
+
+### Tâches restantes avant mise en ligne
+- [ ] Créer `/nettoyage-toiture`, `/revetements-sols`, `/travaux-apres-sinistre`
+- [ ] Créer les 5 pages villes manquantes
+- [ ] Corriger les liens Header + Footer vers les nouvelles pages services
+- [ ] Passer SMTP Gmail → Brevo + `MAIL_TO` → `conesa81@wanadoo.fr`
+- [ ] Renseigner hébergeur dans `mentions-legales.astro` (section 3 : "À renseigner")
+- [ ] Photos manquantes (réalisations, équipe) à fournir par le client
+- [ ] Conversion images en WebP
+- [ ] Mettre à jour `SITE_URL` avec le domaine final
+
+---
+
 ## Stack technique
 
 - **Framework** : Astro v6.4.2 (site statique, pas de SSR)
@@ -33,9 +66,11 @@ src/
   layouts/
     BaseLayout.astro            — layout global (OG, canonical, noindex staging)
   pages/
-    index.astro                 — page d'accueil (9 sections)
-    isolation.astro
-    renovation.astro
+    index.astro                 — page d'accueil (12 sections, V2)
+    isolation.astro             — ✅ page service ITE
+    ravalement-facade.astro     — ✅ page service ravalement
+    peinture-interieure-exterieure.astro — ✅ page service peinture
+    renovation.astro            — ancienne page agrégat (conservée)
     entreprise.astro
     mentions-legales.astro      — noindex forcé
     politique-confidentialite.astro — noindex forcé
@@ -47,10 +82,19 @@ public/
   contact.php                   — backend formulaire (PHP + PHPMailer)
   images/
     Logo/
-      Logo-Conesa.png
-      Open graph.png            — image OG (1200×630)
+      Logo-Conesa.svg           — logo principal (SVG)
+      Logo-Conesa.png           — fallback PNG
+      Open graph.png            — image OG (1200×630, dans public/images/Logo/)
     labels/Logo-RGE.png
-    Page accueil / Page-isolation-ext / Page rénovation / Entreprise / Villes/
+    Page accueil/               — images homepage
+    Page isolation ext/         — images ITE
+    Page ravalement de façade/  — images ravalement (Rénovation façade.png)
+    Page peinture interieure exterieure/ — (Peinture intérieur et extérieure.png)
+    Page nettoyage toiture/     — (Hero nettoyage toiture.png, Entretien toiture.png)
+    Page revetements sols/      — (Revêtement de sol.png)
+    Page travaux apres sinistre/ — (Travaux après sinistre.png)
+    Entreprise/
+    Villes/
 storage/
   leads.sqlite                  — base SQLite leads (créée auto, ignorée par git)
 deploy/
@@ -323,6 +367,40 @@ www/
 - [ ] Google Analytics ou Matomo (optionnel)
 - [ ] reCAPTCHA v3 (optionnel, si spam)
 
+## Page d'accueil V2 — Structure (12 sections)
+
+`src/pages/index.astro` — dernière version commitée sur `main`
+
+1. **Hero** — H1 + description + 2 CTA (Devis gratuit / Être rappelé)
+2. **Stats bar** — 4 chiffres clés sur fond orange (`#E8650A`)
+3. **Présentation entreprise** — 2 colonnes : texte + 6 badges réassurance + CTA `/entreprise`
+4. **Particuliers & Pros** — 2 cards interactives avec effet **zoom/blur** :
+   - Active : `transform: scale(1.05)` + ombre portée
+   - Inactive : `filter: blur(3px); opacity: 0.5`
+   - Classes CSS : `.pp-zoom`, `.pp-active`, `.pp-inactive`
+   - Script : `Array.from(document.querySelectorAll<HTMLElement>('.pp-zoom'))` (pattern TypeScript-safe pour Astro)
+5. **Nos prestations** (stacking cards) — fond `#0A1E3D`, 6 cards sticky (`position: sticky`, `--svc-i` CSS custom property), sous-titre "Une expertise complète pour votre habitat" avec description 2 colonnes
+6. **Les étapes** — 5 étapes numérotées
+7. **Réalisations** — composant `RealisationsCarousel`
+8. **Blog** — 4 articles, grille 4 colonnes
+9. **Avis clients** — 6 témoignages + lien Google
+10. **Zones d'intervention** — composant `ZonesIntervention`
+11. **FAQ** — accordéon 6 questions + JSON-LD FAQPage
+12. **CTA Final** — bloc bleu double bouton
+
+### Stacking cards — liens services dans index.astro
+```js
+const services = [
+  { titre: "Isolation Thermique Extérieure", href: "/isolation", image: "/images/Page isolation ext/..." },
+  { titre: "Ravalement de façade",           href: "/ravalement-facade", image: "/images/Page ravalement de façade/Rénovation façade.png" },
+  { titre: "Peinture intérieure & extérieure", href: "/peinture-interieure-exterieure", image: "/images/Page peinture interieure exterieure/Peinture intérieur et extérieure.png" },
+  { titre: "Nettoyage & entretien de toiture", href: "/nettoyage-toiture", image: "/images/Page nettoyage toiture/Entretien toiture.png" },
+  { titre: "Revêtements de sols",            href: "/revetements-sols", image: "/images/Page revetements sols/Revêtement de sol.png" },
+  { titre: "Travaux après sinistre",         href: "/travaux-apres-sinistre", image: "/images/Page travaux apres sinistre/Travaux après sinistre.png" },
+]
+```
+⚠️ Les 3 derniers liens (nettoyage, sols, sinistre) mènent vers des **404** — pages à créer.
+
 ## Pages villes existantes
 
 Albi, Gaillac, Castres, Graulhet — structure identique pour chaque ville :
@@ -336,8 +414,20 @@ Albi, Gaillac, Castres, Graulhet — structure identique pour chaque ville :
 - **Padding sections** : `py-8 lg:py-24` (mobile 32px, desktop 96px) — uniforme sur toutes les sections de toutes les pages et composants
 - **Images hero** : `fetchpriority="high"` (pas de lazy loading — c'est le LCP)
 - **Toutes les autres images** : `loading="lazy" decoding="async"`
+- **Chemins images avec espaces/accents** : toujours encapsuler dans `encodeURI()` dans les attributs `src`
 - **JSON-LD** : injecté via `<script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({...})} />`
 - **noindex pages légales** : `<meta slot="head" name="robots" content="noindex, follow" />`
+- **Scripts Astro (TypeScript)** : utiliser `Array.from(document.querySelectorAll<HTMLElement>('.class'))` + `.filter()` — évite les erreurs TS sur NodeList
+
+## Git — Fichiers sensibles à ne JAMAIS committer
+
+Ces fichiers existent à la racine du projet mais sont hors git (`.gitignore`) :
+- `.htpasswd` — identifiants Basic Auth staging
+- `debug.php`, `info.php` — outils de debug temporaires
+- `Contact.php`, `formulaire.js`, `header.php` — fichiers de test/draft isolés
+- `.env`, `.env.staging` — variables d'environnement
+
+Lors d'un `git add`, ne stager **que** les fichiers `src/`, `public/`, `contenu/`, `deploy/`, et les fichiers de config Astro/Tailwind.
 
 ## GitHub
 
