@@ -318,25 +318,15 @@ const jsonLdFaq = JSON.stringify({
         </p>
       </div>
 
-      <div class="divide-y divide-gray-200 bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
-        {signes.map((s, i) => (
-          <div class="flex items-start gap-6 lg:gap-10 px-7 py-8 group hover:bg-[#F8FAFF] transition-colors duration-200">
-            <span
-              class="shrink-0 text-7xl lg:text-8xl font-black leading-none select-none transition-colors duration-200"
-              style={`font-family:'Montserrat',sans-serif; color: ${i === 0 ? 'rgba(232,101,10,0.18)' : i === 1 ? 'rgba(30,75,140,0.12)' : i === 2 ? 'rgba(232,101,10,0.15)' : 'rgba(30,75,140,0.10)'};`}
-            >
-              {String(i + 1).padStart(2, '0')}
+      <div class="grid sm:grid-cols-2 gap-4">
+        {signes.map(s => (
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-[#E8650A]/20 transition-all duration-200">
+            <span class="inline-flex items-center gap-1 bg-[#E8650A]/10 text-[#E8650A] text-xs font-semibold px-2.5 py-1 rounded-full mb-4">
+              <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+              Alerte
             </span>
-            <div class="flex-1 pt-2">
-              <div class="flex items-start justify-between gap-4 mb-2">
-                <h3 class="font-bold text-[#1E4B8C] text-base leading-snug" style="font-family:'Montserrat',sans-serif;">{s.titre}</h3>
-                <span class="shrink-0 inline-flex items-center gap-1 bg-[#E8650A]/10 text-[#E8650A] text-xs font-semibold px-2.5 py-1 rounded-full mt-0.5">
-                  <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-                  Alerte
-                </span>
-              </div>
-              <p class="text-gray-600 text-sm leading-relaxed">{s.desc}</p>
-            </div>
+            <h3 class="font-bold text-[#1E4B8C] text-base mb-2" style="font-family:'Montserrat',sans-serif;">{s.titre}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{s.desc}</p>
           </div>
         ))}
       </div>
@@ -358,43 +348,13 @@ const jsonLdFaq = JSON.stringify({
         </p>
       </div>
 
-      <!-- Carousel mobile/tablette — grille desktop -->
-      <div class="relative">
-        <!-- Flèches tablette (sm → md, cachées lg+) -->
-        <button id="prest-prev" aria-label="Précédent" class="hidden sm:flex lg:hidden absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white shadow-md rounded-full items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white transition-all duration-200">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-        </button>
-        <button id="prest-next" aria-label="Suivant" class="hidden sm:flex lg:hidden absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white shadow-md rounded-full items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white transition-all duration-200">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </button>
-
-        <!-- Conteneur scroll / grille -->
-        <div
-          id="prest-scroll"
-          class="flex lg:grid lg:grid-cols-3 gap-5 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pb-4 lg:pb-0"
-          style="scrollbar-width:none; -webkit-overflow-scrolling:touch;"
-        >
-          {prestations.map(p => (
-            <div class="w-full sm:w-[calc(50%-10px)] lg:w-auto flex-none lg:flex-auto snap-start group bg-[#F0F5FC] rounded-2xl p-7 border border-transparent hover:border-[#1E4B8C]/20 hover:shadow-lg transition-all duration-300">
-              <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#1E4B8C] group-hover:bg-[#1E4B8C] group-hover:text-white transition-colors duration-300 mb-5 shadow-sm">
-                <Fragment set:html={p.icon} />
-              </div>
-              <h3 class="font-bold text-[#1E4B8C] text-base mb-3" style="font-family:'Montserrat',sans-serif;">{p.titre}</h3>
-              <p class="text-gray-600 text-sm leading-relaxed">{p.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        <!-- Indicateurs dots (mobile uniquement) -->
-        <div id="prest-dots" class="flex lg:hidden justify-center gap-2 mt-5">
-          {prestations.map((_, i) => (
-            <button
-              data-dot={i}
-              aria-label={`Slide ${i + 1}`}
-              class={`prest-dot h-2 rounded-full transition-all duration-300 ${i === 0 ? 'w-6 bg-[#1E4B8C]' : 'w-2 bg-gray-300'}`}
-            />
-          ))}
-        </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {prestations.map(p => (
+          <div class="bg-[#F0F5FC] rounded-2xl p-7 border border-transparent hover:border-[#1E4B8C]/20 hover:shadow-lg transition-all duration-300">
+            <h3 class="font-bold text-[#1E4B8C] text-base mb-3" style="font-family:'Montserrat',sans-serif;">{p.titre}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{p.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -431,24 +391,12 @@ const jsonLdFaq = JSON.stringify({
         </h2>
       </div>
 
-      <div class="grid sm:grid-cols-2 rounded-3xl overflow-hidden border border-gray-200 shadow-sm">
+      <div class="grid sm:grid-cols-2 gap-8 lg:gap-12">
         {avantages.map((a, i) => (
-          <div class={[
-            'p-8 lg:p-10 relative overflow-hidden',
-            i % 2 === 0 ? 'bg-white' : 'bg-[#F0F5FC]',
-            i < 2 ? 'border-b border-gray-200' : '',
-            i % 2 === 0 ? 'sm:border-r border-gray-200' : '',
-          ].join(' ')}>
-            <div class={`w-10 h-10 rounded-xl flex items-center justify-center mb-5 ${i % 2 === 0 ? 'bg-[#1E4B8C]/8' : 'bg-[#E8650A]/10'}`}>
-              <svg class={`w-5 h-5 ${i % 2 === 0 ? 'text-[#1E4B8C]' : 'text-[#E8650A]'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                {i === 0 && <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>}
-                {i === 1 && <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>}
-                {i === 2 && <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>}
-                {i === 3 && <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>}
-              </svg>
-            </div>
-            <h3 class="font-bold text-[#1E4B8C] text-lg mb-3 relative" style="font-family:'Montserrat',sans-serif;">{a.titre}</h3>
-            <p class="text-gray-600 text-sm leading-relaxed relative">{a.desc}</p>
+          <div>
+            <div class={`h-1 w-12 rounded-full mb-5 ${i % 2 === 0 ? 'bg-[#E8650A]' : 'bg-[#1E4B8C]'}`}></div>
+            <h3 class="font-extrabold text-[#1E4B8C] text-xl mb-3" style="font-family:'Montserrat',sans-serif;">{a.titre}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{a.desc}</p>
           </div>
         ))}
       </div>
@@ -648,42 +596,6 @@ const jsonLdFaq = JSON.stringify({
 </BaseLayout>
 
 <script>
-  // ── Carrousel prestations ──────────────────────────────
-  const scroll = document.getElementById('prest-scroll') as HTMLElement | null;
-  const dots   = document.querySelectorAll<HTMLElement>('.prest-dot');
-
-  const getCardWidth = () => {
-    const card = scroll?.querySelector<HTMLElement>('[class*="snap-start"]');
-    if (!card || !scroll) return 300;
-    const gap = parseInt(getComputedStyle(scroll).gap) || 20;
-    return card.offsetWidth + gap;
-  };
-
-  document.getElementById('prest-prev')?.addEventListener('click', () => {
-    scroll?.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
-  });
-  document.getElementById('prest-next')?.addEventListener('click', () => {
-    scroll?.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
-  });
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const idx = Number(dot.dataset.dot);
-      scroll?.scrollTo({ left: idx * getCardWidth(), behavior: 'smooth' });
-    });
-  });
-
-  scroll?.addEventListener('scroll', () => {
-    if (!scroll) return;
-    const idx = Math.round(scroll.scrollLeft / getCardWidth());
-    dots.forEach((d, i) => {
-      d.classList.toggle('w-6', i === idx);
-      d.classList.toggle('w-2', i !== idx);
-      d.classList.toggle('bg-[#1E4B8C]', i === idx);
-      d.classList.toggle('bg-gray-300', i !== idx);
-    });
-  }, { passive: true });
-
   // ── FAQ accordion ──────────────────────────────────────
   document.querySelectorAll<HTMLElement>('.faq-item').forEach(item => {
     const trigger = item.querySelector<HTMLButtonElement>('.faq-trigger')!;

@@ -2,7 +2,7 @@
 
 Site vitrine Astro v6 + Tailwind CSS v4 pour Conesa, entreprise familiale de rénovation dans le Tarn (81) depuis +55 ans.
 
-## État d'avancement — Prochaines étapes (màj 2026-06-12)
+## État d'avancement — Prochaines étapes (màj 2026-06-15)
 
 ### Pages services
 | URL | Fichier | État |
@@ -10,23 +10,20 @@ Site vitrine Astro v6 + Tailwind CSS v4 pour Conesa, entreprise familiale de ré
 | `/isolation` | `src/pages/isolation.astro` | ✅ |
 | `/ravalement-facade` | `src/pages/ravalement-facade.astro` | ✅ |
 | `/peinture-interieure-exterieure` | `src/pages/peinture-interieure-exterieure.astro` | ✅ |
-| `/nettoyage-toiture` | à créer | ❌ 404 |
-| `/revetements-sols` | à créer | ❌ 404 |
-| `/travaux-apres-sinistre` | à créer | ❌ 404 |
+| `/nettoyage-toiture` | `src/pages/nettoyage-toiture.astro` | ✅ |
+| `/revetements-sols` | `src/pages/revetements-sols.astro` | ✅ |
+| `/travaux-apres-sinistre` | `src/pages/travaux-apres-sinistre.astro` | ✅ |
 
-Contenu source des pages manquantes : `contenu/Domaine métier/[slug].md`
+Toutes les pages services sont créées. Contenu source : `contenu/Domaine métier/[slug].md`
 
-### Liens Header/Footer à corriger (après création des pages)
-- `Header.astro` : Toiture → `/renovation#toiture`, Sols → `/renovation#sols`, Après sinistre → `/renovation#sinistre` — **à remplacer par les vraies URLs**
-- `Footer.astro` : idem, le tableau `services` pointe encore vers `/renovation#*`
+### Liens Header/Footer
+- Tous les liens services pointent vers les vraies URLs ✅ (plus de `/renovation#*`)
 
 ### Pages villes manquantes
 Albi, Gaillac, Castres, Graulhet ✅ — À créer : **Carmaux, Lavaur, Réalmont, Mazamet, Saint-Sulpice**
 
 ### Tâches restantes avant mise en ligne
-- [ ] Créer `/nettoyage-toiture`, `/revetements-sols`, `/travaux-apres-sinistre`
-- [ ] Créer les 5 pages villes manquantes
-- [ ] Corriger les liens Header + Footer vers les nouvelles pages services
+- [ ] Créer les 5 pages villes manquantes (Carmaux, Lavaur, Réalmont, Mazamet, Saint-Sulpice)
 - [ ] Passer SMTP Gmail → Brevo + `MAIL_TO` → `conesa81@wanadoo.fr`
 - [ ] Renseigner hébergeur dans `mentions-legales.astro` (section 3 : "À renseigner")
 - [ ] Photos manquantes (réalisations, équipe) à fournir par le client
@@ -60,7 +57,7 @@ Albi, Gaillac, Castres, Graulhet ✅ — À créer : **Carmaux, Lavaur, Réalmon
 src/
   components/
     Header.astro                — navigation fixe (desktop dropdown + mobile split lien/flèche)
-    Footer.astro                — formulaire de contact + liens
+    Footer.astro                — formulaire de contact + carte Google Maps + liens
     RealisationsCarousel.astro  — carousel réalisations (lazy loading)
     ZonesIntervention.astro     — carte zones d'intervention
   layouts/
@@ -70,6 +67,9 @@ src/
     isolation.astro             — ✅ page service ITE
     ravalement-facade.astro     — ✅ page service ravalement
     peinture-interieure-exterieure.astro — ✅ page service peinture
+    nettoyage-toiture.astro     — ✅ page service toiture
+    revetements-sols.astro      — ✅ page service sols
+    travaux-apres-sinistre.astro — ✅ page service sinistre
     renovation.astro            — ancienne page agrégat (conservée)
     entreprise.astro
     mentions-legales.astro      — noindex forcé
@@ -91,8 +91,8 @@ public/
     Page ravalement de façade/  — images ravalement (Rénovation façade.png)
     Page peinture interieure exterieure/ — (Peinture intérieur et extérieure.png)
     Page nettoyage toiture/     — (Hero nettoyage toiture.png, Entretien toiture.png)
-    Page revetements sols/      — (Revêtement de sol.png)
-    Page travaux apres sinistre/ — (Travaux après sinistre.png)
+    Page revetements sols/      — (Hero revêtement de sols.png, Revêtement de sol.png)
+    Page travaux apres sinistre/ — (Hero travaux après sinistre.png, Travaux après sinistre.png)
     Entreprise/
     Villes/
 storage/
@@ -144,6 +144,10 @@ Tout ce qui est coché est déjà implémenté dans le code.
 - [x] Alt descriptifs sur tous les héros
 - [x] `fetchpriority="high"` sur les images hero (signal LCP)
 - [x] `loading="lazy"` + `decoding="async"` sur toutes les images hors viewport
+
+### Technique ✅ (ajouts récents)
+- [x] JSON-LD `Service` + `BreadcrumbList` + `FAQPage` sur toutes les pages services
+- [x] Carte Google Maps (iframe embed) dans `Footer.astro`
 
 ### À faire
 - [ ] Maillage interne : pages villes → pages services (isolation, rénovation)
@@ -355,11 +359,13 @@ www/
 
 ## Checklist avant mise en ligne (prod)
 
+- [x] Créer les 6 pages services (`/nettoyage-toiture`, `/revetements-sols`, `/travaux-apres-sinistre`)
+- [x] Corriger tous les liens Header + Footer vers les vraies URLs
+- [ ] Créer les 5 pages villes manquantes (Carmaux, Lavaur, Réalmont, Mazamet, Saint-Sulpice)
 - [ ] Passer SMTP de Gmail → Brevo (créer compte, récupérer clé SMTP)
 - [ ] Changer `MAIL_TO` → `conesa81@wanadoo.fr`
 - [ ] Renseigner hébergeur dans `mentions-legales.astro` (section 3, actuellement "À renseigner")
 - [ ] Photos manquantes (réalisations, équipe, chantiers) — à fournir par le client
-- [ ] Créer les 5 pages villes manquantes (Carmaux, Lavaur, Réalmont, Mazamet, Saint-Sulpice)
 - [ ] Mettre à jour `SITE_URL` dans `.env` (ou `astro.config.mjs`) avec le domaine réel
 - [ ] `composer install --no-dev` sur le serveur de prod
 - [ ] Vérifier `session_start()` chez l'hébergeur
@@ -399,7 +405,7 @@ const services = [
   { titre: "Travaux après sinistre",         href: "/travaux-apres-sinistre", image: "/images/Page travaux apres sinistre/Travaux après sinistre.png" },
 ]
 ```
-⚠️ Les 3 derniers liens (nettoyage, sols, sinistre) mènent vers des **404** — pages à créer.
+Tous les liens sont fonctionnels ✅
 
 ## Pages villes existantes
 
@@ -418,6 +424,100 @@ Albi, Gaillac, Castres, Graulhet — structure identique pour chaque ville :
 - **JSON-LD** : injecté via `<script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({...})} />`
 - **noindex pages légales** : `<meta slot="head" name="robots" content="noindex, follow" />`
 - **Scripts Astro (TypeScript)** : utiliser `Array.from(document.querySelectorAll<HTMLElement>('.class'))` + `.filter()` — évite les erreurs TS sur NodeList
+
+## Design système — Pages services
+
+Chaque page service suit la même structure de sections, avec des rendus visuels **intentionnellement différents** pour éviter la répétition.
+
+### Structure type d'une page service
+1. **Hero** — image plein fond + breadcrumb + H1 + description + 2 CTAs + badge RGE
+2. **Présentation** — 2 colonnes : texte + liste checkmarks / image + stats flottantes
+3. **Diagnostic** — types de signes ou situations (section `bg-[#F0F5FC]`)
+4. **Nos savoir-faire** — prestations détaillées (section `bg-white`)
+5. **CTA intermédiaire** — bandeau `bg-[#1E4B8C]`
+6. **Avantages** — bénéfices client (section `bg-[#F0F5FC]`)
+7. **Étapes** — timeline numérotée (section `bg-white`)
+8. **Pourquoi Conesa** — texte + bloc engagements fond bleu (section `bg-[#F0F5FC]`)
+9. **Zones d'intervention** — villes + maillage interne (section `bg-white`)
+10. **ZonesIntervention** — composant carte
+11. **FAQ** — accordéon + JSON-LD FAQPage (section `bg-white`)
+12. **CTA final** — bloc bleu arrondi avec motif (section `bg-[#F0F5FC]`)
+
+### Design des sections (sans icônes — règle absolue)
+
+**Section Diagnostic** (signes / types de situations) :
+```html
+<!-- Cards 2 colonnes, badge "Alerte" orange en tête, pas de chiffres ni d'icônes -->
+<div class="grid sm:grid-cols-2 gap-4">
+  {signes.map(s => (
+    <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-[#E8650A]/20 transition-all duration-200">
+      <span class="inline-flex items-center gap-1 bg-[#E8650A]/10 text-[#E8650A] text-xs font-semibold px-2.5 py-1 rounded-full mb-4">
+        <!-- icône warning SVG --> Alerte
+      </span>
+      <h3 ...>{s.titre}</h3>
+      <p ...>{s.desc}</p>
+    </div>
+  ))}
+</div>
+```
+
+**Section Prestations — 4 items** (checkerboard bleu/blanc) :
+```html
+<!-- Grille 2×2, alternance bg-[#1E4B8C] / bg-white via i % 2 -->
+<div class="grid sm:grid-cols-2 gap-px bg-gray-200 rounded-3xl overflow-hidden shadow-sm">
+  {prestations.map((p, i) => (
+    <div class={`p-8 lg:p-10 ${i % 2 === 0 ? 'bg-[#1E4B8C]' : 'bg-white'}`}>
+      <h3 class={i % 2 === 0 ? 'text-white' : 'text-[#1E4B8C]'}>{p.titre}</h3>
+      <p class={i % 2 === 0 ? 'text-blue-200' : 'text-gray-600'}>{p.desc}</p>
+    </div>
+  ))}
+</div>
+```
+
+**Section Prestations — 5-6 items** (grille simple, pas d'icônes) :
+```html
+<!-- Utilisé sur ravalement (5 items) et peinture (6 items avec badge) -->
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+  {prestations.map(p => (
+    <div class="bg-[#F0F5FC] rounded-2xl p-7 border border-transparent hover:border-[#1E4B8C]/20 hover:shadow-lg transition-all duration-300">
+      <!-- optionnel : badge coloré (peinture uniquement) -->
+      <h3 ...>{p.titre}</h3>
+      <p ...>{p.desc}</p>
+    </div>
+  ))}
+</div>
+```
+
+**Section Avantages** (barre d'accent colorée, pas d'icônes) :
+```html
+<!-- Barre h-1 w-12 colorée en tête, titre large, texte -->
+<div class="grid sm:grid-cols-2 gap-8 lg:gap-12">
+  {avantages.map((a, i) => (
+    <div>
+      <div class={`h-1 w-12 rounded-full mb-5 ${i % 2 === 0 ? 'bg-[#E8650A]' : 'bg-[#1E4B8C]'}`}></div>
+      <h3 class="font-extrabold text-[#1E4B8C] text-xl mb-3">{a.titre}</h3>
+      <p class="text-gray-600 text-sm leading-relaxed">{a.desc}</p>
+    </div>
+  ))}
+</div>
+<!-- Si avantages a un champ color (orange/blue), utiliser a.color à la place de i % 2 -->
+```
+
+**Pas de carousel sur les pages services** — les carousels ont été supprimés de toutes les pages services. Utiliser des grilles statiques uniquement.
+
+### JSON-LD sur les pages services
+Chaque page service injecte 3 blocs JSON-LD dans le `<head>` :
+```astro
+<script is:inline slot="head" type="application/ld+json" set:html={jsonLdService} />
+<script is:inline slot="head" type="application/ld+json" set:html={jsonLdBreadcrumb} />
+<script is:inline slot="head" type="application/ld+json" set:html={jsonLdFaq} />
+```
+
+### Footer — Google Maps
+Section carte ajoutée entre le formulaire et les colonnes footer :
+- Adresse : 31 Petit Chemin des Broucouniès, 81000 Albi
+- Iframe Google Maps sans clé API : `?q=[adresse encodée]&hl=fr&z=16&output=embed`
+- Lien "Ouvrir dans Google Maps" → `maps.google.com/?q=...` (target="_blank")
 
 ## Git — Fichiers sensibles à ne JAMAIS committer
 

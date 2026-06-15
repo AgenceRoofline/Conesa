@@ -4,119 +4,81 @@ import ZonesIntervention from '../components/ZonesIntervention.astro';
 
 const prestations = [
   {
-    badge: "Intérieur",
-    titre: "Peinture des murs & plafonds",
-    desc: "Rénovation des pièces de vie, chambres, cuisines et couloirs. Correction des imperfections, application uniforme pour un résultat net et homogène sur tous types de supports.",
-    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>`,
-    badgeColor: "blue",
+    titre: "Sols PVC",
+    desc: "Polyvalents et faciles d'entretien, les sols PVC s'adaptent à tous les espaces résidentiels et professionnels. Disponibles dans une grande variété de coloris et d'effets décoratifs, ils offrent un excellent rapport qualité-prix.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>`,
   },
   {
-    badge: "Intérieur",
-    titre: "Préparation des supports",
-    desc: "Rebouchage, ponçage, lissage et impression avant toute application. Une préparation rigoureuse des surfaces garantit l'adhérence et la durabilité du résultat final.",
-    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>`,
-    badgeColor: "blue",
-  },
-  {
-    badge: "Décoration",
-    titre: "Finitions & effets décoratifs",
-    desc: "Peintures mates, satinées, velours ou brillantes selon vos préférences. Enduits décoratifs, papiers peints panoramiques et textures pour des intérieurs uniques et personnalisés.",
+    titre: "Sols vinyles",
+    desc: "Les sols vinyles combinent liberté décorative et résistance à l'usage quotidien. Ils imitent à la perfection le bois, le béton ou la pierre et constituent une solution idéale pour les rénovations intérieures modernes.",
     icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>`,
-    badgeColor: "orange",
   },
   {
-    badge: "Décoration",
-    titre: "Conseil couleurs & personnalisation",
-    desc: "Accompagnement dans le choix des teintes, harmonies et matières pour créer des espaces à votre image. Chaque projet est unique, chaque intérieur mérite une approche sur mesure.",
-    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>`,
-    badgeColor: "orange",
+    titre: "Moquettes",
+    desc: "La moquette crée des espaces chaleureux et confortables tout en améliorant l'isolation acoustique des pièces. Idéale pour les chambres, les bureaux et les espaces de vie où le confort est une priorité.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>`,
   },
   {
-    badge: "Extérieur",
-    titre: "Peinture de façade",
-    desc: "Application de peintures haute performance résistantes aux UV et aux intempéries. Rafraîchissement esthétique et protection renforcée des murs extérieurs pour plusieurs années.",
-    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>`,
-    badgeColor: "blue",
-  },
-  {
-    badge: "Extérieur",
-    titre: "Protection & rénovation des supports",
-    desc: "Reprise des anciens revêtements, traitement avant application, sous-couches d'accrochage. Finitions durables résistant à l'exposition solaire, au gel et à l'humidité.",
-    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>`,
-    badgeColor: "blue",
+    titre: "Parquets stratifiés",
+    desc: "Le parquet stratifié apporte l'esthétique chaleureuse du bois naturel avec une facilité d'entretien et un prix accessible. Il s'intègre parfaitement dans les projets de rénovation contemporaine.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>`,
   },
 ];
 
-const signaux = [
+const signes = [
   {
-    titre: "Peinture qui s'écaille ou se cloque",
-    desc: "L'écaillage et le cloquage signalent une peinture en fin de vie ou un problème d'humidité sous-jacent. Une reprise s'impose avant que les surfaces ne se dégradent davantage.",
-    type: "Intérieur",
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>`,
+    titre: "Sol usé ou endommagé",
+    desc: "Les rayures profondes, les zones creusées, les carreaux cassés ou les lames gondolées signalent un revêtement en fin de vie. Au-delà de l'aspect esthétique, un sol abîmé peut représenter un risque de chute et d'inconfort au quotidien.",
   },
   {
-    titre: "Couleurs ternies ou jaunies",
-    desc: "Sous l'effet du soleil et du temps, les teintes perdent leur éclat. Un rafraîchissement restitue immédiatement la luminosité et modernise l'ensemble de la pièce.",
-    type: "Intérieur",
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707"/>`,
+    titre: "Revêtement décollé ou gondolé",
+    desc: "Un sol qui se soulève, se décolle ou présente des cloques révèle souvent un problème d'humidité ou une pose initiale défectueuse. Ces défauts s'aggravent avec le temps et nécessitent une intervention rapide pour éviter d'endommager le support.",
   },
   {
-    titre: "Taches d'humidité ou moisissures",
-    desc: "Auréoles, taches brunes ou moisissures indiquent une infiltration ou un problème de condensation. Au-delà de l'aspect, c'est la qualité de l'air intérieur qui est en jeu.",
-    type: "Intérieur & Extérieur",
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>`,
+    titre: "Sol difficile à entretenir",
+    desc: "Certains revêtements anciens deviennent poreux avec les années et absorbent taches et salissures malgré les efforts de nettoyage. Un nouveau sol adapté simplifie considérablement l'entretien au quotidien.",
   },
   {
-    titre: "Façade décolorée ou peinture extérieure dégradée",
-    desc: "Une façade ternie, fissurée ou dont la peinture se détache nuit à l'esthétique et à la protection du bâti. Un rafraîchissement régulier préserve les supports.",
-    type: "Extérieur",
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>`,
+    titre: "Décoration vieillissante",
+    desc: "Un revêtement démodé ou dont les coloris ne correspondent plus à vos goûts peut nuire à l'ambiance générale d'une pièce. Le remplacement du sol est souvent la transformation la plus rapide pour moderniser un intérieur.",
   },
 ];
 
 const avantages = [
   {
-    titre: "Un rendu esthétique durable",
-    desc: "Des peintures de qualité professionnelle conservent leur éclat bien plus longtemps que les produits grand public. Vos surfaces restent propres, uniformes et agréables à vivre.",
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>`,
-    color: "orange",
+    titre: "Un résultat esthétique durable",
+    desc: "Une pose réalisée dans les règles de l'art garantit un rendu impeccable et homogène, sans joints irréguliers ni déformations. Votre sol reste beau et fonctionnel pendant de nombreuses années.",
   },
   {
-    titre: "Des finitions soignées au détail",
-    desc: "Raccords invisibles, angles nets, surface uniforme. Nos artisans maîtrisent les techniques d'application pour un résultat net, sans coulures ni manques.",
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
-    color: "blue",
+    titre: "Une pose soignée et conforme",
+    desc: "La préparation du support est aussi importante que le revêtement lui-même. Nos équipes vérifient systématiquement l'état du sol existant, corrigent les irrégularités et posent dans le respect des normes en vigueur.",
   },
   {
-    titre: "Une meilleure tenue dans le temps",
-    desc: "La préparation des supports, le choix des produits adaptés et les techniques d'application garantissent une adhérence et une durabilité bien supérieures à un travail amateur.",
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
-    color: "orange",
+    titre: "Une meilleure longévité",
+    desc: "Un revêtement bien posé sur un support sain dure bien plus longtemps qu'un sol posé à la hâte. C'est un investissement rentable qui repousse les remplacements prématurés.",
   },
   {
-    titre: "Un accompagnement personnalisé",
-    desc: "Conseils sur les teintes, finitions et matières selon votre espace et vos préférences. Nous vous aidons à créer un intérieur qui vous ressemble.",
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>`,
-    color: "blue",
+    titre: "Un confort renforcé",
+    desc: "Le bon revêtement améliore non seulement l'esthétique mais aussi le confort thermique et acoustique de vos espaces, selon les matériaux choisis et les contraintes de chaque pièce.",
   },
 ];
 
 const etapes = [
-  { num: "01", titre: "Visite et analyse du projet", desc: "Évaluation des surfaces à traiter, identification des pathologies (humidité, écaillage, fissures légères) et discussion sur vos souhaits de teintes et finitions." },
-  { num: "02", titre: "Conseil couleurs & finitions", desc: "Présentation des peintures, teintes et effets décoratifs adaptés à votre espace. Nous vous aidons à choisir ce qui correspond à votre style et aux contraintes techniques." },
-  { num: "03", titre: "Préparation des surfaces", desc: "Rebouchage, ponçage, lissage et impression des supports. Étape fondamentale pour garantir une bonne adhérence et un résultat durable dans le temps." },
-  { num: "04", titre: "Application des peintures", desc: "Application en plusieurs couches selon les règles de l'art, avec les outils adaptés à chaque surface. Sols et menuiseries protégés avant toute intervention." },
-  { num: "05", titre: "Contrôle qualité & réception", desc: "Vérification minutieuse du résultat, levée des réserves et remise en état des abords. Chantier rendu propre, conforme à vos attentes." },
+  { num: "01", titre: "Analyse des besoins", desc: "Évaluation de l'utilisation des espaces, des contraintes techniques (humidité, passage, luminosité), de vos préférences esthétiques et de votre budget. Chaque projet est unique." },
+  { num: "02", titre: "Conseils sur les matériaux", desc: "Présentation des solutions adaptées à votre projet : PVC, vinyle, moquette, parquet stratifié. Nous vous guidons pour faire le choix le plus pertinent selon votre usage et votre style." },
+  { num: "03", titre: "Préparation des supports", desc: "Vérification et ragréage du sol existant pour corriger les irrégularités. Un support plan et sain est indispensable pour une pose durable et un résultat parfait." },
+  { num: "04", titre: "Pose du revêtement", desc: "Pose soignée par nos équipes, avec respect des joints, découpes précises aux contours et finitions impeccables aux plinthes. Chaque détail compte pour un rendu professionnel." },
+  { num: "05", titre: "Contrôle final", desc: "Vérification minutieuse de la qualité de pose, remise en état des abords et conseils d'entretien adaptés à votre nouveau revêtement. Le chantier vous est remis propre et conforme." },
 ];
 
 const engagements = [
-  "Plus de 55 ans d'expérience en peinture et décoration",
+  "Plus de 55 ans d'expérience en rénovation intérieure",
   "Entreprise familiale et équipes locales dans le Tarn",
   "Certification RGE et Qualibat",
   "Devis gratuit, détaillé et sans engagement",
-  "Garantie décennale sur les travaux réalisés",
-  "Conseil personnalisé couleurs et finitions",
-  "Interlocuteur unique pour tout votre chantier",
+  "Accompagnement dans le choix des matériaux",
+  "Interlocuteur unique de A à Z",
+  "Qualité de finition garantie sur chaque chantier",
 ];
 
 const villes = ["Albi", "Gaillac", "Castres", "Graulhet", "Lavaur", "Carmaux", "Mazamet", "Saint-Sulpice"];
@@ -130,43 +92,43 @@ const villesLinks: Record<string, string> = {
 
 const faqs = [
   {
-    q: "Quelle est la durée de vie d'une peinture intérieure ?",
-    a: "Une peinture intérieure professionnelle dure en moyenne 8 à 15 ans selon l'exposition de la pièce, les produits utilisés et l'entretien. Les pièces humides (salle de bain, cuisine) nécessitent des peintures spécifiques et peuvent demander un rafraîchissement plus fréquent.",
+    q: "Quel revêtement de sol choisir pour une maison ?",
+    a: "Le choix dépend avant tout de l'usage de chaque pièce. Pour les pièces humides, privilégiez le PVC ou le vinyle. Dans les pièces de vie, le parquet stratifié ou le vinyle apportent chaleur et esthétique. Pour les chambres, la moquette est une option confortable. Nos équipes vous conseillent lors d'un rendez-vous gratuit pour trouver la solution adaptée à chaque espace.",
   },
   {
-    q: "Quelle peinture choisir pour une pièce humide ?",
-    a: "Pour les salles de bain et cuisines, il faut opter pour des peintures spéciales 'pièces humides', formulées pour résister à la vapeur d'eau, aux projections et aux moisissures. Elles contiennent des agents fongicides et offrent une meilleure imperméabilité. Nos artisans vous conseillent sur le produit le mieux adapté.",
+    q: "Quelle est la différence entre PVC et vinyle ?",
+    a: "Les sols PVC et vinyles sont souvent confondus car ils partagent des composants similaires. En pratique, les sols vinyles désignent généralement les versions haut de gamme avec un rendu plus réaliste (imitation bois, béton, pierre) et un meilleur confort de marche. Les sols PVC sont davantage orientés vers la résistance et l'économie. Dans les deux cas, l'entretien est simple et la durabilité est excellente.",
   },
   {
-    q: "Faut-il préparer les murs avant de peindre ?",
-    a: "Oui, la préparation des supports est indispensable. Rebouchage des trous et fissures, ponçage des zones abîmées, lissage si nécessaire et application d'une sous-couche d'impression. Sans cette étape, la peinture risque de mal adhérer et de s'écailler prématurément.",
+    q: "Le parquet stratifié résiste-t-il à l'usure ?",
+    a: "Oui, à condition de choisir une classe d'usure adaptée à l'utilisation prévue. Pour les espaces de vie courants, une classe AC3 ou AC4 est généralement recommandée. Pour les zones très fréquentées, une classe AC5 offre une meilleure résistance. Le parquet stratifié n'apprécie pas l'humidité prolongée : il est déconseillé dans les salles de bains et les cuisines.",
   },
   {
-    q: "Quelle différence entre peinture mate et satinée ?",
-    a: "La peinture mate offre un aspect velouté qui absorbe la lumière et masque mieux les imperfections — idéale pour les séjours et chambres. La satinée est légèrement brillante, résistante aux nettoyages, adaptée aux pièces humides et aux zones de passage. Le velours est une finition intermédiaire très appréciée pour son rendu élégant.",
+    q: "La moquette est-elle encore tendance ?",
+    a: "La moquette revient dans les projets de décoration contemporains, notamment dans les chambres et les bureaux. Les nouvelles générations de moquettes sont plus faciles à entretenir, resistantes aux taches et disponibles dans une large gamme de coloris et de textures. Elles offrent un confort acoustique et thermique que les sols durs ne peuvent pas égaler.",
   },
   {
-    q: "Quand refaire une peinture extérieure ?",
-    a: "En général, une peinture extérieure se refait tous les 8 à 12 ans. Certains signes justifient une intervention plus tôt : écaillage, cloquage, décollement, décoloration marquée ou fissures superficielles. L'exposition aux UV et aux intempéries accélère le vieillissement des façades exposées.",
+    q: "Combien coûte un revêtement de sol ?",
+    a: "Le prix varie selon la surface, le type de revêtement choisi et l'état du support existant. À titre indicatif, comptez entre 20 et 60 €/m² tout compris selon les matériaux. Un parquet stratifié milieu de gamme ou un vinyle qualitatif représentent un investissement raisonnable comparé à la durée de vie obtenue. Contactez-nous pour un devis gratuit et personnalisé.",
   },
   {
-    q: "Combien coûtent des travaux de peinture ?",
-    a: "Le coût varie selon la surface, l'état des murs et le type de finition choisi. En général : entre 15 et 35 €/m² pour une peinture intérieure, entre 25 et 60 €/m² pour une peinture extérieure. Contactez-nous pour un devis gratuit et personnalisé adapté à votre chantier.",
+    q: "Combien de temps dure la pose ?",
+    a: "Pour une pièce standard (20 à 30 m²), la pose prend généralement une journée, parfois deux si le support nécessite un ragréage important. Pour l'ensemble d'un appartement ou d'une maison, comptez 2 à 4 jours selon la surface et la complexité. Un planning précis vous est communiqué lors de l'établissement du devis.",
   },
   {
-    q: "Combien de temps durent les travaux ?",
-    a: "Pour une pièce ou un appartement, comptez 1 à 3 jours selon la surface et la préparation nécessaire. Pour une maison complète ou une façade extérieure, la durée est généralement de 3 à 7 jours. Un calendrier précis vous est communiqué dès l'établissement du devis.",
+    q: "Quel est le revêtement le plus facile à entretenir ?",
+    a: "Les sols PVC et vinyles sont les champions de la facilité d'entretien : imperméables, ils se nettoient à l'aspirateur et à la serpillière humide sans traitement particulier. Le parquet stratifié demande quelques précautions (éviter l'eau en excès) mais reste simple d'entretien. La moquette nécessite un aspirateur régulier et un nettoyage professionnel tous les 1 à 2 ans selon l'usage.",
   },
   {
     q: "Comment obtenir un devis ?",
-    a: "Remplissez notre formulaire de contact, appelez-nous au 05 63 54 16 97 ou envoyez-nous un email. Un artisan Conesa se déplace gratuitement pour évaluer vos surfaces et vous remettre un devis détaillé, sans engagement de votre part.",
+    a: "Remplissez notre formulaire de contact, appelez-nous au 05 63 54 16 97 ou envoyez-nous un email. Un technicien Conesa se déplace gratuitement pour évaluer vos espaces, vous conseiller sur les matériaux et vous remettre un devis détaillé, sans engagement de votre part, sous 24 h.",
   },
 ];
 
 const jsonLdService = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Peinture intérieure et extérieure",
+  "name": "Revêtements de sols",
   "provider": {
     "@type": "LocalBusiness",
     "name": "Conesa",
@@ -179,8 +141,8 @@ const jsonLdService = JSON.stringify({
     }
   },
   "areaServed": { "@type": "AdministrativeArea", "name": "Tarn" },
-  "description": "Travaux de peinture intérieure, extérieure et décoration dans le Tarn. Conseils, finitions soignées et devis gratuit avec Conesa.",
-  "url": "https://conesa-renovation.fr/peinture-interieure-exterieure"
+  "description": "Pose et rénovation de revêtements de sols dans le Tarn. PVC, vinyle, moquette, parquet stratifié : des solutions adaptées à tous vos projets.",
+  "url": "https://conesa-renovation.fr/revetements-sols"
 });
 
 const jsonLdBreadcrumb = JSON.stringify({
@@ -188,7 +150,7 @@ const jsonLdBreadcrumb = JSON.stringify({
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://conesa-renovation.fr/" },
-    { "@type": "ListItem", "position": 2, "name": "Peinture intérieure et extérieure", "item": "https://conesa-renovation.fr/peinture-interieure-exterieure" }
+    { "@type": "ListItem", "position": 2, "name": "Revêtements de sols", "item": "https://conesa-renovation.fr/revetements-sols" }
   ]
 });
 
@@ -204,8 +166,8 @@ const jsonLdFaq = JSON.stringify({
 ---
 
 <BaseLayout
-  title="Peinture intérieure et extérieure dans le Tarn | Conesa"
-  description="Travaux de peinture intérieure, extérieure et décoration dans le Tarn. Conseils, finitions soignées et devis gratuit avec Conesa."
+  title="Revêtements de sols dans le Tarn | PVC, Vinyle, Moquette, Stratifié | Conesa"
+  description="Pose et rénovation de revêtements de sols dans le Tarn. PVC, vinyle, moquette, parquet stratifié : des solutions adaptées à tous vos projets."
 >
   <script is:inline slot="head" type="application/ld+json" set:html={jsonLdService} />
   <script is:inline slot="head" type="application/ld+json" set:html={jsonLdBreadcrumb} />
@@ -216,8 +178,8 @@ const jsonLdFaq = JSON.stringify({
   ══════════════════════════════════════ -->
   <section class="relative overflow-hidden bg-[#0A1E3D]" style="padding-top: 200px; padding-bottom: 96px;">
     <img
-      src={encodeURI("/images/Page peinture interieure exterieure/Hero peinture intérieure extérieure.png")}
-      alt="Peinture intérieure et extérieure dans le Tarn — Conesa"
+      src={encodeURI("/images/Page revetements sols/Hero revêtement de sols.png")}
+      alt="Revêtements de sols dans le Tarn — Conesa"
       aria-hidden="true"
       class="absolute inset-0 w-full h-full object-cover object-center"
       fetchpriority="high"
@@ -228,10 +190,11 @@ const jsonLdFaq = JSON.stringify({
     <div class="absolute top-0 left-0 w-1 h-full bg-[#E8650A] opacity-60"></div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Fil d'Ariane -->
       <nav class="flex items-center gap-2 text-white/50 text-sm mb-8" aria-label="Fil d'Ariane">
         <a href="/" class="hover:text-white transition-colors">Accueil</a>
         <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        <span class="text-white/80">Peinture intérieure &amp; extérieure</span>
+        <span class="text-white/80">Revêtements de sols</span>
       </nav>
 
       <div class="max-w-2xl">
@@ -240,11 +203,11 @@ const jsonLdFaq = JSON.stringify({
           Entreprise familiale dans le Tarn depuis 1969
         </div>
         <h1 class="text-4xl sm:text-5xl lg:text-[3rem] font-extrabold text-white leading-[1.1] mb-6" style="font-family:'Montserrat',sans-serif;">
-          Peinture intérieure<br>&amp; extérieure
+          Pose et rénovation de<br>revêtements de sols
           <span class="text-[#E8650A]"> dans le Tarn</span>
         </h1>
         <p class="text-blue-100 text-lg leading-relaxed mb-10 max-w-xl">
-          De la rénovation de vos pièces de vie aux façades extérieures, Conesa vous accompagne dans tous vos projets de peinture et de décoration dans tout le département du Tarn.
+          PVC, vinyle, moquette, parquet stratifié : Conesa vous accompagne dans le choix et la pose de revêtements de sols adaptés à votre habitation, vos espaces professionnels et votre style de vie.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 mb-12">
           <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-[#E8650A] hover:bg-orange-700 text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 hover:scale-105 shadow-lg shadow-orange-900/30">
@@ -265,61 +228,33 @@ const jsonLdFaq = JSON.stringify({
   </section>
 
   <!-- ══════════════════════════════════════
-       POURQUOI RÉNOVER — image à gauche, texte à droite
+       POURQUOI RÉNOVER SON SOL
   ══════════════════════════════════════ -->
   <section class="py-8 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-        <!-- Image + encarts -->
-        <div>
-          <div class="relative rounded-2xl overflow-hidden shadow-2xl" style="min-height:340px;">
-            <img
-              src={encodeURI("/images/Page peinture interieure exterieure/Peinture intérieur et extérieure.png")}
-              alt="Peinture intérieure et extérieure — Conesa, entreprise familiale dans le Tarn"
-              class="w-full h-full object-cover object-center absolute inset-0"
-              loading="lazy"
-              decoding="async"
-              onerror="this.style.display='none'"
-            />
-            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10,30,61,0.45) 0%, rgba(10,30,61,0.08) 45%, transparent 100%);"></div>
-          </div>
-          <div class="relative z-10 -mt-9 flex items-center justify-center gap-3 flex-wrap px-6">
-            {[
-              { val: "55+", label: "ans d'expérience" },
-              { val: "Int. & Ext.", label: "peinture complète" },
-            ].map(item => (
-              <div class="bg-[#1E4B8C]/80 backdrop-blur-md border border-white/20 rounded-xl px-5 py-3 text-center shadow-xl min-w-[110px]">
-                <p class="text-xl font-extrabold text-white leading-none mb-1" style="font-family:'Montserrat',sans-serif;">{item.val}</p>
-                <p class="text-blue-200 text-xs font-medium">{item.label}</p>
-              </div>
-            ))}
-            <div class="bg-[#E8650A]/85 backdrop-blur-md border border-white/20 rounded-xl px-5 py-3 text-center shadow-xl min-w-[110px]">
-              <p class="text-xl font-extrabold text-white leading-none mb-1" style="font-family:'Montserrat',sans-serif;">Devis</p>
-              <p class="text-orange-100 text-xs font-medium">gratuit sous 24 h</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Texte -->
         <div>
           <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Pourquoi rénover ?</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 mb-6 leading-tight" style="font-family:'Montserrat',sans-serif;">
-            Pourquoi rénover<br>les peintures de votre habitation ?
+            Pourquoi rénover ou remplacer<br>un revêtement de sol ?
           </h2>
-          <p class="text-gray-600 leading-relaxed mb-6">
-            Avec le temps, les peintures perdent de leur éclat, les couleurs se ternissent et certaines surfaces présentent des traces d'usure ou d'humidité. Rénover les peintures, c'est moderniser son espace, protéger durablement les supports et valoriser son patrimoine.
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Avec le temps, les revêtements de sols subissent une usure naturelle liée aux passages répétés, aux chocs, à l'humidité ou à l'évolution des tendances décoratives. Un sol dégradé ne se limite pas à un problème esthétique : il peut affecter le confort, la sécurité et la valeur de votre bien.
           </p>
-          <ul class="space-y-3">
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Le remplacement d'un revêtement peut transformer complètement l'ambiance d'un intérieur, améliorer son praticité et valoriser votre patrimoine immobilier.
+          </p>
+          <ul class="space-y-3 mb-8">
             {[
-              "Moderniser son intérieur et améliorer l'ambiance des pièces",
-              "Protéger les murs et plafonds contre l'usure et l'humidité",
-              "Préserver les façades face aux agressions extérieures",
-              "Valoriser son patrimoine immobilier",
-              "Apporter une véritable plus-value esthétique à l'habitation",
-              "Exprimer sa personnalité à travers les couleurs et matières",
+              "Améliorer le confort et la qualité de vie au quotidien",
+              "Moderniser l'apparence et l'ambiance d'une pièce",
+              "Augmenter la résistance des surfaces très sollicitées",
+              "Simplifier l'entretien et le nettoyage",
+              "Valoriser le logement avant une vente ou une mise en location",
+              "Adapter les espaces à de nouveaux usages",
             ].map(item => (
-              <li class="flex items-start gap-3 text-gray-700 text-sm">
+              <li class="flex items-start gap-3 text-gray-700">
                 <span class="w-5 h-5 rounded-full bg-[#E8650A] flex items-center justify-center shrink-0 mt-0.5">
                   <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 </span>
@@ -329,30 +264,62 @@ const jsonLdFaq = JSON.stringify({
           </ul>
         </div>
 
+        <div>
+          <!-- Image -->
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl" style="min-height:340px;">
+            <img
+              src={encodeURI("/images/Page revetements sols/Revêtement de sol.png")}
+              alt="Pose de revêtement de sol — Conesa, entreprise familiale dans le Tarn"
+              class="w-full h-full object-cover object-center absolute inset-0"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none'"
+            />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10,30,61,0.45) 0%, rgba(10,30,61,0.08) 45%, transparent 100%);"></div>
+          </div>
+          <!-- Encarts à cheval sur le bas de l'image -->
+          <div class="relative z-10 -mt-9 flex items-center justify-center gap-3 flex-wrap px-6">
+            {[
+              { val: "55+", label: "ans d'expérience" },
+              { val: "500+", label: "chantiers Tarn" },
+            ].map(item => (
+              <div class="bg-[#1E4B8C]/80 backdrop-blur-md border border-white/20 rounded-xl px-5 py-3 text-center shadow-xl min-w-[110px]">
+                <p class="text-2xl font-extrabold text-white leading-none mb-1" style="font-family:'Montserrat',sans-serif;">{item.val}</p>
+                <p class="text-blue-200 text-xs font-medium">{item.label}</p>
+              </div>
+            ))}
+            <div class="bg-[#E8650A]/85 backdrop-blur-md border border-white/20 rounded-xl px-5 py-3 text-center shadow-xl min-w-[110px]">
+              <p class="text-2xl font-extrabold text-white leading-none mb-1" style="font-family:'Montserrat',sans-serif;">RGE</p>
+              <p class="text-orange-100 text-xs font-medium">Qualibat certifié</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════════════
-       SIGNAUX D'USURE — grille 2×2 avec badge type
+       LES SIGNES
   ══════════════════════════════════════ -->
   <section class="py-8 lg:py-24 bg-[#F0F5FC]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center mb-12">
+      <div class="max-w-2xl mx-auto text-center mb-14">
         <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Diagnostic</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
-          Les signaux qui indiquent<br>qu'il faut rénover vos peintures
+          Les signes qui indiquent<br>qu'un remplacement est nécessaire
         </h2>
         <p class="text-gray-600 mt-4 text-lg leading-relaxed">
-          Intérieur ou extérieur, reconnaître ces signes vous permet d'agir avant que les dégradations ne s'aggravent.
+          Votre sol vous envoie des signaux. Voici les indicateurs à ne pas ignorer.
         </p>
       </div>
 
       <div class="grid sm:grid-cols-2 gap-4">
-        {signaux.map(s => (
+        {signes.map(s => (
           <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-[#E8650A]/20 transition-all duration-200">
-            <span class={`inline-flex text-xs font-semibold px-2.5 py-1 rounded-full mb-4 ${s.type === 'Extérieur' ? 'bg-[#1E4B8C]/10 text-[#1E4B8C]' : s.type === 'Intérieur & Extérieur' ? 'bg-purple-100 text-purple-700' : 'bg-[#E8650A]/10 text-[#E8650A]'}`}>
-              {s.type}
+            <span class="inline-flex items-center gap-1 bg-[#E8650A]/10 text-[#E8650A] text-xs font-semibold px-2.5 py-1 rounded-full mb-4">
+              <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+              Alerte
             </span>
             <h3 class="font-bold text-[#1E4B8C] text-base mb-2" style="font-family:'Montserrat',sans-serif;">{s.titre}</h3>
             <p class="text-gray-600 text-sm leading-relaxed">{s.desc}</p>
@@ -363,26 +330,25 @@ const jsonLdFaq = JSON.stringify({
   </section>
 
   <!-- ══════════════════════════════════════
-       NOS SAVOIR-FAIRE — carousel mobile/tablette, grille desktop
+       NOS REVÊTEMENTS DE SOLS
   ══════════════════════════════════════ -->
   <section class="py-8 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mb-14">
         <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Nos savoir-faire</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
-          Peinture intérieure, décoration<br>et peinture extérieure
+          Nos revêtements<br>de sols
         </h2>
         <p class="text-gray-600 mt-4 text-lg leading-relaxed">
-          Une offre complète pour transformer vos espaces intérieurs et protéger durablement vos façades.
+          Du sol PVC économique au parquet stratifié haut de gamme, nous vous proposons des solutions pour chaque budget, chaque style et chaque usage.
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {prestations.map(p => (
-          <div class="bg-[#F0F5FC] rounded-2xl p-7 border border-transparent hover:border-[#1E4B8C]/20 hover:shadow-lg transition-all duration-300">
-            <span class={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-4 ${p.badgeColor === 'orange' ? 'bg-[#E8650A]/10 text-[#E8650A]' : 'bg-[#1E4B8C]/10 text-[#1E4B8C]'}`}>{p.badge}</span>
-            <h3 class="font-bold text-[#1E4B8C] text-base mb-3" style="font-family:'Montserrat',sans-serif;">{p.titre}</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">{p.desc}</p>
+      <div class="grid sm:grid-cols-2 gap-px bg-gray-200 rounded-3xl overflow-hidden shadow-sm">
+        {prestations.map((p, i) => (
+          <div class={`p-8 lg:p-10 ${i % 2 === 0 ? 'bg-[#1E4B8C]' : 'bg-white'}`}>
+            <h3 class={`font-bold text-xl mb-3 ${i % 2 === 0 ? 'text-white' : 'text-[#1E4B8C]'}`} style="font-family:'Montserrat',sans-serif;">{p.titre}</h3>
+            <p class={`text-sm leading-relaxed ${i % 2 === 0 ? 'text-blue-200' : 'text-gray-600'}`}>{p.desc}</p>
           </div>
         ))}
       </div>
@@ -395,10 +361,10 @@ const jsonLdFaq = JSON.stringify({
       <div class="flex flex-col sm:flex-row items-center justify-between gap-8">
         <div class="text-white">
           <p class="font-extrabold text-xl sm:text-2xl leading-snug" style="font-family:'Montserrat',sans-serif;">
-            Un projet de peinture intérieure ou extérieure ?
+            Vous souhaitez rénover vos sols ?
           </p>
           <p class="text-blue-200 text-base mt-2">
-            Nos artisans se déplacent gratuitement pour évaluer vos surfaces et vous conseiller sur les finitions.
+            Un technicien Conesa se déplace gratuitement pour évaluer vos espaces et vous conseiller sur les meilleures solutions.
           </p>
         </div>
         <a href="#contact" class="shrink-0 inline-flex items-center gap-2 bg-[#E8650A] hover:bg-orange-700 text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 hover:scale-105 shadow-lg whitespace-nowrap">
@@ -410,21 +376,21 @@ const jsonLdFaq = JSON.stringify({
   </section>
 
   <!-- ══════════════════════════════════════
-       LES AVANTAGES — 2×2 icône + texte horizontal
+       LES AVANTAGES
   ══════════════════════════════════════ -->
   <section class="py-8 lg:py-24 bg-[#F0F5FC]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center mb-12">
+      <div class="max-w-2xl mx-auto text-center mb-14">
         <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Bénéfices</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
-          Les avantages d'une peinture<br>réalisée par des professionnels
+          Les avantages d'une pose<br>professionnelle
         </h2>
       </div>
 
       <div class="grid sm:grid-cols-2 gap-8 lg:gap-12">
-        {avantages.map(a => (
+        {avantages.map((a, i) => (
           <div>
-            <div class={`h-1 w-12 rounded-full mb-5 ${a.color === 'orange' ? 'bg-[#E8650A]' : 'bg-[#1E4B8C]'}`}></div>
+            <div class={`h-1 w-12 rounded-full mb-5 ${i % 2 === 0 ? 'bg-[#E8650A]' : 'bg-[#1E4B8C]'}`}></div>
             <h3 class="font-extrabold text-[#1E4B8C] text-xl mb-3" style="font-family:'Montserrat',sans-serif;">{a.titre}</h3>
             <p class="text-gray-600 text-sm leading-relaxed">{a.desc}</p>
           </div>
@@ -441,15 +407,17 @@ const jsonLdFaq = JSON.stringify({
       <div class="max-w-2xl mb-14">
         <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Notre méthode</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
-          Comment se déroule<br>une intervention peinture ?
+          Comment se déroule<br>une intervention de sols ?
         </h2>
         <p class="text-gray-600 mt-4 text-lg leading-relaxed">
-          Du premier contact à la réception du chantier, chaque étape est maîtrisée pour un résultat impeccable.
+          De l'analyse de vos besoins à la réception du chantier, chaque étape est maîtrisée pour garantir un résultat à la hauteur de vos attentes.
         </p>
       </div>
 
       <div class="relative">
+        <!-- Ligne verticale desktop -->
         <div class="hidden lg:block absolute left-[39px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-[#E8650A] to-[#1E4B8C]/20"></div>
+
         <div class="space-y-6">
           {etapes.map(e => (
             <div class="flex gap-6 items-start group">
@@ -479,20 +447,18 @@ const jsonLdFaq = JSON.stringify({
         <div>
           <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Votre artisan de confiance</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 mb-6 leading-tight" style="font-family:'Montserrat',sans-serif;">
-            Pourquoi choisir Conesa<br>pour vos travaux de peinture ?
+            Pourquoi choisir Conesa<br>pour vos revêtements de sols ?
           </h2>
           <p class="text-gray-600 leading-relaxed mb-4">
-            Depuis 1969, Conesa accompagne les particuliers, professionnels et collectivités dans leurs projets de peinture intérieure, extérieure et décoration dans tout le Tarn. Notre ancrage local et notre savoir-faire transmis de génération en génération nous permettent de comprendre rapidement vos attentes.
+            Depuis 1969, Conesa accompagne les propriétaires du Tarn dans leurs projets de rénovation intérieure. Notre savoir-faire en revêtements de sols, acquis sur des centaines de chantiers résidentiels et professionnels, nous permet de vous proposer des solutions adaptées à chaque usage et chaque budget.
           </p>
           <p class="text-gray-600 leading-relaxed mb-8">
-            Entreprise familiale, nous privilegions la qualité d'exécution, le respect de votre logement et la transparence dans nos devis. Du conseil couleurs à la réception du chantier, un seul interlocuteur suit votre projet de A à Z.
+            Entreprise familiale implantée localement, nous attachons une importance particulière à la qualité des finitions et à la relation avec nos clients. Du premier conseil jusqu'à la réception du chantier, vous bénéficiez d'un accompagnement personnalisé par un interlocuteur unique.
           </p>
-          <div class="flex flex-col sm:flex-row gap-3">
-            <a href="/entreprise" class="inline-flex items-center justify-center gap-2 text-[#1E4B8C] border-2 border-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200">
-              Découvrir notre entreprise
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </a>
-          </div>
+          <a href="/entreprise" class="inline-flex items-center gap-2 text-[#1E4B8C] border-2 border-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200">
+            Découvrir notre entreprise
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
         </div>
 
         <div class="bg-[#1E4B8C] rounded-3xl p-8 lg:p-10 text-white">
@@ -521,10 +487,10 @@ const jsonLdFaq = JSON.stringify({
       <div class="max-w-2xl mb-12">
         <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Secteur d'activité</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
-          Peinture intérieure &amp; extérieure<br>dans tout le Tarn
+          Revêtements de sols<br>dans tout le Tarn
         </h2>
         <p class="text-gray-600 mt-4 text-lg leading-relaxed">
-          Nos équipes interviennent sur l'ensemble du département du Tarn (81) pour tous vos travaux de peinture et décoration. Déplacement gratuit pour établir votre devis.
+          Nos équipes interviennent sur l'ensemble du département du Tarn (81) pour tous vos projets de pose et rénovation de sols. Nous nous déplaçons gratuitement pour établir votre devis.
         </p>
       </div>
 
@@ -542,28 +508,16 @@ const jsonLdFaq = JSON.stringify({
         ))}
       </div>
 
-      <!-- Liens internes -->
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div class="bg-[#F0F5FC] rounded-2xl p-6 border border-[#1E4B8C]/10 flex items-center justify-between gap-4">
-          <div>
-            <p class="font-bold text-[#1E4B8C] text-sm mb-1" style="font-family:'Montserrat',sans-serif;">Vous envisagez un ravalement de façade ?</p>
-            <p class="text-gray-600 text-xs">Nettoyage, enduits et peinture extérieure en une seule intervention.</p>
-          </div>
-          <a href="/ravalement-facade" class="shrink-0 inline-flex items-center gap-1.5 bg-[#1E4B8C] hover:bg-[#153566] text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 text-xs">
-            Façade
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
+      <!-- Lien vers peinture -->
+      <div class="bg-[#F0F5FC] rounded-2xl p-7 border border-[#1E4B8C]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+        <div>
+          <p class="font-bold text-[#1E4B8C] text-base mb-1" style="font-family:'Montserrat',sans-serif;">Vous envisagez aussi de rénover vos peintures intérieures ?</p>
+          <p class="text-gray-600 text-sm">Sol et peintures forment un ensemble cohérent. Découvrez nos prestations de peinture intérieure et extérieure.</p>
         </div>
-        <div class="bg-[#F0F5FC] rounded-2xl p-6 border border-[#1E4B8C]/10 flex items-center justify-between gap-4">
-          <div>
-            <p class="font-bold text-[#1E4B8C] text-sm mb-1" style="font-family:'Montserrat',sans-serif;">Vous envisagez aussi une isolation ?</p>
-            <p class="text-gray-600 text-xs">L'ITE combine isolation thermique et rénovation de façade en une seule opération.</p>
-          </div>
-          <a href="/isolation" class="shrink-0 inline-flex items-center gap-1.5 bg-[#1E4B8C] hover:bg-[#153566] text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 text-xs">
-            Isolation
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-        </div>
+        <a href="/peinture-interieure-exterieure" class="shrink-0 inline-flex items-center gap-2 bg-[#1E4B8C] hover:bg-[#153566] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 text-sm">
+          Peinture intérieure &amp; extérieure
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -578,9 +532,9 @@ const jsonLdFaq = JSON.stringify({
       <div class="text-center mb-16">
         <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Questions fréquentes</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
-          Tout savoir sur les travaux<br>de peinture
+          Tout savoir sur les<br>revêtements de sols
         </h2>
-        <p class="text-gray-600 mt-4 text-lg">Retrouvez les réponses aux questions les plus posées sur la peinture intérieure et extérieure.</p>
+        <p class="text-gray-600 mt-4 text-lg">Retrouvez les réponses aux questions les plus posées sur nos interventions.</p>
       </div>
 
       <div class="border-t border-gray-200">
@@ -613,13 +567,13 @@ const jsonLdFaq = JSON.stringify({
         <div class="absolute bottom-0 right-0 w-48 h-48 bg-[#E8650A] opacity-10 rounded-tl-full"></div>
         <div class="relative">
           <span class="inline-block bg-[#E8650A]/20 text-[#E8650A] border border-[#E8650A]/30 rounded-full px-4 py-1.5 text-sm font-semibold mb-6">
-            Conseil &amp; devis gratuits
+            Diagnostic &amp; devis gratuits
           </span>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6 leading-tight" style="font-family:'Montserrat',sans-serif;">
-            Donnez une nouvelle personnalité<br>à votre habitation
+            Transformez vos espaces avec<br>un revêtement adapté
           </h2>
           <p class="text-blue-200 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Peinture intérieure, décoration ou façade extérieure : nos artisans Conesa vous accompagnent de A à Z, du choix des couleurs à la réception du chantier.
+            Le revêtement de sol participe directement au confort et à l'esthétique de votre intérieur. Nos équipes vous accompagnent dans le choix et la pose de solutions adaptées à votre style de vie.
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-4">
             <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-[#E8650A] hover:bg-orange-700 text-white font-bold px-10 py-4 rounded-xl transition-all duration-200 hover:scale-105 shadow-lg shadow-orange-900/30">
