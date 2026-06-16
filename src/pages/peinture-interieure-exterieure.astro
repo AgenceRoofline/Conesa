@@ -119,15 +119,6 @@ const engagements = [
   "Interlocuteur unique pour tout votre chantier",
 ];
 
-const villes = ["Albi", "Gaillac", "Castres", "Graulhet", "Lavaur", "Carmaux", "Mazamet", "Saint-Sulpice"];
-
-const villesLinks: Record<string, string> = {
-  "Albi": "/villes/albi",
-  "Gaillac": "/villes/gaillac",
-  "Castres": "/villes/castres",
-  "Graulhet": "/villes/graulhet",
-};
-
 const faqs = [
   {
     q: "Quelle est la durée de vie d'une peinture intérieure ?",
@@ -255,10 +246,6 @@ const jsonLdFaq = JSON.stringify({
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
             05 63 54 16 97
           </a>
-        </div>
-        <div class="flex items-center gap-4">
-          <img src="/images/labels/Logo-RGE.png" alt="RGE Qualibat" class="h-11 w-auto bg-white rounded-lg p-1 shadow" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
-          <span class="text-blue-100 text-sm">Certifié RGE &amp; Qualibat — Devis gratuit sous 24 h</span>
         </div>
       </div>
     </div>
@@ -472,9 +459,12 @@ const jsonLdFaq = JSON.stringify({
   <!-- ══════════════════════════════════════
        POURQUOI CONESA
   ══════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════
+       POURQUOI CONESA + ZONES D'INTERVENTION
+  ══════════════════════════════════════ -->
   <section class="py-8 lg:py-24 bg-[#F0F5FC]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-14">
 
         <div>
           <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Votre artisan de confiance</span>
@@ -510,59 +500,29 @@ const jsonLdFaq = JSON.stringify({
         </div>
 
       </div>
-    </div>
-  </section>
 
-  <!-- ══════════════════════════════════════
-       ZONES D'INTERVENTION
-  ══════════════════════════════════════ -->
-  <section class="py-8 lg:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mb-12">
-        <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Secteur d'activité</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
-          Peinture intérieure &amp; extérieure<br>dans tout le Tarn
-        </h2>
-        <p class="text-gray-600 mt-4 text-lg leading-relaxed">
-          Nos équipes interviennent sur l'ensemble du département du Tarn (81) pour tous vos travaux de peinture et décoration. Déplacement gratuit pour établir votre devis.
-        </p>
-      </div>
-
-      <div class="flex flex-wrap gap-3 mb-10">
-        {villes.map(v => (
-          villesLinks[v]
-            ? <a href={villesLinks[v]} class="flex items-center gap-2 bg-[#E8F0FB] hover:bg-[#1E4B8C] text-[#1E4B8C] hover:text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-all duration-200">
-                <svg class="w-3.5 h-3.5 text-[#E8650A] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-                {v}
-              </a>
-            : <span class="flex items-center gap-2 bg-[#E8F0FB] text-[#1E4B8C] text-sm font-semibold px-4 py-2.5 rounded-xl">
-                <svg class="w-3.5 h-3.5 text-[#E8650A] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-                {v}
-              </span>
-        ))}
-      </div>
-
-      <!-- Liens internes -->
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div class="bg-[#F0F5FC] rounded-2xl p-6 border border-[#1E4B8C]/10 flex items-center justify-between gap-4">
-          <div>
-            <p class="font-bold text-[#1E4B8C] text-sm mb-1" style="font-family:'Montserrat',sans-serif;">Vous envisagez un ravalement de façade ?</p>
-            <p class="text-gray-600 text-xs">Nettoyage, enduits et peinture extérieure en une seule intervention.</p>
+      <div class="border-t border-gray-200 pt-10">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-white rounded-2xl p-6 border border-[#1E4B8C]/10 flex items-center justify-between gap-4">
+            <div>
+              <p class="font-bold text-[#1E4B8C] text-sm mb-1" style="font-family:'Montserrat',sans-serif;">Vous envisagez un ravalement de façade ?</p>
+              <p class="text-gray-600 text-xs">Nettoyage, enduits et peinture extérieure en une seule intervention.</p>
+            </div>
+            <a href="/ravalement-facade" class="shrink-0 inline-flex items-center gap-1.5 bg-[#1E4B8C] hover:bg-[#153566] text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 text-xs">
+              Façade
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
           </div>
-          <a href="/ravalement-facade" class="shrink-0 inline-flex items-center gap-1.5 bg-[#1E4B8C] hover:bg-[#153566] text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 text-xs">
-            Façade
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-        </div>
-        <div class="bg-[#F0F5FC] rounded-2xl p-6 border border-[#1E4B8C]/10 flex items-center justify-between gap-4">
-          <div>
-            <p class="font-bold text-[#1E4B8C] text-sm mb-1" style="font-family:'Montserrat',sans-serif;">Vous envisagez aussi une isolation ?</p>
-            <p class="text-gray-600 text-xs">L'ITE combine isolation thermique et rénovation de façade en une seule opération.</p>
+          <div class="bg-white rounded-2xl p-6 border border-[#1E4B8C]/10 flex items-center justify-between gap-4">
+            <div>
+              <p class="font-bold text-[#1E4B8C] text-sm mb-1" style="font-family:'Montserrat',sans-serif;">Vous envisagez aussi une isolation ?</p>
+              <p class="text-gray-600 text-xs">L'ITE combine isolation thermique et rénovation de façade en une seule opération.</p>
+            </div>
+            <a href="/isolation" class="shrink-0 inline-flex items-center gap-1.5 bg-[#1E4B8C] hover:bg-[#153566] text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 text-xs">
+              Isolation
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
           </div>
-          <a href="/isolation" class="shrink-0 inline-flex items-center gap-1.5 bg-[#1E4B8C] hover:bg-[#153566] text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 text-xs">
-            Isolation
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
         </div>
       </div>
     </div>

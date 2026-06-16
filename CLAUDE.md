@@ -2,7 +2,7 @@
 
 Site vitrine Astro v6 + Tailwind CSS v4 pour Conesa, entreprise familiale de rénovation dans le Tarn (81) depuis +55 ans.
 
-## État d'avancement — Prochaines étapes (màj 2026-06-15)
+## État d'avancement — Prochaines étapes (màj 2026-06-16)
 
 ### Pages services
 | URL | Fichier | État |
@@ -410,7 +410,7 @@ Tous les liens sont fonctionnels ✅
 ## Pages villes existantes
 
 Albi, Gaillac, Castres, Graulhet — structure identique pour chaque ville :
-- Hero avec `fetchpriority="high"`
+- Hero avec `fetchpriority="high"` + `padding-top: 200px`
 - Section présentation + chiffres clés + photo projet (`loading="lazy"`)
 - FAQ locale en JSON-LD
 - Liens internes vers pages services
@@ -418,30 +418,31 @@ Albi, Gaillac, Castres, Graulhet — structure identique pour chaque ville :
 ## Conventions de code
 
 - **Padding sections** : `py-8 lg:py-24` (mobile 32px, desktop 96px) — uniforme sur toutes les sections de toutes les pages et composants
+- **Hero padding-top** : `style="padding-top: 200px; padding-bottom: 96px;"` — toutes les pages (services, villes, isolation). Valeur 200px pour laisser de l'espace sous le pré-header + header fixe.
 - **Images hero** : `fetchpriority="high"` (pas de lazy loading — c'est le LCP)
 - **Toutes les autres images** : `loading="lazy" decoding="async"`
 - **Chemins images avec espaces/accents** : toujours encapsuler dans `encodeURI()` dans les attributs `src`
 - **JSON-LD** : injecté via `<script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({...})} />`
 - **noindex pages légales** : `<meta slot="head" name="robots" content="noindex, follow" />`
 - **Scripts Astro (TypeScript)** : utiliser `Array.from(document.querySelectorAll<HTMLElement>('.class'))` + `.filter()` — évite les erreurs TS sur NodeList
+- **Sections mobiles/desktop dupliquées** : quand un bloc existe en version mobile (`lg:hidden`) ET desktop (`hidden lg:block`), utiliser `<p>` (non sémantique) dans le bloc mobile pour éviter la duplication de `<h3>` dans le DOM — impacte l'arborescence des titres (audit accessibilité / SEO)
 
 ## Design système — Pages services
 
 Chaque page service suit la même structure de sections, avec des rendus visuels **intentionnellement différents** pour éviter la répétition.
 
 ### Structure type d'une page service
-1. **Hero** — image plein fond + breadcrumb + H1 + description + 2 CTAs + badge RGE
+1. **Hero** — image plein fond + breadcrumb + H1 + description + 2 CTAs (sans badge RGE — déjà dans le pré-header)
 2. **Présentation** — 2 colonnes : texte + liste checkmarks / image + stats flottantes
 3. **Diagnostic** — types de signes ou situations (section `bg-[#F0F5FC]`)
 4. **Nos savoir-faire** — prestations détaillées (section `bg-white`)
 5. **CTA intermédiaire** — bandeau `bg-[#1E4B8C]`
 6. **Avantages** — bénéfices client (section `bg-[#F0F5FC]`)
 7. **Étapes** — timeline numérotée (section `bg-white`)
-8. **Pourquoi Conesa** — texte + bloc engagements fond bleu (section `bg-[#F0F5FC]`)
-9. **Zones d'intervention** — villes + maillage interne (section `bg-white`)
-10. **ZonesIntervention** — composant carte
-11. **FAQ** — accordéon + JSON-LD FAQPage (section `bg-white`)
-12. **CTA final** — bloc bleu arrondi avec motif (section `bg-[#F0F5FC]`)
+8. **Pourquoi Conesa** — section `bg-[#F0F5FC]` fusionnée : 2-col (texte + "Nos engagements" fond bleu) + `border-t` + carte(s) maillage interne en `bg-white`
+9. **ZonesIntervention** — composant carte (gère tout le contenu géographique — pas de section villes séparée)
+10. **FAQ** — accordéon + JSON-LD FAQPage (section `bg-white`)
+11. **CTA final** — bloc bleu arrondi avec motif (section `bg-[#F0F5FC]`)
 
 ### Design des sections (sans icônes — règle absolue)
 
@@ -504,6 +505,8 @@ Chaque page service suit la même structure de sections, avec des rendus visuels
 ```
 
 **Pas de carousel sur les pages services** — les carousels ont été supprimés de toutes les pages services. Utiliser des grilles statiques uniquement.
+
+**`entreprise.astro` — "Nos domaines d'expertise"** : liste éditoriale sur desktop (`hidden lg:block`), carousel snap horizontal sur mobile (`lg:hidden`). Les titres de services sont en `<h3>` dans le bloc desktop et en `<p>` dans le bloc mobile (évite duplication DOM).
 
 ### JSON-LD sur les pages services
 Chaque page service injecte 3 blocs JSON-LD dans le `<head>` :
