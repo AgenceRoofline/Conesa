@@ -18,12 +18,16 @@
 # ── Authentification Basic (accès restreint préprod) ──────────────────────────
 AuthType Basic
 AuthName "Préprod Conesa — Accès restreint"
-AuthUserFile /chemin/absolu/vers/.htpasswd
+AuthUserFile /home/rooflig/Conesa/.htpasswd
 Require valid-user
 
 # ── Protection du fichier .env ────────────────────────────────────────────────
 # Bloque l'accès HTTP même pour les utilisateurs authentifiés
 <Files ".env">
+    Require all denied
+</Files>
+
+<Files ".htpasswd">
     Require all denied
 </Files>
 
