@@ -49,5 +49,5 @@
     # connect-src 'self' : fetch/AJAX uniquement vers le même domaine (contact.php)
     # frame-ancestors 'none' : interdit l'intégration dans une iframe (plus fort que X-Frame-Options)
     # form-action 'self' : les formulaires ne peuvent soumettre que vers le même domaine
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self';"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; frame-ancestors 'none'; form-action 'self';"
 </IfModule>
