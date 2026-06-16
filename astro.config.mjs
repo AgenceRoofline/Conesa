@@ -17,7 +17,8 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes('/mentions-legales') &&
-        !page.includes('/politique-confidentialite'),
+        !page.includes('/politique-confidentialite') &&
+        !page.includes('/renovation'),
     }),
   ],
   vite: {
