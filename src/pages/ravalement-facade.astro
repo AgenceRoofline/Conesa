@@ -393,40 +393,121 @@ const jsonLdFaq = JSON.stringify({
   <!-- ══════════════════════════════════════
        NOTRE MÉTHODE
   ══════════════════════════════════════ -->
-  <section class="py-8 lg:py-24 bg-white">
+  <section class="py-8 lg:py-24 bg-[#F0F5FC]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mb-14">
+      <div class="text-center mb-12">
         <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Notre méthode</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E4B8C] mt-3 leading-tight" style="font-family:'Montserrat',sans-serif;">
           Comment se déroule<br>une intervention de ravalement ?
         </h2>
-        <p class="text-gray-600 mt-4 text-lg leading-relaxed">
+        <p class="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
           Chaque chantier suit un processus rigoureux pour garantir un résultat durable et conforme à vos attentes.
         </p>
       </div>
 
-      <div class="relative">
-        <!-- Ligne verticale desktop -->
-        <div class="hidden lg:block absolute left-[39px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-[#E8650A] to-[#1E4B8C]/20"></div>
-
-        <div class="space-y-6">
-          {etapes.map(e => (
-            <div class="flex gap-6 items-start group">
-              <div class="relative w-20 shrink-0 flex flex-col items-center">
-                <div class="w-20 h-20 rounded-2xl bg-[#E8F0FB] group-hover:bg-[#1E4B8C] flex items-center justify-center transition-colors duration-300 shadow-sm">
-                  <span class="font-extrabold text-[#1E4B8C] group-hover:text-white text-xl transition-colors duration-300" style="font-family:'Montserrat',sans-serif;">{e.num}</span>
+      <style>#et-root{--per-page:1}@media(min-width:640px){#et-root{--per-page:2}}</style>
+      <div id="et-root" class="relative lg:hidden">
+        <button id="et-prev" aria-label="Précédent" class="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white transition-colors duration-200">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="et-next" aria-label="Suivant" class="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white transition-colors duration-200">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <div class="overflow-hidden">
+          <div id="et-track" class="flex" style="transition: transform 0.45s ease; will-change: transform;">
+            {etapes.map((etape) => (
+              <div style="width: calc(100% / var(--per-page)); flex-shrink: 0; padding: 0 8px; box-sizing: border-box;">
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col gap-3 h-full">
+                  <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 bg-[#1E4B8C] rounded-lg flex items-center justify-center shrink-0">
+                      <span class="text-white font-extrabold text-xs" style="font-family:'Montserrat',sans-serif;">{etape.num}</span>
+                    </div>
+                    <div class="flex-1 h-px bg-[#E8650A]/20"></div>
+                  </div>
+                  <span class="block font-bold text-[#1E4B8C] text-sm leading-snug" style="font-family:'Montserrat',sans-serif;">{etape.titre}</span>
+                  <p class="text-gray-500 text-xs leading-relaxed">{etape.desc}</p>
                 </div>
               </div>
-              <div class="flex-1 bg-[#F0F5FC] rounded-2xl p-6 group-hover:shadow-md transition-shadow duration-300">
-                <h3 class="font-bold text-[#1E4B8C] text-base mb-2" style="font-family:'Montserrat',sans-serif;">{e.titre}</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">{e.desc}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+        <div id="et-dots" class="flex justify-center gap-2 mt-5"></div>
+      </div>
+
+      <div class="etapes-desktop grid-cols-5 gap-4">
+        {etapes.map((etape) => (
+          <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col gap-3">
+            <div class="flex items-center gap-2">
+              <div class="w-9 h-9 bg-[#1E4B8C] rounded-lg flex items-center justify-center shrink-0">
+                <span class="text-white font-extrabold text-xs" style="font-family:'Montserrat',sans-serif;">{etape.num}</span>
+              </div>
+              <div class="flex-1 h-px bg-[#E8650A]/20"></div>
+            </div>
+            <h3 class="font-bold text-[#1E4B8C] text-sm leading-snug" style="font-family:'Montserrat',sans-serif;">{etape.titre}</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">{etape.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
+
+  <style is:global>
+    .etapes-desktop { display: none; }
+    @media (min-width: 1024px) {
+      .etapes-desktop { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+    }
+  </style>
+
+  <script>
+    // ── Carousel étapes (mobile / tablette) ──────────────────────────────────
+    {
+      const TOTAL_ET  = 5;
+      const etRoot    = document.getElementById('et-root') as HTMLElement | null;
+      const etTrack   = document.getElementById('et-track') as HTMLElement | null;
+      const etDotsEl  = document.getElementById('et-dots') as HTMLElement | null;
+      const etPrevBtn = document.getElementById('et-prev') as HTMLButtonElement | null;
+      const etNextBtn = document.getElementById('et-next') as HTMLButtonElement | null;
+
+      if (etRoot && etTrack) {
+        let etCurrent = 0;
+        function etPerPage(): number { return parseInt(getComputedStyle(etRoot!).getPropertyValue('--per-page').trim()) || 1; }
+        function etMaxIdx(): number { return Math.max(0, TOTAL_ET - etPerPage()); }
+        function etGoTo(idx: number): void {
+          etCurrent = Math.max(0, Math.min(idx, etMaxIdx()));
+          etTrack!.style.transform = `translateX(-${etCurrent * (100 / etPerPage())}%)`;
+          etSyncDots(); etSyncArrows();
+        }
+        function etSyncDots(): void {
+          if (!etDotsEl) return;
+          Array.from(etDotsEl.querySelectorAll<HTMLButtonElement>('.et-dot')).forEach((d, i) => {
+            d.className = i === etCurrent ? 'et-dot w-6 h-2.5 rounded-full transition-all duration-300 bg-[#E8650A]' : 'et-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-gray-300 hover:bg-gray-400';
+          });
+        }
+        function etSyncArrows(): void {
+          if (etPrevBtn) etPrevBtn.style.opacity = etCurrent === 0 ? '0.35' : '1';
+          if (etNextBtn) etNextBtn.style.opacity = etCurrent >= etMaxIdx() ? '0.35' : '1';
+        }
+        function etBuildDots(): void {
+          if (!etDotsEl) return;
+          etDotsEl.innerHTML = '';
+          for (let i = 0; i < etMaxIdx() + 1; i++) {
+            const btn = document.createElement('button');
+            btn.className = i === etCurrent ? 'et-dot w-6 h-2.5 rounded-full transition-all duration-300 bg-[#E8650A]' : 'et-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-gray-300 hover:bg-gray-400';
+            btn.setAttribute('aria-label', `Étape ${i + 1}`);
+            btn.addEventListener('click', () => etGoTo(i));
+            etDotsEl.appendChild(btn);
+          }
+        }
+        etPrevBtn?.addEventListener('click', () => etGoTo(etCurrent - 1));
+        etNextBtn?.addEventListener('click', () => etGoTo(etCurrent + 1));
+        window.addEventListener('resize', () => { if (etCurrent > etMaxIdx()) etCurrent = etMaxIdx(); etBuildDots(); etGoTo(etCurrent); });
+        etBuildDots(); etGoTo(0);
+        let etTouchX = 0;
+        etTrack.addEventListener('touchstart', (e) => { etTouchX = e.touches[0].clientX; }, { passive: true });
+        etTrack.addEventListener('touchend', (e) => { const delta = etTouchX - e.changedTouches[0].clientX; if (Math.abs(delta) > 50) delta > 0 ? etGoTo(etCurrent + 1) : etGoTo(etCurrent - 1); }, { passive: true });
+      }
+    }
+  </script>
 
   <!-- ══════════════════════════════════════
        POURQUOI CONESA
