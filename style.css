@@ -1,0 +1,107 @@
+/*
+Theme Name:  Conesa
+Theme URI:   https://roofline.fr
+Description: Thème enfant d'Astra pour Conesa Rénovation
+Author:      Roofline
+Author URI:  https://roofline.fr
+Template:    astra
+Version:     1.0.0
+License:     GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: conesa
+*/
+
+/* overflow-x: clip évite le scroll horizontal sans créer de scroll container
+   (contrairement à hidden qui force overflow-y: auto et casse position:sticky) */
+html, body { overflow-x: clip !important; }
+
+.text-orange { color: #E8650A; }
+
+/* ── Particuliers & Pros — base commune ── */
+.pp-zoom {
+    cursor: pointer;
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                filter 0.4s ease,
+                opacity 0.4s ease,
+                box-shadow 0.4s ease;
+}
+
+/* ── Mobile (< 768px) : blur + opacité, premier actif par défaut ── */
+.pp-zoom.pp-active {
+    transform: scale(1.05);
+    filter: none;
+    opacity: 1;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+}
+.pp-zoom.pp-inactive {
+    transform: scale(1);
+    filter: blur(3px);
+    opacity: 0.5;
+}
+
+/* ── Nos prestations — Stacking cards ── */
+.svc-stack {
+    background: #0A1E3D !important;
+}
+
+.svc-stack .svc-item {
+    position: sticky;
+    top: calc(90px + var(--svc-i, 0) * 16px);
+    z-index: calc(10 + var(--svc-i, 0));
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    transition: transform 0.5s ease;
+    will-change: transform;
+    transform-origin: top center;
+}
+
+/* ── Tablette (768px – 1024px) : card active plus large, recouvre l'autre ── */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Le parent doit être visible pour que le chevauchement fonctionne */
+    .pp-wrap {
+        overflow: visible !important;
+    }
+    .pp-zoom {
+        filter: none !important;
+        position: relative;
+        transition: flex-basis 0.42s cubic-bezier(0.25, 1, 0.5, 1),
+                    max-width 0.42s cubic-bezier(0.25, 1, 0.5, 1),
+                    margin-right 0.42s cubic-bezier(0.25, 1, 0.5, 1),
+                    margin-left 0.42s cubic-bezier(0.25, 1, 0.5, 1),
+                    opacity 0.35s ease,
+                    box-shadow 0.38s ease,
+                    transform 0.4s ease;
+    }
+    .pp-zoom:not(.pp-active):not(.pp-inactive) {
+        opacity: 1;
+        z-index: 1;
+    }
+    /* Active : s'élargit à 62%, marge négative compense → n'empiète pas sur le layout */
+    .pp-zoom.pp-active {
+        flex: 0 0 62% !important;
+        max-width: 62% !important;
+        transform: translateY(-4px) !important;
+        filter: none !important;
+        opacity: 1;
+        z-index: 10;
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35) !important;
+    }
+    /* Card gauche active : déborde vers la droite sans pousser */
+    .pp-zoom:first-child.pp-active {
+        margin-right: -12% !important;
+    }
+    /* Card droite active : déborde vers la gauche sans pousser */
+    .pp-zoom:last-child.pp-active {
+        margin-left: -12% !important;
+    }
+    /* Inactive : garde sa taille, s'efface juste */
+    .pp-zoom.pp-inactive {
+        transform: none !important;
+        filter: none !important;
+        opacity: 0.55;
+        z-index: 1;
+    }
+}
