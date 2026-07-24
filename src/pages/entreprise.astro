@@ -35,10 +35,10 @@ const expertises = [
 ];
 
 const realisations = [
-  { src: "/images/Réalisations/Isolation par l'extérieur.JPG", alt: "Isolation thermique extérieure", label: "Isolation extérieure" },
-  { src: "/images/Réalisations/Ravalement de façade.webp",     alt: "Ravalement de façade",           label: "Ravalement de façade" },
-  { src: "/images/Réalisations/peinture-façade.png",           alt: "Peinture de façade",             label: "Peinture façade" },
-  { src: "/images/Réalisations/Rénovation façade.JPG",         alt: "Rénovation de façade",           label: "Rénovation façade" },
+  { src: "/images/Réalisations/Isolation par l'extérieur.JPG", alt: "Isolation thermique extérieure", label: "Isolation extérieure",  lieu: "Albi (81)" },
+  { src: "/images/Réalisations/Ravalement de façade.webp",     alt: "Ravalement de façade",           label: "Ravalement de façade", lieu: "Castres (81)" },
+  { src: "/images/Réalisations/peinture-façade.png",           alt: "Peinture de façade",             label: "Peinture façade",      lieu: "Gaillac (81)" },
+  { src: "/images/Réalisations/Rénovation façade.JPG",         alt: "Rénovation de façade",           label: "Rénovation façade",    lieu: "Lavaur (81)" },
 ];
 
 const faqs = [
@@ -103,7 +103,7 @@ const faqs = [
       fetchpriority="high"
       onerror="this.style.display='none'"
     />
-    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(10,30,61,0.92) 0%, rgba(30,75,140,0.75) 55%, rgba(10,30,61,0.65) 100%);"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(10,30,61,0.65) 0%, rgba(30,75,140,0.45) 55%, rgba(10,30,61,0.35) 100%);"></div>
     <div class="absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>
     <div class="absolute top-0 left-0 w-1 h-full bg-[#E8650A] opacity-60"></div>
 
@@ -389,7 +389,13 @@ const faqs = [
               onerror="this.style.display='none'"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-[#0A1E3D]/70 via-transparent to-transparent flex items-end p-4">
-              <span class="text-white font-semibold text-sm" style="font-family:'Montserrat',sans-serif;">{r.label}</span>
+              <div>
+                <span class="text-white font-semibold text-sm block" style="font-family:'Montserrat',sans-serif;">{r.label}</span>
+                <span class="flex items-center gap-1 text-white/70 text-xs mt-0.5">
+                  <svg class="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  {r.lieu}
+                </span>
+              </div>
             </div>
           </div>
         ))}
@@ -411,7 +417,13 @@ const faqs = [
               />
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-[#0A1E3D]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-              <span class="text-white font-semibold text-sm" style="font-family:'Montserrat',sans-serif;">{r.label}</span>
+              <div>
+                <span class="text-white font-semibold text-sm block" style="font-family:'Montserrat',sans-serif;">{r.label}</span>
+                <span class="flex items-center gap-1 text-white/70 text-xs mt-1">
+                  <svg class="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  {r.lieu}
+                </span>
+              </div>
             </div>
           </div>
         ))}

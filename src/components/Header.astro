@@ -104,12 +104,23 @@ const villes = [
   <header class="w-full bg-white shadow-sm border-b border-gray-100">
     <div class="max-w-screen-2xl mx-auto flex items-center justify-between h-[70px] md:h-[90px] lg:h-[110px] px-8 gap-6">
 
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 shrink-0">
+      <!-- Logo hero (déborde sous le header en haut de page, se rétracte au scroll) -->
+      <a
+        href="/"
+        id="logo-anchor"
+        class="flex items-center shrink-0"
+        style="
+          align-self: flex-start;
+          position: relative;
+          z-index: 20;
+        "
+      >
         <img
-          src={encodeURI("/images/Logo/Conesa_Logo_17@0.75x.webp")}
+          id="logo-img"
+          src={encodeURI("/images/Logo/Logo-Conesa.png")}
           alt="Conesa"
-          class="h-[60px] md:h-[80px] lg:h-[100px] w-auto"
+          class="w-auto block"
+          style="height: 155px; transition: height 0.45s cubic-bezier(0.4,0,0.2,1);"
           onerror="this.style.display='none'"
         />
       </a>
@@ -202,6 +213,17 @@ const villes = [
 
 </div><!-- /#headercontainer -->
 
+<style>
+  /* Logo : reset taille normale sur mobile / tablette */
+  @media (max-width: 1023px) {
+    #logo-anchor { align-self: center !important; }
+    #logo-img { height: 60px !important; }
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    #logo-img { height: 80px !important; }
+  }
+</style>
+
 <script>
   // Menu nav mobile
   const menuToggle = document.getElementById('menu-toggle');
@@ -255,7 +277,27 @@ const villes = [
     });
   });
 
-  // Cacher le pré-header au scroll (translateY)
+  // ── Logo hero : déborde sous le header en haut, se rétracte au scroll ──
+  const logoAnchor = document.getElementById('logo-anchor') as HTMLElement | null;
+  const logoImg    = document.getElementById('logo-img') as HTMLImageElement | null;
+
+  function setLogoScrolled(scrolled: boolean) {
+    if (!logoAnchor || !logoImg) return;
+    if (window.innerWidth < 1024) return; // mobile/tablette : géré par CSS
+
+    if (scrolled) {
+      logoImg.style.height       = '100px';
+      logoAnchor.style.alignSelf = 'center';
+    } else {
+      logoImg.style.height       = '155px';
+      logoAnchor.style.alignSelf = 'flex-start';
+    }
+  }
+
+  // État initial (cas où la page est chargée avec du scroll déjà)
+  setLogoScrolled(window.scrollY > 10);
+
+  // Cacher le pré-header au scroll (translateY) + rétraction logo
   const headercontainer = document.getElementById('headercontainer') as HTMLElement | null;
   const preheader = document.getElementById('preheader') as HTMLElement | null;
 
@@ -272,7 +314,11 @@ const villes = [
         headercontainer.style.transform = 'translateY(0)';
       }
 
+      setLogoScrolled(currentScroll > 10);
+
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, { passive: true });
   }
+
+  window.addEventListener('resize', () => setLogoScrolled(window.scrollY > 10), { passive: true });
 </script>
