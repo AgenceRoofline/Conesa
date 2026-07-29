@@ -1,9 +1,12 @@
 ---
 const slides = [
-  { prestation: "Isolation Thermique Extérieure", ville: "Albi",     src: "/images/Réalisations/Isolation par l'extérieur.JPG" },
-  { prestation: "Ravalement de Façade",           ville: "Gaillac",  src: "/images/Réalisations/Ravalement de façade.webp" },
-  { prestation: "Peinture de Façade",             ville: "Castres",  src: "/images/Réalisations/peinture-façade.png" },
-  { prestation: "Rénovation de Façade",           ville: "Graulhet", src: "/images/Réalisations/Rénovation façade.JPG" },
+  { prestation: "Isolation Thermique Extérieure", ville: "Albi",      src: "/images/Réalisations/Isolation extérieur - Conesa.png" },
+  { prestation: "Ravalement de Façade",           ville: "Gaillac",   src: "/images/Réalisations/Ravalement de façade.webp" },
+  { prestation: "Isolation Thermique Extérieure", ville: "Castres",   src: "/images/Réalisations/Isolation par l'extérieur.JPG" },
+  { prestation: "Peinture de Façade",             ville: "Graulhet",  src: "/images/Réalisations/peinture-façade.png" },
+  { prestation: "Rénovation de Façade",           ville: "Albi",      src: "/images/Réalisations/Cathédrale Albi - Conesa.png", pos: "left bottom" },
+  { prestation: "Rénovation de Façade",           ville: "Lavaur",    src: "/images/Réalisations/Rénovation façade.JPG" },
+  { prestation: "Peinture Intérieure",            ville: "Gaillac",   src: "/images/Réalisations/Peinture intérieure - Conesa.png" },
 ];
 ---
 
@@ -12,7 +15,7 @@ const slides = [
   <!-- Viewport du carrousel -->
   <div class="overflow-hidden rounded-2xl pb-4" id="carousel-viewport">
     <div class="flex gap-5 transition-transform duration-500 ease-in-out" id="carousel-track">
-      {slides.map((slide, i) => (
+      {slides.map((slide) => (
         <div class="carousel-slide shrink-0 w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]">
           <div class="rounded-2xl overflow-hidden shadow-md bg-white group">
 
@@ -22,20 +25,21 @@ const slides = [
                 src={slide.src}
                 alt={slide.prestation}
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                style={slide.pos ? `object-position: ${slide.pos}` : undefined}
                 loading="lazy"
                 decoding="async"
                 onerror="this.closest('.relative').classList.add('bg-[#1E4B8C]/10'); this.style.display='none';"
               />
               <!-- Badge prestation -->
-              <div class="absolute top-3 left-3 bg-[#E8650A] text-white text-xs font-semibold px-3 py-1 rounded-full">
+              <div class="absolute top-3 left-3 text-white text-xs font-semibold px-3 py-1" style="background:#A8442A; border-radius:2px;">
                 {slide.prestation}
               </div>
             </div>
 
             <!-- Infos -->
-            <div class="p-4">
-              <p class="font-semibold text-gray-800 text-sm" style="font-family:'Montserrat',sans-serif;">{slide.prestation}</p>
-              <p class="text-gray-500 text-xs flex items-center gap-1 mt-0.5">
+            <div class="p-4" style="background:#FAF6F0;">
+              <p class="font-semibold text-sm" style="font-family:'Bitter',serif; color:#2B2622;">{slide.prestation}</p>
+              <p class="text-xs flex items-center gap-1 mt-0.5" style="color:#6B6156;">
                 <svg class="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -54,7 +58,8 @@ const slides = [
   <button
     id="carousel-prev"
     aria-label="Précédent"
-    class="absolute -left-5 top-1/2 -translate-y-1/2 w-11 h-11 bg-white shadow-lg border border-gray-100 rounded-full flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white hover:border-[#1E4B8C] transition-all duration-200 z-10 disabled:opacity-30 disabled:cursor-not-allowed"
+    class="absolute -left-5 top-1/2 -translate-y-1/2 w-11 h-11 bg-white shadow-lg rounded-full flex items-center justify-center transition-all duration-200 z-10 disabled:opacity-30 disabled:cursor-not-allowed"
+    style="border:1.5px solid #E0D5C8; color:#2B2622;"
   >
     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
       <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
@@ -64,7 +69,8 @@ const slides = [
   <button
     id="carousel-next"
     aria-label="Suivant"
-    class="absolute -right-5 top-1/2 -translate-y-1/2 w-11 h-11 bg-white shadow-lg border border-gray-100 rounded-full flex items-center justify-center text-[#1E4B8C] hover:bg-[#1E4B8C] hover:text-white hover:border-[#1E4B8C] transition-all duration-200 z-10 disabled:opacity-30 disabled:cursor-not-allowed"
+    class="absolute -right-5 top-1/2 -translate-y-1/2 w-11 h-11 bg-white shadow-lg rounded-full flex items-center justify-center transition-all duration-200 z-10 disabled:opacity-30 disabled:cursor-not-allowed"
+    style="border:1.5px solid #E0D5C8; color:#2B2622;"
   >
     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
@@ -115,7 +121,7 @@ const slides = [
     const total = getMaxIndex() + 1;
     for (let i = 0; i < total; i++) {
       const dot = document.createElement('button');
-      dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === current ? 'bg-[#E8650A] w-6' : 'bg-gray-300 hover:bg-gray-400'}`;
+      dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === current ? 'bg-[#A8442A] w-6' : 'bg-[#E0D5C8]'}`;
       dot.setAttribute('aria-label', `Aller au slide ${i + 1}`);
       dot.addEventListener('click', () => { current = i; updateCarousel(); });
       dotsContainer.appendChild(dot);
@@ -126,9 +132,9 @@ const slides = [
     const dots = dotsContainer.querySelectorAll('button');
     dots.forEach((dot, i) => {
       if (i === current) {
-        dot.className = 'w-6 h-2.5 rounded-full transition-all duration-300 bg-[#E8650A]';
+        dot.className = 'w-6 h-2.5 rounded-full transition-all duration-300 bg-[#A8442A]';
       } else {
-        dot.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-gray-300 hover:bg-gray-400';
+        dot.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#E0D5C8]';
       }
     });
   }

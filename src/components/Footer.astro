@@ -1,12 +1,23 @@
 ---
-const villes = ["Albi", "Gaillac", "Castres", "Graulhet"];
 const services = [
   { label: "Isolation Thermique Extérieure", href: "/isolation" },
-  { label: "Ravalement de façade", href: "/ravalement-facade" },
+  { label: "Ravalement de façade",           href: "/ravalement-facade" },
   { label: "Peinture intérieure & extérieure", href: "/peinture-interieure-exterieure" },
-  { label: "Entretien de toiture", href: "/nettoyage-toiture" },
-  { label: "Revêtements de sols", href: "/revetements-sols" },
-  { label: "Travaux après sinistre", href: "/travaux-apres-sinistre" },
+  { label: "Entretien de toiture",            href: "/nettoyage-toiture" },
+  { label: "Revêtements de sols",             href: "/revetements-sols" },
+  { label: "Travaux après sinistre",          href: "/travaux-apres-sinistre" },
+];
+const villes = [
+  { nom: "Albi",     slug: "albi" },
+  { nom: "Gaillac",  slug: "gaillac" },
+  { nom: "Castres",  slug: "castres" },
+  { nom: "Graulhet", slug: "graulhet" },
+];
+const entrepriseLinks = [
+  { label: "Qui sommes-nous ?",   href: "/entreprise" },
+  { label: "Nos réalisations",    href: "/#realisations" },
+  { label: "Blog & conseils",     href: "/blog" },
+  { label: "Demander un devis",   href: "#contact" },
 ];
 const prestations = [
   "Isolation Thermique Extérieure (ITE)",
@@ -18,147 +29,152 @@ const prestations = [
   "Travaux après sinistre",
   "Autre / Je ne sais pas encore",
 ];
+const rainbowColors = ["#C4362C","#D98A2B","#D9B43A","#4A8F52","#2F6FA8","#B02A5B"];
 ---
 
-<footer id="contact" class="bg-[#153566] text-white">
+<footer id="contact" style="background:#2B2622; color:#C9BEB2;">
 
   <!-- ══════════════════════════════════════
        FORMULAIRE DE CONTACT / DEVIS
   ══════════════════════════════════════ -->
-  <div class="border-b border-white/10">
+  <div style="border-bottom:1px solid rgba(233,222,211,0.12);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div class="grid lg:grid-cols-2 gap-12 items-start">
 
-        <!-- Infos -->
+        <!-- Infos gauche -->
         <div>
-          <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Contactez-nous</span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-5 leading-tight" style="font-family:'Montserrat',sans-serif;">
-            Demandez votre<br> devis gratuit
+          <span class="font-bold text-sm uppercase tracking-widest" style="color:#A8442A;">Contactez-nous</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 mb-5 leading-tight" style="font-family:'Bitter',serif; color:#FAF6F0;">
+            Demandez votre<br>devis gratuit
           </h2>
-          <p class="text-blue-200 text-base leading-relaxed mb-8">
+          <p class="text-base leading-relaxed mb-8" style="color:#C9BEB2;">
             Réponse garantie sous 24h. Déplacement et devis sans engagement.
           </p>
-          <ul class="space-y-4 text-blue-100 text-sm">
+          <ul class="space-y-4 text-sm">
             <li class="flex items-center gap-3">
-              <span class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4 text-[#E8650A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <span class="w-9 h-9 flex items-center justify-center shrink-0" style="background:rgba(168,68,42,0.15); border-radius:2px;">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:#A8442A;">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                 </svg>
               </span>
-              <a href="tel:0563541697" class="hover:text-white transition-colors">05 63 54 16 97</a>
+              <a href="tel:0563541697" class="transition-opacity hover:opacity-80" style="color:#FAF6F0; font-weight:600;">05 63 54 16 97</a>
             </li>
             <li class="flex items-center gap-3">
-              <span class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4 text-[#E8650A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <span class="w-9 h-9 flex items-center justify-center shrink-0" style="background:rgba(168,68,42,0.15); border-radius:2px;">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:#A8442A;">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
               </span>
-              <a href="mailto:conesa81@wanadoo.fr" class="hover:text-white transition-colors">conesa81@wanadoo.fr</a>
+              <a href="mailto:conesa81@wanadoo.fr" class="transition-opacity hover:opacity-80" style="color:#C9BEB2;">conesa81@wanadoo.fr</a>
             </li>
             <li class="flex items-center gap-3">
-              <span class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4 text-[#E8650A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <span class="w-9 h-9 flex items-center justify-center shrink-0" style="background:rgba(168,68,42,0.15); border-radius:2px;">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:#A8442A;">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
               </span>
-              Albi, Tarn (81)
+              <span style="color:#C9BEB2;">31 Petit Chemin des Broucouniès, 81000 Albi</span>
             </li>
           </ul>
         </div>
 
-        <!-- Formulaire -->
+        <!-- Formulaire sur fond papier -->
         <form
           id="conesa-contact-form"
           method="POST"
           action="/contact.php"
-          class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col gap-4"
+          class="flex flex-col gap-4"
+          style="background:#FAF6F0; border-radius:4px; padding:28px 32px;"
           novalidate
         >
-          <!-- Honeypot anti-spam : caché aux humains, rempli par les bots -->
+          <!-- Honeypot -->
           <div style="display:none;" aria-hidden="true">
             <input type="text" name="website" id="cf-website" tabindex="-1" autocomplete="off" />
           </div>
-          <!-- CSRF token (Double Submit Cookie) — rempli par le JS au chargement -->
           <input type="hidden" name="csrf_token" id="cf-csrf" value="" />
-          <!-- Page source — pathname de la page courante, rempli par le JS -->
           <input type="hidden" name="page_source" id="cf-page-source" value="" />
 
           <div class="grid sm:grid-cols-2 gap-4">
             <div class="flex flex-col gap-1.5">
-              <label for="cf-nom" class="text-xs font-semibold text-blue-200 uppercase tracking-wide">Prénom / Nom *</label>
+              <label for="cf-nom" class="text-xs font-bold uppercase tracking-wide" style="color:#6B6156;">Prénom / Nom *</label>
               <input
                 id="cf-nom" type="text" name="nom" required placeholder="Jean Dupont"
-                class="bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white placeholder-blue-300 focus:outline-none focus:border-[#E8650A] transition-colors"
+                class="px-4 py-2.5 text-sm transition-colors focus:outline-none"
+                style="background:#fff; border:1px solid #E0D5C8; border-radius:2px; color:#2B2622;"
               />
-              <span id="cf-nom-error" class="cf-error hidden text-red-400 text-xs mt-0.5"></span>
+              <span id="cf-nom-error" class="cf-error hidden text-xs mt-0.5" style="color:#C4362C;"></span>
             </div>
             <div class="flex flex-col gap-1.5">
-              <label for="cf-telephone" class="text-xs font-semibold text-blue-200 uppercase tracking-wide">Téléphone *</label>
+              <label for="cf-telephone" class="text-xs font-bold uppercase tracking-wide" style="color:#6B6156;">Téléphone *</label>
               <input
                 id="cf-telephone" type="tel" name="telephone" required placeholder="06 XX XX XX XX"
-                class="bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white placeholder-blue-300 focus:outline-none focus:border-[#E8650A] transition-colors"
+                class="px-4 py-2.5 text-sm transition-colors focus:outline-none"
+                style="background:#fff; border:1px solid #E0D5C8; border-radius:2px; color:#2B2622;"
               />
-              <span id="cf-telephone-error" class="cf-error hidden text-red-400 text-xs mt-0.5"></span>
+              <span id="cf-telephone-error" class="cf-error hidden text-xs mt-0.5" style="color:#C4362C;"></span>
             </div>
           </div>
 
           <div class="flex flex-col gap-1.5">
-            <label for="cf-email" class="text-xs font-semibold text-blue-200 uppercase tracking-wide">Email *</label>
+            <label for="cf-email" class="text-xs font-bold uppercase tracking-wide" style="color:#6B6156;">Email *</label>
             <input
               id="cf-email" type="email" name="email" required placeholder="jean@email.fr"
-              class="bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white placeholder-blue-300 focus:outline-none focus:border-[#E8650A] transition-colors"
+              class="px-4 py-2.5 text-sm transition-colors focus:outline-none"
+              style="background:#fff; border:1px solid #E0D5C8; border-radius:2px; color:#2B2622;"
             />
-            <span id="cf-email-error" class="cf-error hidden text-red-400 text-xs mt-0.5"></span>
+            <span id="cf-email-error" class="cf-error hidden text-xs mt-0.5" style="color:#C4362C;"></span>
           </div>
 
           <div class="grid sm:grid-cols-2 gap-4">
             <div class="flex flex-col gap-1.5">
-              <label for="cf-ville" class="text-xs font-semibold text-blue-200 uppercase tracking-wide">Ville / Code postal</label>
+              <label for="cf-ville" class="text-xs font-bold uppercase tracking-wide" style="color:#6B6156;">Ville / Code postal</label>
               <input
                 id="cf-ville" type="text" name="ville" placeholder="Albi, 81000"
-                class="bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white placeholder-blue-300 focus:outline-none focus:border-[#E8650A] transition-colors"
+                class="px-4 py-2.5 text-sm transition-colors focus:outline-none"
+                style="background:#fff; border:1px solid #E0D5C8; border-radius:2px; color:#2B2622;"
               />
             </div>
             <div class="flex flex-col gap-1.5">
-              <label for="cf-prestation" class="text-xs font-semibold text-blue-200 uppercase tracking-wide">Type de prestation</label>
+              <label for="cf-prestation" class="text-xs font-bold uppercase tracking-wide" style="color:#6B6156;">Type de prestation</label>
               <select
                 id="cf-prestation" name="prestation"
-                class="bg-[#153566] border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#E8650A] transition-colors"
+                class="px-4 py-2.5 text-sm transition-colors focus:outline-none"
+                style="background:#fff; border:1px solid #E0D5C8; border-radius:2px; color:#2B2622;"
               >
                 <option value="" disabled selected>Choisir...</option>
                 {prestations.map(p => <option value={p}>{p}</option>)}
               </select>
-              <span id="cf-prestation-error" class="cf-error hidden text-red-400 text-xs mt-0.5"></span>
+              <span id="cf-prestation-error" class="cf-error hidden text-xs mt-0.5" style="color:#C4362C;"></span>
             </div>
           </div>
 
           <div class="flex flex-col gap-1.5">
-            <label for="cf-message" class="text-xs font-semibold text-blue-200 uppercase tracking-wide">Description du projet</label>
+            <label for="cf-message" class="text-xs font-bold uppercase tracking-wide" style="color:#6B6156;">Description du projet</label>
             <textarea
               id="cf-message" name="message" rows="3" placeholder="Décrivez brièvement votre projet..."
-              class="bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white placeholder-blue-300 focus:outline-none focus:border-[#E8650A] transition-colors resize-none"
+              class="px-4 py-2.5 text-sm transition-colors focus:outline-none resize-none"
+              style="background:#fff; border:1px solid #E0D5C8; border-radius:2px; color:#2B2622;"
             ></textarea>
           </div>
 
-          <!-- Message d'erreur global -->
-          <div id="cf-global-error" class="hidden bg-red-500/20 border border-red-400/40 rounded-lg px-4 py-3 text-red-300 text-sm"></div>
+          <div id="cf-global-error" class="hidden px-4 py-3 text-sm" style="background:rgba(196,54,44,0.1); border:1px solid rgba(196,54,44,0.3); border-radius:2px; color:#C4362C;"></div>
 
-          <!-- Message de succès -->
-          <div id="cf-success" class="hidden bg-green-500/20 border border-green-400/40 rounded-xl px-5 py-4 flex items-start gap-3">
-            <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <div id="cf-success" class="hidden px-5 py-4 flex items-start gap-3" style="background:rgba(74,143,82,0.12); border:1px solid rgba(74,143,82,0.3); border-radius:2px;">
+            <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:#4A8F52;">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
             <div>
-              <p class="text-green-300 font-semibold text-sm">Demande envoyée avec succès !</p>
-              <p class="text-green-400/80 text-xs mt-0.5">Nous vous répondrons sous 24h. À très bientôt.</p>
+              <p class="font-semibold text-sm" style="color:#4A8F52;">Demande envoyée avec succès !</p>
+              <p class="text-xs mt-0.5" style="color:#6B6156;">Nous vous répondrons sous 24h. À très bientôt.</p>
             </div>
           </div>
 
           <button
             id="cf-submit"
             type="submit"
-            class="w-full bg-[#E8650A] hover:bg-orange-700 text-white font-bold py-3 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 mt-1 disabled:opacity-60 disabled:cursor-not-allowed"
+            class="w-full text-white font-bold py-3 flex items-center justify-center gap-2 mt-1 transition-opacity hover:opacity-85 disabled:opacity-60 disabled:cursor-not-allowed"
+            style="background:#A8442A; border-radius:3px;"
           >
             <svg id="cf-submit-icon" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -169,7 +185,7 @@ const prestations = [
             </svg>
             <span id="cf-submit-label">Envoyer ma demande</span>
           </button>
-          <p class="text-xs text-blue-300 text-center">Réponse sous 24h · Sans engagement</p>
+          <p class="text-xs text-center" style="color:#6B6156;">Réponse sous 24h · Sans engagement</p>
         </form>
 
       </div>
@@ -177,120 +193,134 @@ const prestations = [
   </div>
 
   <!-- ══════════════════════════════════════
-       CARTE / LOCALISATION
+       CARTE GOOGLE MAPS (sans titre)
   ══════════════════════════════════════ -->
-  <div class="border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-      <div>
-        <span class="text-[#E8650A] font-semibold text-sm uppercase tracking-widest">Nous trouver</span>
-        <p class="text-white font-bold text-lg mt-1" style="font-family:'Montserrat',sans-serif;">31 Petit Chemin des Broucouniès, 81000 Albi</p>
-      </div>
-      <a
-        href="https://maps.google.com/?q=31+Petit+Chemin+des+Broucounies,+81000+Albi"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="shrink-0 inline-flex items-center gap-2 border border-white/20 text-white hover:bg-white/10 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-200"
-      >
-        Ouvrir dans Google Maps
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-      </a>
-    </div>
-    <div class="w-full h-72 sm:h-80">
-      <iframe
-        src="https://www.google.com/maps?q=31+Petit+Chemin+des+Broucouni%C3%A8s%2C+81000+Albi&hl=fr&z=16&output=embed"
-        width="100%"
-        height="100%"
-        style="border:0; display:block;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Localisation Conesa — 31 Petit Chemin des Broucouniès, 81000 Albi"
-      ></iframe>
-    </div>
+  <div class="w-full" style="height:280px;">
+    <iframe
+      src="https://www.google.com/maps?q=31+Petit+Chemin+des+Broucouni%C3%A8s%2C+81000+Albi&hl=fr&z=16&output=embed"
+      width="100%"
+      height="100%"
+      style="border:0; display:block;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Localisation Conesa — 31 Petit Chemin des Broucouniès, 81000 Albi"
+    ></iframe>
   </div>
 
   <!-- ══════════════════════════════════════
-       COLONNES FOOTER
+       COLONNES FOOTER — pleine largeur
   ══════════════════════════════════════ -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+  <div class="w-full px-6 lg:px-8 py-14" style="border-top:1px solid rgba(233,222,211,0.12);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 max-w-none">
 
       <!-- Brand -->
-      <div class="flex flex-col items-center text-center md:items-start md:text-left">
-        <div class="flex items-center gap-3 mb-4">
-          <img src={encodeURI("/images/Logo/Conesa_Logo_17@0.75x.webp")} alt="Conesa" class="h-20 w-auto" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
-          <p class="text-xs text-blue-200 leading-tight">Isolation & Rénovation</p>
-        </div>
-        <p class="text-blue-200 text-sm leading-relaxed">
-          Entreprise familiale dans le Tarn depuis plus de 55 ans. Certifiée RGE et Qualibat.
+      <div class="col-span-2 md:col-span-1 flex flex-col items-center text-center md:items-start md:text-left">
+        <img
+          src={encodeURI("/images/Logo/logo-conesa (1).png")}
+          alt="Conesa"
+          class="h-20 w-auto mb-5"
+          loading="lazy"
+          decoding="async"
+          onerror="this.style.display='none'"
+        />
+        <p class="text-sm leading-relaxed mb-5" style="color:#C9BEB2;">
+          Entreprise familiale de rénovation à Albi dans le Tarn depuis plus de 55 ans. Certifiée RGE et Qualibat.
         </p>
-        <div class="flex items-center gap-3 mt-5">
-          <img src="/images/labels/Logo-RGE.png" alt="RGE Qualibat" class="h-10 w-auto bg-white/90 rounded-lg p-1" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <img
+          src="/images/labels/Logo-RGE.png"
+          alt="RGE Qualibat"
+          class="h-10 w-auto rounded p-1"
+          style="background:#FAF6F0;"
+          loading="lazy"
+          decoding="async"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      <!-- Nos métiers — masqué sur mobile -->
+      <div class="hidden md:block">
+        <p class="font-extrabold text-xs uppercase tracking-widest" style="font-family:'Bitter',serif; color:#FAF6F0; letter-spacing:0.12em;">Nos métiers</p>
+        <div class="mt-2 mb-5 h-0.5 w-8 rounded-full" style="background:#A8442A;"></div>
+        <ul class="space-y-2.5">
+          {services.map(s => (
+            <li><a href={s.href} class="text-sm transition-opacity hover:opacity-100" style="color:#C9BEB2; opacity:0.85;">{s.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Nos villes — masqué sur mobile -->
+      <div class="hidden md:block">
+        <p class="font-extrabold text-xs uppercase tracking-widest" style="font-family:'Bitter',serif; color:#FAF6F0; letter-spacing:0.12em;">Nos villes</p>
+        <div class="mt-2 mb-5 h-0.5 w-8 rounded-full" style="background:#D98A2B;"></div>
+        <ul class="space-y-2.5">
+          {villes.map(v => (
+            <li><a href={`/villes/${v.slug}`} class="text-sm transition-opacity hover:opacity-100" style="color:#C9BEB2; opacity:0.85;">{v.nom}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- L'entreprise + Contact — masqué sur mobile -->
+      <div class="hidden md:block">
+        <p class="font-extrabold text-xs uppercase tracking-widest" style="font-family:'Bitter',serif; color:#FAF6F0; letter-spacing:0.12em;">L'entreprise</p>
+        <div class="mt-2 mb-5 h-0.5 w-8 rounded-full" style="background:#2F6FA8;"></div>
+        <ul class="space-y-2.5">
+          {entrepriseLinks.map(l => (
+            <li><a href={l.href} class="text-sm transition-opacity hover:opacity-100" style="color:#C9BEB2; opacity:0.85;">{l.label}</a></li>
+          ))}
+        </ul>
+        <!-- Contact fusionné sous les liens -->
+        <div class="mt-6 pt-5 space-y-2.5" style="border-top:1px solid rgba(233,222,211,0.12);">
+          <a href="tel:0563541697" class="flex items-center gap-2 text-sm font-semibold transition-opacity hover:opacity-80" style="color:#FAF6F0;">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:#A8442A;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            05 63 54 16 97
+          </a>
+          <a href="mailto:conesa81@wanadoo.fr" class="flex items-center gap-2 text-sm transition-opacity hover:opacity-80" style="color:#C9BEB2;">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:#A8442A;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            conesa81@wanadoo.fr
+          </a>
         </div>
       </div>
 
-      <!-- Services — masqué sur mobile -->
-      <div class="hidden md:block">
-        <span class="font-bold text-sm uppercase tracking-wider mb-4" style="font-family:'Montserrat',sans-serif;">Nos prestations</span>
-        <ul class="space-y-2 mt-3">
-          {services.map(s => (
-            <li>
-              <a href={s.href} class="text-blue-200 hover:text-white text-sm transition-colors">{s.label}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Zones — masqué sur mobile -->
-      <div class="hidden md:block">
-        <span class="font-bold text-sm uppercase tracking-wider mb-4" style="font-family:'Montserrat',sans-serif;">Zones d'intervention</span>
-        <ul class="space-y-2 mt-3">
-          {villes.map(v => (
-            <li>
-              <a href={`/villes/${v.toLowerCase().replace(/\s/g, '-').normalize('NFD').replace(/[̀-ͯ]/g, '')}`} class="text-blue-200 hover:text-white text-sm transition-colors">{v}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Contact rapide -->
-      <div class="flex flex-col items-center text-center md:items-start md:text-left">
-        <span class="font-bold text-sm uppercase tracking-wider mb-4" style="font-family:'Montserrat',sans-serif;">Contact</span>
-        <ul class="space-y-3 text-sm mt-3 text-blue-200">
-          <li class="flex items-start gap-2 justify-center md:justify-start">
-            <svg class="w-4 h-4 mt-0.5 shrink-0 text-[#E8650A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+      <!-- Contact mobile uniquement -->
+      <div class="col-span-2 md:hidden flex flex-col items-center text-center">
+        <p class="font-extrabold text-xs uppercase tracking-widest" style="font-family:'Bitter',serif; color:#FAF6F0; letter-spacing:0.12em;">Contact</p>
+        <div class="mt-2 mb-4 h-0.5 w-8 rounded-full" style="background:#4A8F52;"></div>
+        <div class="space-y-2.5">
+          <a href="tel:0563541697" class="flex items-center justify-center gap-2 text-sm font-semibold transition-opacity hover:opacity-80" style="color:#FAF6F0;">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:#A8442A;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
             </svg>
-            Albi, Tarn (81)
-          </li>
-          <li class="flex items-center gap-2 justify-center md:justify-start">
-            <svg class="w-4 h-4 shrink-0 text-[#E8650A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            05 63 54 16 97
+          </a>
+          <a href="mailto:conesa81@wanadoo.fr" class="flex items-center justify-center gap-2 text-sm transition-opacity hover:opacity-80" style="color:#C9BEB2;">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:#A8442A;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
-            <a href="tel:0563541697" class="hover:text-white transition-colors">05 63 54 16 97</a>
-          </li>
-          <li class="flex items-center gap-2 justify-center md:justify-start">
-            <svg class="w-4 h-4 shrink-0 text-[#E8650A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-            <a href="mailto:conesa81@wanadoo.fr" class="hover:text-white transition-colors">conesa81@wanadoo.fr</a>
-          </li>
-        </ul>
-        <a href="#contact" class="inline-block mt-6 bg-[#E8650A] hover:bg-orange-700 text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors">
-          Demander un devis
-        </a>
+            conesa81@wanadoo.fr
+          </a>
+        </div>
       </div>
 
     </div>
   </div>
 
-  <div class="border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-blue-300">
-      <p>© 2026 Conesa. Tous droits réservés.</p>
-      <div class="flex gap-4">
-        <a href="/mentions-legales" class="hover:text-white transition-colors">Mentions légales</a>
-        <a href="/politique-confidentialite" class="hover:text-white transition-colors">Confidentialité</a>
+  <!-- Ligne arc-en-ciel + bas de page -->
+  <div>
+    <div class="flex" style="height:3px;">
+      {rainbowColors.map(c => (
+        <div style={`flex:1; background:${c};`}></div>
+      ))}
+    </div>
+    <div class="w-full px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-2" style="border-top:1px solid rgba(233,222,211,0.08);">
+      <p class="text-xs" style="color:#6B6156;">© 2026 Conesa · Isolation &amp; Rénovation dans le Tarn (81)</p>
+      <div class="flex gap-5">
+        <a href="/mentions-legales" class="text-xs transition-opacity hover:opacity-100" style="color:#6B6156;">Mentions légales</a>
+        <a href="/politique-confidentialite" class="text-xs transition-opacity hover:opacity-100" style="color:#6B6156;">Politique de confidentialité</a>
       </div>
     </div>
   </div>
@@ -302,7 +332,7 @@ const prestations = [
   const form = document.getElementById('conesa-contact-form') as HTMLFormElement | null;
   if (!form) return;
 
-  // ── CSRF : génère un token aléatoire, le pose en cookie ET dans le champ caché
+  // CSRF token
   const csrfToken = Array.from(
     crypto.getRandomValues(new Uint8Array(24)),
     (b: number) => b.toString(16).padStart(2, '0')
@@ -312,7 +342,6 @@ const prestations = [
   const csrfField = document.getElementById('cf-csrf') as HTMLInputElement | null;
   if (csrfField) csrfField.value = csrfToken;
 
-  // Page source : pathname de la page courante (ex: /, /isolation, /villes/albi)
   const pageSourceField = document.getElementById('cf-page-source') as HTMLInputElement | null;
   if (pageSourceField) pageSourceField.value = window.location.pathname;
 
@@ -338,7 +367,8 @@ const prestations = [
     if (!el) return;
     el.textContent = msg;
     el.classList.remove('hidden');
-    document.getElementById(fieldId)?.classList.add('border-red-400');
+    const field = document.getElementById(fieldId) as HTMLElement | null;
+    if (field) field.style.borderColor = '#C4362C';
   }
 
   function clearError(fieldId: string): void {
@@ -346,7 +376,8 @@ const prestations = [
     if (!el) return;
     el.textContent = '';
     el.classList.add('hidden');
-    document.getElementById(fieldId)?.classList.remove('border-red-400');
+    const field = document.getElementById(fieldId) as HTMLElement | null;
+    if (field) field.style.borderColor = '#E0D5C8';
   }
 
   function validateField(field: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null): boolean {
@@ -354,45 +385,30 @@ const prestations = [
     const val = field.value.trim();
 
     if (field === nom) {
-      if (!nomRegex.test(val)) {
-        showError('cf-nom', "Merci d'indiquer votre nom (2 à 100 caractères).");
-        return false;
-      }
+      if (!nomRegex.test(val)) { showError('cf-nom', "Merci d'indiquer votre nom (2 à 100 caractères)."); return false; }
       clearError('cf-nom');
     }
-
     if (field === telephone) {
       const clean = val.replace(/[\s.\-()]/g, '');
-      if (!telRegex.test(clean)) {
-        showError('cf-telephone', 'Numéro invalide (ex : 06 12 34 56 78).');
-        return false;
-      }
+      if (!telRegex.test(clean)) { showError('cf-telephone', 'Numéro invalide (ex : 06 12 34 56 78).'); return false; }
       clearError('cf-telephone');
     }
-
     if (field === email) {
-      if (!emailRegex.test(val)) {
-        showError('cf-email', 'Adresse e-mail invalide.');
-        return false;
-      }
+      if (!emailRegex.test(val)) { showError('cf-email', 'Adresse e-mail invalide.'); return false; }
       clearError('cf-email');
     }
-
     return true;
   }
 
-  // Nettoyage du nom en temps réel
   nom?.addEventListener('input', function (this: HTMLInputElement) {
     this.value = this.value.replace(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s''\-.]/g, '');
     clearError('cf-nom');
   });
 
-  // Validation au blur
   ([nom, telephone, email] as (HTMLInputElement | null)[]).forEach(function (field) {
     field?.addEventListener('blur', function (this: HTMLInputElement) { validateField(this); });
   });
 
-  // Nettoyage erreurs au focus
   ([nom, telephone, email, prestation, message] as (HTMLElement | null)[]).forEach(function (field) {
     field?.addEventListener('focus', function (this: HTMLElement) {
       clearError('cf-' + this.id.replace('cf-', ''));
@@ -408,7 +424,6 @@ const prestations = [
 
   form.addEventListener('submit', async function (e: Event) {
     e.preventDefault();
-
     let valid = true;
     valid = validateField(nom)       && valid;
     valid = validateField(telephone) && valid;
@@ -425,8 +440,8 @@ const prestations = [
       if (data.success) {
         form.reset();
         successBox?.classList.remove('hidden');
-        submitBtn?.closest('button')?.classList.add('hidden');
-        form.querySelector<HTMLElement>('.text-xs.text-blue-300')?.classList.add('hidden');
+        submitBtn?.classList.add('hidden');
+        form.querySelector<HTMLElement>('.text-xs.text-center')?.classList.add('hidden');
       } else if (data.errors) {
         Object.entries(data.errors).forEach(([field, msg]) => showError('cf-' + field, msg));
       } else {
